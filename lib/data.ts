@@ -77,48 +77,50 @@ export type Work = {
   note?: string
 }
 
+/* Newest first, and one sentence each: the page has to fit a viewport,
+   so every blurb keeps its single hardest fact and drops the rest. */
 export const selected: Work[] = [
   {
     title: "cross-lingual value drift",
     blurb:
-      "an eval on inspect that asks the same value-laden question in matched translations and measures whether the answer moves along a named axis, scored 1 to 7 by a judge against a written rubric.",
+      "an eval on inspect that asks the same value-laden question in matched translations and measures whether the answer moves along a named axis.",
     year: "2026",
     note: "in progress",
   },
   {
-    title: "pythia",
-    blurb:
-      "a moral judgement classifier: roberta and bert against svm baselines on an open dataset of social-media moral reasoning, with shap to see which tokens actually moved a prediction. master's thesis.",
-    year: "2022",
-    href: "https://github.com/maramasaeva/pythia",
-  },
-  {
     title: "plzdontkillus security audit",
     blurb:
-      "37 findings across an api, a static frontend, dns, and the infrastructure behind it: 1 critical, 12 high. a chained csrf, stored xss, mass assignment and javascript: uri attack, three denial-of-service vectors, and 250+ tests over five phases. all disclosed before publication.",
+      "37 findings across an api, a frontend, dns and the infrastructure behind it: one critical, twelve high, all disclosed.",
     year: "2026",
     href: "https://messier-systems.vercel.app/security",
   },
   {
     title: "agent infrastructure in production",
     blurb:
-      "more than twenty mcp servers on azure container apps, used daily by real teams. each one encodes a whole workflow: learn a style from examples, generate, then validate the result against compliance rules before it reaches a human.",
+      "more than twenty mcp servers on azure container apps, each encoding a whole workflow from style-learning to compliance validation.",
     year: "2025–",
     note: "private",
   },
   {
     title: "chatgpt agent-mode connectors",
     blurb:
-      "mcp servers built as chatgpt connectors: oauth 2.1, a manifest generated at runtime from the deployed host, and a tunnelled dev loop. later re-pointed at claude desktop without changing the tools.",
+      "mcp servers as chatgpt connectors: oauth 2.1 and a manifest generated at runtime, later re-pointed at claude desktop.",
     year: "2025",
     note: "private",
   },
   {
     title: "ableton dj mcp",
     blurb:
-      "the first ai dj inside a daw. an mcp server that gives an agent track analysis, beat matching, eq, effects and transitions in ableton live, and lets it mix a set unattended.",
+      "an mcp server that gives an agent beat matching, eq and transitions in ableton live, and lets it mix a set unattended.",
     year: "2025",
     href: "https://github.com/maramasaeva/ableton-dj-mcp",
+  },
+  {
+    title: "pythia",
+    blurb:
+      "a moral judgement classifier: roberta and bert against svm baselines, with shap to see which tokens moved a prediction.",
+    year: "2022",
+    href: "https://github.com/maramasaeva/pythia",
   },
 ]
 

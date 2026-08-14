@@ -4,7 +4,7 @@ export const metadata: Metadata = { title: "writing" }
 
 export default function Writing() {
   return (
-    <div className="space-y-5">
+    <div className="flow max-w-[34rem]">
       <p>
         i write prose poetry and theory-fiction at{" "}
         <a

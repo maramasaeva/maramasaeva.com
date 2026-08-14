@@ -5,10 +5,10 @@ export const metadata: Metadata = { title: "work" }
 
 export default function Work() {
   return (
-    <ul className="space-y-9">
+    <ul className="grid gap-x-10 gap-y-[var(--gap)] sm:grid-cols-2">
       {selected.map((item) => (
         <li key={item.title}>
-          <div className="flex items-baseline justify-between gap-4">
+          <div className="flex items-baseline justify-between gap-3">
             <h2 className="text-head">
               {item.href ? (
                 <a
@@ -25,12 +25,10 @@ export default function Work() {
             </h2>
             <span className="shrink-0 font-mono text-meta text-muted tabular-nums">
               {item.year}
+              {item.note && <span className="ml-2">{item.note}</span>}
             </span>
           </div>
-          <p className="mt-1 text-muted">{item.blurb}</p>
-          {item.note && (
-            <p className="mt-1 font-mono text-meta text-muted">{item.note}</p>
-          )}
+          <p className="text-muted">{item.blurb}</p>
         </li>
       ))}
     </ul>

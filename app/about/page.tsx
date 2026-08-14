@@ -40,10 +40,10 @@ function Linkified({ row }: { row: CvRow }) {
 
 export default function About() {
   return (
-    <div className="space-y-12">
+    <div className="flow-lg">
       <section>
         <h1 className="text-head mb-4">what i&apos;ve been doing</h1>
-        <ul className="space-y-2">
+        <ul>
           {cv.map((row) => (
             <li key={row.years + row.org} className="flex gap-3">
               <span className="w-[4.5rem] shrink-0 font-mono text-meta text-muted tabular-nums leading-[1.7]">

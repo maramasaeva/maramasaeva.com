@@ -75,9 +75,11 @@ export default function RootLayout({
       <body
         className={`${newsreader.variable} ${dmMono.variable} font-serif text-body bg-bg text-fg`}
       >
-        <div className="mx-auto flex min-h-screen max-w-[34rem] flex-col px-5 pt-14 pb-8 sm:px-6 sm:pt-20">
+        <div className="mx-auto flex min-h-screen max-w-[46rem] flex-col px-5 pb-[var(--gap)] pt-[clamp(1.75rem,5vh,4rem)] sm:px-6">
           <Nav />
-          <main className="flex-1 pt-10">{children}</main>
+          <main className="flex-1 pt-[clamp(1.5rem,4.5vh,2.75rem)]">
+            {children}
+          </main>
           <Footer />
         </div>
       </body>

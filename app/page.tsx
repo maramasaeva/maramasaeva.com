@@ -19,7 +19,7 @@ function A({ href, children }: { href: string; children: React.ReactNode }) {
 
 export default function Home() {
   return (
-    <div className="space-y-5">
+    <div className="flow max-w-[34rem]">
       <p>hi, i&apos;m mara.</p>
 
       <p>
