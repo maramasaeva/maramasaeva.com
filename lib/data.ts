@@ -89,7 +89,7 @@ export const selected: Work[] = [
   {
     title: "agent infrastructure in production",
     blurb:
-      "fourteen mcp servers on azure container apps, used daily by real teams. each one encodes a whole workflow: learn a style from examples, generate, then validate the result against compliance rules before it reaches a human.",
+      "more than twenty mcp servers on azure container apps, used daily by real teams. each one encodes a whole workflow: learn a style from examples, generate, then validate the result against compliance rules before it reaches a human.",
     year: "2025–",
     note: "private",
   },
