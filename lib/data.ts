@@ -7,6 +7,8 @@ export type CvRow = {
   what: string
   org: string
   href?: string
+  /** substrings of `what` to turn into links, e.g. project names */
+  refs?: { text: string; href: string }[]
 }
 
 /** year · what · org. Newest first. The verb phrase carries the meaning,
@@ -14,7 +16,7 @@ export type CvRow = {
 export const cv: CvRow[] = [
   {
     years: "2026",
-    what: "ai safety video content",
+    what: "ai safety and x-risk communications",
     org: "plzdontkillus",
     href: "https://plzdontkillus.com",
   },
@@ -52,8 +54,12 @@ export const cv: CvRow[] = [
   },
   {
     years: "2021",
-    what: "muhai comms, built the beehaif site",
+    what: "research comms and websites for muhai and beehaif",
     org: "ai lab, vub",
+    refs: [
+      { text: "muhai", href: "https://www.muhai.org/index.html" },
+      { text: "beehaif", href: "https://beehaif.org/" },
+    ],
   },
   {
     years: "2018–21",

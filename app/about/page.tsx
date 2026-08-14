@@ -1,7 +1,42 @@
 import type { Metadata } from "next"
-import { cv, elsewhere } from "@/lib/data"
+import { cv, elsewhere, type CvRow } from "@/lib/data"
 
 export const metadata: Metadata = { title: "about" }
+
+/* Turns the substrings named in row.refs into links, leaving the rest as text.
+   Longest first, so a ref that contains another still matches correctly. */
+function Linkified({ row }: { row: CvRow }) {
+  if (!row.refs?.length) return <>{row.what}</>
+
+  const pattern = new RegExp(
+    `(${[...row.refs]
+      .sort((a, b) => b.text.length - a.text.length)
+      .map((r) => r.text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+      .join("|")})`,
+    "g",
+  )
+
+  return (
+    <>
+      {row.what.split(pattern).map((part, i) => {
+        const ref = row.refs!.find((r) => r.text === part)
+        return ref ? (
+          <a
+            key={i}
+            href={ref.href}
+            className="prose-link"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {part}
+          </a>
+        ) : (
+          part
+        )
+      })}
+    </>
+  )
+}
 
 export default function About() {
   return (
@@ -15,7 +50,7 @@ export default function About() {
                 {row.years}
               </span>
               <span>
-                {row.what}{" "}
+                <Linkified row={row} />{" "}
                 <span className="font-mono text-meta text-muted">
                   ·{" "}
                   {row.href ? (

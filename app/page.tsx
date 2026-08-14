@@ -43,8 +43,8 @@ export default function Home() {
       </p>
 
       <p>
-        in july 2026 i spent a month at lighthaven in berkeley making ai safety
-        video content for{" "}
+        in july 2026 i spent a month at lighthaven in berkeley working on ai
+        safety and x-risk communications for{" "}
         <A href="https://plzdontkillus.com">plzdontkillus</A>. i&apos;m
         relocating to the bay area.
       </p>
