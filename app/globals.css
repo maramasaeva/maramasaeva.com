@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+/* ---- tokens -------------------------------------------------------------
+   light is the base definition; dark only redefines the same five values.
+   three type sizes total: mono meta, serif body, serif heading.
+   ---------------------------------------------------------------------- */
+
+:root {
+  --bg: #fdfcfb;
+  --fg: #171716;
+  --muted: #6e6d6a;
+  --faint: #e2e0da;
+  --accent: #a52a5f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131312;
+    --fg: #ecebe7;
+    --muted: #97958f;
+    --faint: #2c2b28;
+    --accent: #f19ab8;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+
+  --font-serif: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  --font-mono: var(--font-dm-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --text-meta: 0.75rem;
+  --text-meta--line-height: 1.4;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.65;
+  --text-head: 1.125rem;
+  --text-head--line-height: 1.4;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* prose links: underline always, in the accent, offset so descenders survive */
+.prose-link {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  transition: text-decoration-color 150ms ease;
+}
+.prose-link:hover {
+  text-decoration-color: var(--accent);
+}
