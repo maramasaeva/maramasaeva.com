@@ -26,7 +26,7 @@ export default function Home() {
         i&apos;m an ai engineer. i build ai systems and i&apos;ve started
         measuring them. the agent infrastructure i build goes to production, and
         then i attack it: my{" "}
-        <A href="/work">last audit</A> returned 37 findings, one critical,
+        <A href="/work/plzdontkillus">last audit</A> returned 37 findings, one critical,
         across an api, a frontend, and the dns and infra behind it, all
         disclosed. i&apos;m pointing the same instinct at model behaviour now
         instead of endpoints, writing evals on inspect for value drift: whether

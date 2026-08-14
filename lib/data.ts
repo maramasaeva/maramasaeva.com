@@ -92,7 +92,7 @@ export const selected: Work[] = [
     blurb:
       "37 findings across an api, a frontend, dns and the infrastructure behind it: one critical, twelve high, all disclosed.",
     year: "2026",
-    href: "https://messier-systems.vercel.app/security",
+    href: "/work/plzdontkillus",
   },
   {
     title: "agent infrastructure in production",

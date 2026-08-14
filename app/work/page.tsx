@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Link from "next/link"
 import { selected } from "@/lib/data"
 
 export const metadata: Metadata = { title: "work" }
@@ -11,14 +12,20 @@ export default function Work() {
           <div className="flex items-baseline justify-between gap-3">
             <h2 className="text-head">
               {item.href ? (
-                <a
-                  href={item.href}
-                  className="prose-link"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {item.title}
-                </a>
+                item.href.startsWith("/") ? (
+                  <Link href={item.href} className="prose-link">
+                    {item.title}
+                  </Link>
+                ) : (
+                  <a
+                    href={item.href}
+                    className="prose-link"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {item.title}
+                  </a>
+                )
               ) : (
                 item.title
               )}
