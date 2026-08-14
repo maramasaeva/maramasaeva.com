@@ -37,9 +37,17 @@ export default function Home() {
       <p>
         day to day i build that infrastructure at{" "}
         <A href="https://friendsofcartel.com">friends of cartel</A>, and i build{" "}
-        <A href="https://k-o.to/">kaios</A> at kotopia. before that i studied
-        computational linguistics and speech technology at ku leuven, and did
-        nlp at the belgian government.
+        <A href="https://k-o.to/">kaios</A> at kotopia.
+      </p>
+
+      <p>
+        before that i studied computational linguistics and speech technology at
+        ku leuven, where my thesis was{" "}
+        <A href="https://github.com/maramasaeva/pythia">pythia</A>, a moral
+        judgement classifier i probed with shap to see which tokens actually
+        moved a prediction. i did nlp at the belgian government, and research
+        comms for <A href="https://www.muhai.org/index.html">muhai</A> and{" "}
+        <A href="https://beehaif.org/">beehaif</A> at the vub ai lab.
       </p>
 
       <p>

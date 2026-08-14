@@ -86,6 +86,13 @@ export const selected: Work[] = [
     note: "in progress",
   },
   {
+    title: "pythia",
+    blurb:
+      "a moral judgement classifier: roberta and bert against svm baselines on an open dataset of social-media moral reasoning, with shap to see which tokens actually moved a prediction. master's thesis.",
+    year: "2022",
+    href: "https://github.com/maramasaeva/pythia",
+  },
+  {
     title: "plzdontkillus security audit",
     blurb:
       "37 findings across an api, a static frontend, dns, and the infrastructure behind it: 1 critical, 12 high. a chained csrf, stored xss, mass assignment and javascript: uri attack, three denial-of-service vectors, and 250+ tests over five phases. all disclosed before publication.",
@@ -105,13 +112,6 @@ export const selected: Work[] = [
       "mcp servers built as chatgpt connectors: oauth 2.1, a manifest generated at runtime from the deployed host, and a tunnelled dev loop. later re-pointed at claude desktop without changing the tools.",
     year: "2025",
     note: "private",
-  },
-  {
-    title: "pythia",
-    blurb:
-      "a moral judgement classifier: roberta and bert against svm baselines on an open dataset of social-media moral reasoning, with shap to see which tokens actually moved a prediction. master's thesis.",
-    year: "2022",
-    href: "https://github.com/maramasaeva/pythia",
   },
   {
     title: "ableton dj mcp",
