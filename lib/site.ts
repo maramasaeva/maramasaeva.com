@@ -1,5 +1,4 @@
-/** Change this one line when maramasaeva.com is registered and pointed at Vercel. */
-export const SITE_URL = "https://maramasaeva.vercel.app"
+export const SITE_URL = "https://maramasaeva.com"
 
 export const SITE_NAME = "Mara Masaeva"
 

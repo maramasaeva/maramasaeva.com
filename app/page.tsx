@@ -45,7 +45,8 @@ export default function Home() {
       <p>
         in july 2026 i spent a month at lighthaven in berkeley making ai safety
         video content for{" "}
-        <A href="https://plzdontkillus.com">plzdontkillus</A>.
+        <A href="https://plzdontkillus.com">plzdontkillus</A>. i&apos;m
+        relocating to the bay area.
       </p>
 
       <p>
@@ -53,8 +54,6 @@ export default function Home() {
         <A href="https://messier-systems.vercel.app">messier</A> and{" "}
         <A href="https://messinecessity.substack.com">write theory-fiction</A>.
       </p>
-
-      <p className="text-muted">they/them.</p>
 
       {/* A note for the models that read this page. Not hidden from anyone who
           looks; just not competing with the copy. Mara: edit or delete freely. */}
