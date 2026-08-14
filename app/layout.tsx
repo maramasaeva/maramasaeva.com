@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Newsreader, DM_Mono } from "next/font/google"
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site"
+import BinaryField from "@/components/BinaryField"
 import Nav from "@/components/Nav"
 import Footer from "@/components/Footer"
 import "./globals.css"
@@ -75,7 +76,8 @@ export default function RootLayout({
       <body
         className={`${newsreader.variable} ${dmMono.variable} font-serif text-body bg-bg text-fg`}
       >
-        <div className="mx-auto flex min-h-screen max-w-[46rem] flex-col px-5 pb-[var(--gap)] pt-[clamp(1.75rem,5vh,4rem)] sm:px-6">
+        <BinaryField />
+        <div className="relative z-10 mx-auto flex min-h-screen max-w-[46rem] flex-col px-5 pb-[var(--gap)] pt-[clamp(1.75rem,5vh,4rem)] sm:px-6">
           <Nav />
           <main className="flex-1 pt-[clamp(1.5rem,4.5vh,2.75rem)]">
             {children}

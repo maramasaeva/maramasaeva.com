@@ -55,7 +55,7 @@ export const cv: CvRow[] = [
   {
     years: "2021",
     what: "research comms and websites for muhai and beehaif",
-    org: "ai lab, vub",
+    org: "ai lab, university of brussels",
     refs: [
       { text: "muhai", href: "https://www.muhai.org/index.html" },
       { text: "beehaif", href: "https://beehaif.org/" },

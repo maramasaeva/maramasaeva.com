@@ -47,7 +47,7 @@ export default function Home() {
         judgement classifier i probed with shap to see which tokens actually
         moved a prediction. i did nlp at the belgian government, and research
         comms for <A href="https://www.muhai.org/index.html">muhai</A> and{" "}
-        <A href="https://beehaif.org/">beehaif</A> at the vub ai lab.
+        <A href="https://beehaif.org/">beehaif</A> at the university of brussels ai lab.
       </p>
 
       <p>
