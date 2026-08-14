@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Link from "next/link"
 
 export const metadata: Metadata = { title: "writing" }
 
@@ -20,17 +21,13 @@ export default function Writing() {
 
       <p>
         one essay lives here instead, because it&apos;s about my own work:{" "}
-        <a
-          href="https://messier-systems.vercel.app/think"
-          className="prose-link"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <Link href="/writing/think" className="prose-link">
           i work in ai, that&apos;s why i&apos;m saying this
-        </a>
+        </Link>
         , on cognitive offloading, what deep reading costs when we automate it,
         and why children need to develop a capacity before they&apos;re in a
-        dependent relationship with a system that will do it for them.
+        dependent relationship with a system that will do it for them. in
+        english and dutch.
       </p>
     </div>
   )

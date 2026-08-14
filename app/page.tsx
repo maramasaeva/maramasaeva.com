@@ -59,7 +59,7 @@ export default function Home() {
 
       <p>
         i make electronic music as{" "}
-        <A href="https://messier-systems.vercel.app">messier</A> and{" "}
+        <A href="https://soundcloud.com/user-587494783/albums">messier</A> and{" "}
         <A href="https://messinecessity.substack.com">write theory-fiction</A>.
       </p>
 
