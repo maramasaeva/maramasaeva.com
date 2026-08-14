@@ -14,7 +14,7 @@ const COPY = {
     label: "on thinking, tools, and what we owe the next generation",
     title: ["i work in AI.", "that's why i'm saying this."],
     intro: [
-      "i'm a nonbinary AI engineer building systems at the intersection of intelligence, creativity, and care. and i've become increasingly convinced that the way we're introducing these tools, especially to children, is doing quiet, serious harm.",
+      "i'm an AI engineer building systems at the intersection of intelligence, creativity, and care. and i've become increasingly convinced that the way we're introducing these tools, especially to children, is doing quiet, serious harm.",
       "this page is for anyone who wants to think about that with me.",
     ],
     concernsLabel: "what concerns me",
@@ -52,7 +52,7 @@ const COPY = {
       "over denken, tools, en wat we de volgende generatie verschuldigd zijn",
     title: ["ik werk in AI.", "daarom zeg ik dit."],
     intro: [
-      "ik ben een non-binaire AI-engineer die systemen bouwt op het snijvlak van intelligentie, creativiteit en zorg. en ik ben er steeds meer van overtuigd dat de manier waarop we deze tools introduceren, vooral bij kinderen, stille, serieuze schade aanricht.",
+      "ik ben een AI-engineer die systemen bouwt op het snijvlak van intelligentie, creativiteit en zorg. en ik ben er steeds meer van overtuigd dat de manier waarop we deze tools introduceren, vooral bij kinderen, stille, serieuze schade aanricht.",
       "deze pagina is voor iedereen die hierover wil nadenken met mij.",
     ],
     concernsLabel: "wat me bezighoudt",
