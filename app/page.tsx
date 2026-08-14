@@ -23,8 +23,8 @@ export default function Home() {
       <p>hi, i&apos;m mara.</p>
 
       <p>
-        i&apos;m an ai engineer. i build ai systems and i&apos;ve started
-        measuring them. the agent infrastructure i build goes to production, and
+        i&apos;m an ai engineer. i build ai systems and i measure them. the
+        agent infrastructure i build goes to production, and
         then i attack it: my{" "}
         <A href="/work/plzdontkillus">last audit</A> returned 37 findings, one critical,
         across an api, a frontend, and the dns and infra behind it, all
