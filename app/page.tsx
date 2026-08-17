@@ -53,8 +53,15 @@ export default function Home() {
       <p>
         in july 2026 i spent a month at lighthaven in berkeley working on ai
         safety and x-risk communications for{" "}
-        <A href="https://plzdontkillus.com">plzdontkillus</A>. i&apos;m
-        relocating to the bay area.
+        <A href="https://plzdontkillus.com">plzdontkillus</A>: scripts and
+        video, and two web apps the full 42-person residency used, designed
+        and shipped in days.
+      </p>
+
+      <p>
+        i&apos;m relocating to the bay area, and i want to work across the
+        entire surface of a small org: engineering, operations, and
+        communicating ai and ai safety to the public, social media included.
       </p>
 
       <p>
