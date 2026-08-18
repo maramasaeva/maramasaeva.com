@@ -76,8 +76,8 @@ export type Work = {
   href?: string
   /** shown in place of a link when the source can't be public */
   note?: string
-  /** a second way in, for work that exists in more than one version */
-  alt?: { label: string; href: string }
+  /** words inside the blurb that become links */
+  refs?: { text: string; href: string }[]
 }
 
 /* Newest first, and one sentence each: the page has to fit a viewport,
@@ -117,7 +117,7 @@ export const selected: Work[] = [
       "my earlier site as a 3d workstation in react three fiber: a room you move through instead of a page you scroll, with the same content stripped to text on a plain route.",
     year: "2025",
     href: "https://messier-systems.vercel.app/",
-    alt: { label: "plain", href: "https://messier-systems.vercel.app/plain" },
+    refs: [{ text: "plain", href: "https://messier-systems.vercel.app/plain" }],
   },
   {
     title: "ableton dj mcp",

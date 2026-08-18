@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import Linkified from "@/components/Linkified"
 import { selected } from "@/lib/data"
 
 export const metadata: Metadata = { title: "work" }
@@ -35,19 +36,9 @@ export default function Work() {
               {item.note && <span className="ml-2">{item.note}</span>}
             </span>
           </div>
-          <p className="text-muted">{item.blurb}</p>
-          {item.alt && (
-            <p className="font-mono text-meta">
-              <a
-                href={item.alt.href}
-                className="prose-link"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {item.alt.label}
-              </a>
-            </p>
-          )}
+          <p className="text-muted">
+            <Linkified text={item.blurb} refs={item.refs} />
+          </p>
         </li>
       ))}
     </ul>
