@@ -67,6 +67,13 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Body prose spreads to both margins; hyphenation keeps the rivers small
+   on narrow viewports. */
+p {
+  text-align: justify;
+  hyphens: auto;
+}
+
 ::selection {
   background: var(--accent);
   color: var(--bg);
