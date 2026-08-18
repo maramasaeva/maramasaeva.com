@@ -36,6 +36,18 @@ export default function Work() {
             </span>
           </div>
           <p className="text-muted">{item.blurb}</p>
+          {item.alt && (
+            <p className="font-mono text-meta">
+              <a
+                href={item.alt.href}
+                className="prose-link"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {item.alt.label}
+              </a>
+            </p>
+          )}
         </li>
       ))}
     </ul>

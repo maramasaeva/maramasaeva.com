@@ -76,6 +76,8 @@ export type Work = {
   href?: string
   /** shown in place of a link when the source can't be public */
   note?: string
+  /** a second way in, for work that exists in more than one version */
+  alt?: { label: string; href: string }
 }
 
 /* Newest first, and one sentence each: the page has to fit a viewport,
@@ -108,6 +110,14 @@ export const selected: Work[] = [
       "mcp servers as chatgpt connectors: oauth 2.1 and a manifest generated at runtime, later re-pointed at claude desktop.",
     year: "2025",
     note: "private",
+  },
+  {
+    title: "messier systems",
+    blurb:
+      "my earlier site as a 3d workstation in react three fiber: a room you move through instead of a page you scroll, with the same content stripped to text on a plain route.",
+    year: "2025",
+    href: "https://messier-systems.vercel.app/",
+    alt: { label: "plain", href: "https://messier-systems.vercel.app/plain" },
   },
   {
     title: "ableton dj mcp",
