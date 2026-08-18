@@ -52,7 +52,7 @@ export default function Home() {
         day to day i build agent infra at{" "}
         <A href="https://friendsofcartel.com">friends of cartel</A>, and at{" "}
         <A href="https://www.kotopia.world/">kotopia</A> i&apos;m designing
-        kaios, the ai companion for the new age.
+        kaios, the ai companion for the future we actually want.
       </p>
 
       <p>
