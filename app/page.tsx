@@ -51,11 +51,11 @@ export default function Home() {
       </p>
 
       <p>
-        before that: an advanced master of ai at ku leuven, where my thesis
-        was <A href="https://github.com/maramasaeva/pythia">pythia</A>, a
-        moral judgement classifier probed with shap, a second master in
-        digital text analysis at antwerp, and nlp at the belgian government
-        before the llm wave.
+        before that: an advanced master of ai at ku leuven, during which i
+        did nlp at the belgian government before the llm wave, and a master in
+        digital text analysis at antwerp, where my thesis was{" "}
+        <A href="https://github.com/maramasaeva/pythia">pythia</A>, a moral
+        judgement classifier.
       </p>
 
       <p>
