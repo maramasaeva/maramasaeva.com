@@ -36,7 +36,7 @@ export const cv: CvRow[] = [
     years: "2024–25",
     what: "autonomous agents and image-training pipelines for inku",
     org: "inect",
-    href: "https://inku.tech/",
+    refs: [{ text: "inku", href: "https://inku.tech/" }],
   },
   {
     years: "2022–24",
