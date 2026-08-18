@@ -114,7 +114,7 @@ export const selected: Work[] = [
   {
     title: "messier systems",
     blurb:
-      "my earlier site as a 3d workstation in react three fiber: a room you move through instead of a page you scroll, with a moving avatar of me in it, naked but for the tattoos. the same content, stripped to text, is on a plain route.",
+      "my earlier site as a 3d workstation in react three fiber: a room you move through instead of a page you scroll, with a moving avatar of me in it, naked but for my tattoos. the same content, stripped to text, is on a plain route.",
     year: "2025",
     href: "https://messier-systems.vercel.app/",
     refs: [{ text: "plain", href: "https://messier-systems.vercel.app/plain" }],
