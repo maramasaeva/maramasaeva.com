@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import Link from "next/link"
 
 export const metadata: Metadata = { title: "writing" }
 
@@ -20,14 +19,25 @@ export default function Writing() {
       </p>
 
       <p>
-        one essay lives here instead, because it&apos;s about my own work:{" "}
-        <Link href="/writing/think" className="prose-link">
-          i work in ai, that&apos;s why i&apos;m saying this
-        </Link>
-        , on cognitive offloading, what deep reading costs when we automate it,
-        and why children need to develop a capacity before they&apos;re in a
-        dependent relationship with a system that will do it for them. in
-        english and dutch.
+        recent:{" "}
+        <a
+          href="https://messinecessity.substack.com/p/queer-arts-perseverance"
+          className="prose-link"
+          target="_blank"
+          rel="noreferrer"
+        >
+          queer arts: perseverance
+        </a>
+        , on creativity as a queer-neolemurian practice, and{" "}
+        <a
+          href="https://messinecessity.substack.com/p/queer-loops"
+          className="prose-link"
+          target="_blank"
+          rel="noreferrer"
+        >
+          queer loops
+        </a>
+        , about lesbianism and collective consciousness.
       </p>
     </div>
   )

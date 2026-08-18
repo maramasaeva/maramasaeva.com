@@ -27,25 +27,9 @@ export default function Home() {
         fast: backend, frontend, models, and the words that explain them. i
         built <A href="https://www.kaios.chat/">kaios</A> end to end as sole
         engineer, a platform where live conversation becomes generated music
-        through a multi-agent backend and an in-browser daw. i&apos;ve shipped
-        an app to the{" "}
-        <A href="https://apps.apple.com/app/id6788961225">ios app store</A>,
-        trained diffusion models on h100s, and made the first ai dj that lives
-        inside ableton.
-      </p>
-
-      <p>
-        speed is half of it; the other half is that i fiercely attack what i
-        build. when a 60-person residency at lighthaven in berkeley needed
-        tools, i designed and shipped two production web apps in days, and the
-        whole house used them, while writing and producing ai safety video for{" "}
-        <A href="https://plzdontkillus.com">plzdontkillus</A> that same month.
-        my <A href="/work/plzdontkillus">last audit</A> of my own
-        infrastructure returned 37 findings, one critical, across an api, a
-        frontend, and the dns behind it, all disclosed. i&apos;m pointing that
-        instinct at model behaviour now, writing evals on inspect for value
-        drift: whether a model&apos;s stated commitments survive a change in
-        the conditions you ask under.
+        through a multi-agent backend and an in-browser daw. i&apos;ve trained
+        diffusion models on h100s and made the first ai dj that lives inside
+        ableton.
       </p>
 
       <p>
@@ -55,18 +39,44 @@ export default function Home() {
         kaios, the ai companion for the future we actually want.
       </p>
 
-      <p>
-        before that: an advanced master of artificial intelligence at ku
-        leuven, speech and language technology, where my thesis was{" "}
-        <A href="https://github.com/maramasaeva/pythia">pythia</A>, a moral
-        judgement classifier i probed with shap, and a second master in digital
-        text analysis at antwerp. i was early to nlp: classifying citizen
-        questions at the belgian government before the llm wave, and doing
-        research communications for{" "}
-        <A href="https://www.muhai.org/index.html">muhai</A> and{" "}
-        <A href="https://beehaif.org/">beehaif</A> at the university of
-        brussels ai lab.
-      </p>
+      {/* The longer version, folded so the page stays one glance. Native
+          <details>: no JS, and the text stays in the DOM for crawlers and
+          models reading the page. */}
+      <details className="group">
+        <summary className="cursor-pointer list-none select-none font-mono text-meta text-muted hover:text-fg [&::-webkit-details-marker]:hidden">
+          <span className="group-open:hidden">more ↓</span>
+          <span className="hidden group-open:inline">less ↑</span>
+        </summary>
+        <div className="flow mt-[var(--gap)]">
+          <p>
+            speed is half of it; the other half is that i fiercely attack what
+            i build. when a 60-person residency at lighthaven in berkeley
+            needed tools, i designed and shipped two production web apps in
+            days, and the whole house used them, while writing and producing
+            ai safety video for{" "}
+            <A href="https://plzdontkillus.com">plzdontkillus</A> that same
+            month. my <A href="/work/plzdontkillus">last audit</A> of my own
+            infrastructure returned 37 findings, one critical, across an api,
+            a frontend, and the dns behind it, all disclosed. i&apos;m
+            pointing that instinct at model behaviour now, writing evals on
+            inspect for value drift: whether a model&apos;s stated commitments
+            survive a change in the conditions you ask under.
+          </p>
+
+          <p>
+            before that: an advanced master of artificial intelligence at ku
+            leuven, speech and language technology, where my thesis was{" "}
+            <A href="https://github.com/maramasaeva/pythia">pythia</A>, a
+            moral judgement classifier i probed with shap, and a second master
+            in digital text analysis at antwerp. i was early to nlp:
+            classifying citizen questions at the belgian government before the
+            llm wave, and doing research communications for{" "}
+            <A href="https://www.muhai.org/index.html">muhai</A> and{" "}
+            <A href="https://beehaif.org/">beehaif</A> at the university of
+            brussels ai lab.
+          </p>
+        </div>
+      </details>
 
       <p>
         i&apos;m relocating to the bay area, and i want to work across the
