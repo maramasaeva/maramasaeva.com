@@ -59,18 +59,24 @@ export default function Portfolio() {
             </span>
           </div>
 
-          <p className="font-mono text-meta text-muted">
-            <Linkified text={piece.role} refs={piece.refs} />
-          </p>
-          <p className="font-mono text-meta text-muted">{piece.stack}</p>
+          {piece.role && (
+            <p className="font-mono text-meta text-muted">
+              <Linkified text={piece.role} refs={piece.refs} />
+            </p>
+          )}
+          {piece.stack && (
+            <p className="font-mono text-meta text-muted">{piece.stack}</p>
+          )}
 
-          <div className="mt-[var(--gap)] flow">
-            {piece.body.map((para) => (
-              <p key={para.slice(0, 24)}>
-                <Linkified text={para} refs={piece.refs} />
-              </p>
-            ))}
-          </div>
+          {piece.body && (
+            <div className="mt-[var(--gap)] flow">
+              {piece.body.map((para) => (
+                <p key={para.slice(0, 24)}>
+                  <Linkified text={para} refs={piece.refs} />
+                </p>
+              ))}
+            </div>
+          )}
 
           {piece.media?.map((media) => (
             <Frame key={media.src} media={media} />

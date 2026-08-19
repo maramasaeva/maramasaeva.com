@@ -15,11 +15,12 @@ export type Piece = {
   title: string
   year: string
   /** the one-line answer to "what was your part in this" */
-  role: string
+  role?: string
   /** mono line under the title. what it is actually made of. */
-  stack: string
-  /** paragraphs. first says what it is, the rest say what was hard. */
-  body: string[]
+  stack?: string
+  /** paragraphs. first says what it is, the rest say what was hard.
+   *  a piece can carry none: the links are the work. */
+  body?: string[]
   /** words inside role or body that become links, e.g. a collaborator's name */
   refs?: { text: string; href: string }[]
   links?: { label: string; href: string }[]
@@ -83,6 +84,15 @@ export const portfolio: Piece[] = [
       { label: "listen", href: "https://soundcloud.com/user-587494783/albums" },
       { label: "ableton dj mcp", href: "https://github.com/KOTOPIA9X" },
       { label: "writing", href: "https://messinecessity.substack.com" },
+    ],
+  },
+  {
+    /* no blurb on purpose: the work is at the other end of the links */
+    title: "visual art",
+    year: "ongoing",
+    links: [
+      { label: "thiae-vi", href: "https://thiae-vi.tumblr.com/" },
+      { label: "uiltjee", href: "https://uiltjee.tumblr.com/" },
     ],
   },
 ]
