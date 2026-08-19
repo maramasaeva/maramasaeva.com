@@ -53,14 +53,13 @@ export const portfolio: Piece[] = [
     body: [
       /* kotopia's own copy, lowercased to the site's voice */
       "a cozy playground to connect, create, and feel a little less alone. not a one sided platform: draw it, remix it, dream it. cute/acc, kawaii brutalism, chaos made comfortable.",
-      "my part is kaios the character: prompt architecture, voice, where it refuses, and the generative sound.",
     ],
     links: [{ label: "kotopia.world", href: "https://kotopia.world" }],
   },
   {
     title: "personal space",
     year: "2025–26",
-    body: ["my necrospaces."],
+    body: ["a necrospace for my virtual body."],
     links: [
       { label: "messier systems", href: "https://messier-systems.vercel.app/" },
       { label: "plain", href: "https://messier-systems.vercel.app/plain" },
@@ -73,7 +72,7 @@ export const portfolio: Piece[] = [
     stack: "ableton live, hardware, mcp",
     body: [
       "experimental electronic club. music that is pain, without suffering.",
-      "it also produced software. ableton dj mcp is an mcp server that hands an agent beat matching, eq and transitions inside ableton live and lets it mix a set unattended.",
+      "live dj and producer in ableton live.",
     ],
     links: [
       { label: "listen", href: "https://soundcloud.com/user-587494783/albums" },
