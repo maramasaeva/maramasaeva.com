@@ -124,7 +124,7 @@ export const selected: Work[] = [
     blurb:
       "an mcp server that gives an agent beat matching, eq and transitions in ableton live, and lets it mix a set unattended.",
     year: "2025",
-    href: "https://github.com/maramasaeva/ableton-dj-mcp",
+    note: "private",
   },
   {
     title: "pythia",

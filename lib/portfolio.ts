@@ -81,7 +81,6 @@ export const portfolio: Piece[] = [
     ],
     links: [
       { label: "listen", href: "https://soundcloud.com/user-587494783/albums" },
-      { label: "ableton dj mcp", href: "https://github.com/maramasaeva/ableton-dj-mcp" },
       { label: "writing", href: "https://messinecessity.substack.com" },
     ],
   },
