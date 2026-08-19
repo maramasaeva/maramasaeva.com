@@ -4,6 +4,7 @@ const items = [
   { href: "/", label: "mara masaeva" },
   { href: "/about", label: "about" },
   { href: "/work", label: "work" },
+  { href: "/portfolio", label: "portfolio" },
   { href: "/writing", label: "writing" },
 ]
 
