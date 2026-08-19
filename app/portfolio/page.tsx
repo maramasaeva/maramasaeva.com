@@ -50,15 +50,6 @@ function Frame({ media }: { media: Media }) {
 export default function Portfolio() {
   return (
     <div className="flow-lg">
-      <p className="text-muted">
-        four things i built and kept building, with what was hard in each. the
-        short list, including the private work, is on{" "}
-        <a href="/work" className="prose-link">
-          work
-        </a>
-        .
-      </p>
-
       {portfolio.map((piece) => (
         <section key={piece.title}>
           <div className="flex items-baseline justify-between gap-3">
