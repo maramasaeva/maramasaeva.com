@@ -20,6 +20,8 @@ export type Piece = {
   stack: string
   /** paragraphs. first says what it is, the rest say what was hard. */
   body: string[]
+  /** words inside role or body that become links, e.g. a collaborator's name */
+  refs?: { text: string; href: string }[]
   links?: { label: string; href: string }[]
   /** optional until the captures exist; the page renders fine without them */
   media?: Media[]
@@ -45,6 +47,7 @@ export const portfolio: Piece[] = [
     title: "kotopia",
     year: "2025–",
     role: "designing kaios, the companion, with koto murai",
+    refs: [{ text: "koto murai", href: "https://asgardstud.io/about" }],
     stack: "character design, prompt architecture, persona consistency, generative sound",
     body: [
       /* kotopia's own copy, lowercased to the site's voice */

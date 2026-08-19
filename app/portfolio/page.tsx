@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Image from "next/image"
+import Linkified from "@/components/Linkified"
 import { portfolio, type Media } from "@/lib/portfolio"
 
 export const metadata: Metadata = {
@@ -67,12 +68,16 @@ export default function Portfolio() {
             </span>
           </div>
 
-          <p className="font-mono text-meta text-muted">{piece.role}</p>
+          <p className="font-mono text-meta text-muted">
+            <Linkified text={piece.role} refs={piece.refs} />
+          </p>
           <p className="font-mono text-meta text-muted">{piece.stack}</p>
 
           <div className="mt-[var(--gap)] flow">
             {piece.body.map((para) => (
-              <p key={para.slice(0, 24)}>{para}</p>
+              <p key={para.slice(0, 24)}>
+                <Linkified text={para} refs={piece.refs} />
+              </p>
             ))}
           </div>
 
