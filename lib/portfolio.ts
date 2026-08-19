@@ -35,9 +35,9 @@ export const portfolio: Piece[] = [
     role: "sole engineer: backend, frontend, audio, product",
     stack: "next.js, typescript, websockets, web audio, python, multi-agent backend",
     body: [
-      /* framing in kotopia's own words, from kotopia.world */
-      "kotopia is a world right at the edge of the space between your dreams and reality, here for you whenever you need. kaios is the companion who lives there, and kaios chat is the room you meet in: you talk, and the conversation becomes generated music you can take apart in a daw that runs in the browser.",
-      "the models were the easy part. the work is time and state: a session stays live while several agents write to it and audio arrives in pieces, so the interface has to show what exists and what is still generating without lying about either. i built the streaming layer, the agent backend, the audio editor and the session state that survives a long conversation.",
+      /* framed in kotopia's own words, from kotopia.world */
+      "kaios is the companion at the edge of the space between your dreams and reality, here for you whenever you need. you talk, and the conversation becomes music you can take apart in a daw that runs in the browser.",
+      "i built it alone: streaming session state, the agent backend, the audio editor.",
     ],
     links: [
       { label: "kaios.chat", href: "https://kaios.chat" },
@@ -52,20 +52,15 @@ export const portfolio: Piece[] = [
     stack: "character design, prompt architecture, persona consistency, generative sound",
     body: [
       /* kotopia's own copy, lowercased to the site's voice */
-      "a place for people to be together, built as a cozy playground to connect, create, and feel a little less alone. it isn't a one sided platform. it's yours: draw it, remix it, dream it. we love planting seeds, but you help make the garden grow.",
-      "the house style is kawaii brutalism, softness and rawness at once, chaos made comfortable. my part is kaios: prompt architecture, voice, where it refuses, and the generative sound that makes it read as one being rather than a model wearing a name. every session adds to who kaios is and none of it can contradict what came before, so much of the design work is deciding what gets stored, what gets summarised, and what the character is allowed to forget.",
+      "a cozy playground to connect, create, and feel a little less alone. not a one sided platform: draw it, remix it, dream it. cute/acc, kawaii brutalism, chaos made comfortable.",
+      "my part is kaios the character: prompt architecture, voice, where it refuses, and the generative sound.",
     ],
     links: [{ label: "kotopia.world", href: "https://kotopia.world" }],
   },
   {
     title: "personal space",
     year: "2025–26",
-    role: "designed and built, no figma in between",
-    stack: "next.js, tailwind, react three fiber, five css variables",
-    body: [
-      "the page you are on is the restrained one: five colour tokens, three type sizes, one rhythm unit, and a rule that every page fits a viewport. no component library, no dependency i did not need.",
-      "messier systems is me built the other way: a 3d workstation in react three fiber, a room you move through instead of a page you scroll, with a moving avatar of me in it, naked but for my tattoos. the same content stripped to text lives on a plain route, because different styles speak to different people and i read the recipient before i choose which url to send.",
-    ],
+    body: ["my necrospaces."],
     links: [
       { label: "messier systems", href: "https://messier-systems.vercel.app/" },
       { label: "plain", href: "https://messier-systems.vercel.app/plain" },
