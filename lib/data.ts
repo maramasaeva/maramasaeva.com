@@ -124,7 +124,8 @@ export const selected: Work[] = [
     blurb:
       "an mcp server that gives an agent beat matching, eq and transitions in ableton live, and lets it mix a set unattended.",
     year: "2025",
-    note: "private",
+    /* the repo lives in the kotopia org, not mine: koto cleared the link */
+    href: "https://github.com/KOTOPIA9X",
   },
   {
     title: "pythia",
