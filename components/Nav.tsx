@@ -1,4 +1,5 @@
 import Link from "next/link"
+import ThemeToggle from "@/components/ThemeToggle"
 
 const items = [
   { href: "/", label: "mara masaeva" },
@@ -24,6 +25,7 @@ export default function Nav() {
             </Link>
           ))}
         </span>
+        <ThemeToggle />
       </nav>
     </header>
   )

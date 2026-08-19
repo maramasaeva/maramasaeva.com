@@ -210,18 +210,24 @@ export default function BinaryField() {
     raf = requestAnimationFrame(frame)
 
     window.addEventListener("resize", onResize)
-    const scheme = window.matchMedia("(prefers-color-scheme: dark)")
-    const onScheme = () => {
+
+    /* The tokens live in css, so the field has to be told when they change.
+       That happens when the toggle rewrites data-theme on <html>. */
+    const onTheme = () => {
       readTokens()
       build()
     }
-    scheme.addEventListener("change", onScheme)
+    const themeWatch = new MutationObserver(onTheme)
+    themeWatch.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    })
 
     return () => {
       cancelAnimationFrame(raf)
       window.removeEventListener("pointermove", onMove)
       window.removeEventListener("resize", onResize)
-      scheme.removeEventListener("change", onScheme)
+      themeWatch.disconnect()
     }
   }, [])
 

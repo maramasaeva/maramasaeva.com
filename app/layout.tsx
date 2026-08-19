@@ -62,12 +62,20 @@ const personJsonLd = {
   ],
 }
 
+/* Applies a remembered dark choice before the first paint, so a returning
+   visitor never sees the light page flash first. Anyone else gets light: the
+   system preference is deliberately not consulted. Kept inline and tiny
+   because it has to run ahead of everything else. */
+const themeScript = `try{if(localStorage.getItem("theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}`
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    /* the script above writes data-theme before react hydrates */
+    <html lang="en" data-theme="light" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
