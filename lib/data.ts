@@ -86,21 +86,21 @@ export const selected: Work[] = [
   {
     title: "cross-lingual value drift",
     blurb:
-      "an eval on inspect that asks the same value-laden question in matched translations and measures whether the answer moves along a named axis.",
+      "an eval on inspect that asks the same value-laden question in matched translations and measures how far the answer moves.",
     year: "2026",
     note: "in progress",
   },
   {
     title: "plzdontkillus security audit",
     blurb:
-      "37 findings across an api, a frontend, dns and the infrastructure behind it: one critical, twelve high, all disclosed.",
+      "even lightcone's stack is breakable: real holes across an api, a frontend and dns, one of them critical, all disclosed.",
     year: "2026",
     href: "/work/plzdontkillus",
   },
   {
     title: "agent infrastructure in production",
     blurb:
-      "more than twenty mcp servers on azure container apps, each encoding a whole workflow from style-learning to compliance validation.",
+      "more than twenty mcp servers on azure container apps, in daily use by agencies; each one runs a complete client workflow such as style learning or compliance validation.",
     year: "2025–",
     note: "private",
   },
@@ -114,7 +114,7 @@ export const selected: Work[] = [
   {
     title: "messier systems",
     blurb:
-      "my earlier site as a 3d workstation in react three fiber: a room you move through instead of a page you scroll, with a moving avatar of me in it, naked but for my tattoos. the same content, stripped to text, is on a plain route.",
+      "my earlier site as a 3d workstation in react three fiber: a room with a moving avatar of me in it, naked but for my tattoos. the same content, stripped to text, is on a plain route.",
     year: "2025",
     href: "https://messier-systems.vercel.app/",
     refs: [{ text: "plain", href: "https://messier-systems.vercel.app/plain" }],
@@ -122,10 +122,16 @@ export const selected: Work[] = [
   {
     title: "ableton dj mcp",
     blurb:
-      "an mcp server that gives an agent beat matching, eq and transitions in ableton live, and lets it mix a set unattended.",
+      "an mcp server that gives an agent beat matching, eq and transitions in ableton live, and lets it mix a set unattended. built in the kotopia org with koto, grimes' creative technologist.",
     year: "2025",
     /* the repo lives in the kotopia org, not mine: koto cleared the link */
     href: "https://github.com/KOTOPIA9X",
+    /* "kotopia" ref also keeps Linkified's substring match from linkifying
+       the "koto" inside it (longest ref wins) */
+    refs: [
+      { text: "kotopia", href: "https://www.kotopia.world/" },
+      { text: "koto", href: "https://x.com/koto9x" },
+    ],
   },
   {
     title: "pythia",

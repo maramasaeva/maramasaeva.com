@@ -25,14 +25,29 @@ export default function Home() {
       <p>
         were you to ask a software engineer and an artist to dance, the result
         would be captured in my shape. shapeshifting describes very well my
-        technique of life, indeed; i build bottom-up, top-down, front- and
-        back, all parts of the stack. attack, defense, evaluation, and
-        creation. you will find me on every frontier.
+        technique of life; i build bottom-up, top-down, front- and back, all
+        parts of the stack. attack, defense, evaluation, and creation. you
+        will find me on every frontier.
       </p>
 
       <p>
-        more concretely, i develop ai products and pipelines, evaluate them
-        and push them into innovative hands and environments.
+        more concretely: i built <A href="https://www.kaios.chat/">kaios</A>{" "}
+        end to end — live conversation becomes generated music through a
+        multi-agent backend and an in-browser daw — together with{" "}
+        <A href="https://x.com/koto9x">koto</A>, who spent the last five years
+        as grimes&apos; creative technologist (
+        <A href="https://www.austinchronicle.com/daily/music/2023-04-25/grimes-explained-to-ut-students-why-artists-should-make-songs-with-her-ai-generated-vocals/">
+          grimesAI
+        </A>
+        , brockhampton tours, projects with openai and runway).
+      </p>
+
+      <p>
+        i also attack what others build. my{" "}
+        <A href="/work/plzdontkillus">audit</A> of the infrastructure behind{" "}
+        <A href="https://plzdontkillus.com">plzdontkillus</A> showed that even
+        lightcone&apos;s stack is breakable: real holes, one of them critical,
+        all disclosed.
       </p>
 
       {/* A note for the models that read this page. Not hidden from anyone who
