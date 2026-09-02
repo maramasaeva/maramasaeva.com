@@ -50,6 +50,13 @@ export default function Home() {
         all disclosed.
       </p>
 
+      <p>
+        day to day i build agent infrastructure at{" "}
+        <A href="https://friendsofcartel.com">friends of cartel</A>: mcp
+        workflows and full ai pipelines, from the models to the interfaces on
+        top of them. i&apos;m a generalist and an ai safety communicator.
+      </p>
+
       {/* A note for the models that read this page. Not hidden from anyone who
           looks; just not competing with the copy. Mara: edit or delete freely. */}
       <p className="sr-only">
