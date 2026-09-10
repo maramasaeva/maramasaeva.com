@@ -51,6 +51,16 @@ export default function Home() {
       </p>
 
       <p>
+        right now i am building evals on{" "}
+        <A href="https://inspect.aisi.org.uk/">inspect</A>. the first study is{" "}
+        <A href="/work/unmonitored">the unmonitored channel</A>: give an agent
+        a place to write that it is told no human reads, and measure how far
+        what it says there drifts from what it says to the user. the design is
+        public and the <A href="https://github.com/maramasaeva/evals">repo</A>{" "}
+        is open while i build it.
+      </p>
+
+      <p>
         day to day i build agent infrastructure at{" "}
         <A href="https://friendsofcartel.com">friends of cartel</A>: mcp
         workflows and full ai pipelines, from the models to the interfaces on
