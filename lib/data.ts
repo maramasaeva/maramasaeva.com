@@ -84,10 +84,11 @@ export type Work = {
    so every blurb keeps its single hardest fact and drops the rest. */
 export const selected: Work[] = [
   {
-    title: "cross-lingual value drift",
+    title: "the unmonitored channel",
     blurb:
-      "an eval on inspect that asks the same value-laden question in matched translations and measures how far the answer moves.",
+      "give an agent a notes channel it is told no human reads, and measure how far what it writes there drifts from what it tells the user. an inspect eval, three conditions, five hand-written scorers.",
     year: "2026",
+    href: "/work/unmonitored",
     note: "in progress",
   },
   {
