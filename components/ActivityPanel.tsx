@@ -9,8 +9,14 @@ import { now } from "@/lib/data"
    calendar and a hand-kept tweet list. The server renders the data (an hour
    old at most); this only holds the active filter and which images are open. */
 
-/* strava is wired up but parked until there is something to show */
-const SOURCES: Source[] = ["github", "substack", "bandcamp", "calendar", "x"]
+/* the footer names link to the profiles; strava is parked until there is
+   something to show, and the calendar has no public page */
+const SOURCES: { name: Source; href: string }[] = [
+  { name: "github", href: "https://github.com/maramasaeva" },
+  { name: "substack", href: "https://messinecessity.substack.com" },
+  { name: "bandcamp", href: "https://mmessier.bandcamp.com" },
+  { name: "x", href: "https://x.com/rssmrm" },
+]
 
 const MONTHS = "jan feb mar apr may jun jul aug sep oct nov dec".split(" ")
 const QUOTE_MAX = 140
@@ -192,11 +198,13 @@ export default function ActivityPanel({ data }: { data: ActivityResponse }) {
       </ul>
 
       <p className="mt-2 text-left font-mono text-meta text-muted [hyphens:none]">
-        {SOURCES.map((s, i) => (
-          <span key={s} title={data.sources[s]}>
+        {SOURCES.map(({ name, href }, i) => (
+          <span key={name} title={data.sources[name]}>
             {i > 0 && " "}
-            {s}
-            {data.sources[s] === "ok" ? "✓" : data.sources[s] === "error" ? "✗" : "–"}
+            <a href={href} target="_blank" rel="noreferrer" className="hover:text-fg hover:underline">
+              {name}
+            </a>
+            {data.sources[name] === "ok" ? "✓" : data.sources[name] === "error" ? "✗" : "–"}
           </span>
         ))}
         {" · "}synced {ago(data.lastSync)}
