@@ -9,7 +9,8 @@ import { now } from "@/lib/data"
    calendar and a hand-kept tweet list. The server renders the data (an hour
    old at most); this only holds the active filter and which images are open. */
 
-const SOURCES: Source[] = ["github", "strava", "substack", "bandcamp", "calendar", "x"]
+/* strava is wired up but parked until there is something to show */
+const SOURCES: Source[] = ["github", "substack", "bandcamp", "calendar", "x"]
 
 const MONTHS = "jan feb mar apr may jun jul aug sep oct nov dec".split(" ")
 const QUOTE_MAX = 140
