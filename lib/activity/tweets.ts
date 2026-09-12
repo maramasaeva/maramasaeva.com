@@ -13,13 +13,13 @@ const ellipsis = (s: string) =>
 
 export async function fetchTweets(): Promise<ActivityItem[]> {
   return tweets.map((t) => ({
-    id: `x-${t.id}`,
+    id: `x-${t.id || t.date + t.text.slice(0, 24)}`,
     source: "x",
     category: "tweets",
     title: "posted",
     body: ellipsis(t.text),
     timestamp: new Date(t.date).toISOString(),
-    url: `https://x.com/${HANDLE}/status/${t.id}`,
+    url: t.id ? `https://x.com/${HANDLE}/status/${t.id}` : undefined,
     images: t.images,
     quote: t.quote,
   }))
