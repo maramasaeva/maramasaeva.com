@@ -231,5 +231,24 @@ export async function fetchEvents(): Promise<ActivityItem[]> {
       today: upcoming && day === today,
     })
   }
+
+  /* hand-listed events that were never in a calendar */
+  for (const x of calendar.extra) {
+    const [y, mo, d] = x.date.split("-").map(Number)
+    const start = zoned(y, mo, d, 0, 0, 0, calendar.tz)
+    if (start.getTime() < from || start.getTime() > to) continue
+    const upcoming = start.getTime() + 864e5 > now
+    items.push({
+      id: `calendar-extra-${x.date}-${x.title}`,
+      source: "calendar",
+      category: "events",
+      title: `${upcoming ? "going to" : "was at"} ${x.title.toLowerCase()}${x.location ? ` · ${x.location}` : ""}`,
+      timestamp: start.toISOString(),
+      day: x.date,
+      url: x.url,
+      upcoming,
+      today: upcoming && x.date === today,
+    })
+  }
   return items
 }
