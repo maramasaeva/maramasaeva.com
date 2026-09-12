@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Mara Masaeva",
+  name: "Mara Messier Masaeva",
   alternateName: "messier",
   url: SITE_URL,
   jobTitle: "AI Engineer",

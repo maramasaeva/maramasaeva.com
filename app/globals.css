@@ -122,7 +122,25 @@ p {
 :root[data-theme="dark"] .activity-panel {
   --panel-tint: color-mix(in srgb, var(--accent) 12%, var(--bg));
 }
+/* the scrollbar stays visible (macOS hides overlay scrollbars until you
+   scroll, which made the list look like it ended early) */
 .activity-scroll {
-  scrollbar-width: thin;
-  scrollbar-color: color-mix(in srgb, var(--accent) 35%, transparent) transparent;
+  scrollbar-gutter: stable;
+}
+.activity-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.activity-scroll::-webkit-scrollbar-track {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+.activity-scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--accent) 55%, transparent);
+  border-radius: 3px;
+}
+@supports not selector(::-webkit-scrollbar) {
+  .activity-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--accent) 55%, transparent)
+      color-mix(in srgb, var(--accent) 12%, transparent);
+  }
 }
