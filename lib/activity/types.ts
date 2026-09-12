@@ -28,8 +28,13 @@ export type ActivityItem = {
   url?: string
   /** longer text shown under the title; used for tweets */
   body?: string
-  /** events in the future are rendered with a tag */
+  /** events that have not ended yet are rendered with a tag and sort first */
   upcoming?: boolean
+  /** events happening today (in the calendar's timezone) */
+  today?: boolean
+  /** YYYY-MM-DD to show instead of the timestamp's UTC day (events, so a 7pm
+      pacific event does not read as the next day) */
+  day?: string
   /** tweets: attached images, shown on request */
   images?: string[]
   /** tweets: the quoted post, if any */

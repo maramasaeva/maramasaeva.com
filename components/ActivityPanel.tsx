@@ -159,11 +159,13 @@ export default function ActivityPanel({ data }: { data: ActivityResponse }) {
             className="flex gap-3 border-b border-faint py-[calc(var(--gap)*0.5)]"
           >
             <span className="w-[3.6rem] shrink-0 font-mono text-meta text-muted tabular-nums leading-[1.7]">
-              {shortDate(it.timestamp)}
+              {shortDate(it.day ?? it.timestamp)}
             </span>
             <span className="min-w-0 flex-1">
-              {it.upcoming && (
-                <span className="mr-2 font-mono text-meta text-accent">upcoming</span>
+              {(it.today || it.upcoming) && (
+                <span className="mr-2 font-mono text-meta text-accent">
+                  {it.today ? "today" : "upcoming"}
+                </span>
               )}
               {it.category === "tweets" ? (
                 <Tweet it={it} />

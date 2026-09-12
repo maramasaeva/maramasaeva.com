@@ -249,3 +249,20 @@ export const tweets: Tweet[] = [
 export const now: { place: string; since?: string; note?: string } = {
   place: "sf bay area",
 }
+
+/* The calendar feeds (ACTIVITY_ICAL_URL) are my whole agenda, so the panel
+   only shows entries that link to an event platform, plus whatever is listed
+   under `show`. Things i signed up for and then skipped go under `skip`.
+   Fragments match case-insensitively against the title and the event link;
+   a `show` entry can also rename the row and give it a link. Tags in the
+   calendar entry itself work too: "#public" shows it, "#skip" hides it.
+   `tz` decides which day an event lands on. */
+export const calendar: {
+  tz: string
+  show: (string | { match: string; title?: string; url?: string })[]
+  skip: string[]
+} = {
+  tz: "America/Los_Angeles",
+  show: [{ match: "burial - untrue", title: "burial, untrue, listening session", url: "https://envelop.us" }],
+  skip: ["luma.com/p5yia5c1"],
+}
