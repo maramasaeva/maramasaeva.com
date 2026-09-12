@@ -1,4 +1,9 @@
 import Link from "next/link"
+import ActivityPanel from "@/components/ActivityPanel"
+import { aggregateActivity } from "@/lib/activity"
+
+/* The intro is static; the activity panel is rebuilt at most once an hour. */
+export const revalidate = 3600
 
 /* One link component so every prose link is styled identically. */
 function A({ href, children }: { href: string; children: React.ReactNode }) {
@@ -17,7 +22,29 @@ function A({ href, children }: { href: string; children: React.ReactNode }) {
   )
 }
 
-export default function Home() {
+export default async function Home() {
+  const activity = await aggregateActivity()
+
+  return (
+    /* On wide screens the homepage steps outside the 46rem shell so the
+       intro keeps its measure and the panel gets a narrow column of its own
+       in the top-right corner. Below that the panel simply follows the intro.
+       The message board has its own page at /messageboard. */
+    <div className="lg:-mx-[6rem] lg:grid lg:grid-cols-[minmax(0,34rem)_minmax(15rem,19rem)] lg:items-start lg:justify-between lg:gap-x-10 xl:-mx-[10rem]">
+      <Intro />
+      {/* on wide screens the aside climbs past main's top padding so it sits
+          in the top-right corner, level with the nav */}
+      <aside
+        className="mt-[calc(var(--gap)*2.4)] lg:-mt-[clamp(1.5rem,4.5vh,2.75rem)]"
+        aria-label="recent activity"
+      >
+        <ActivityPanel data={activity} />
+      </aside>
+    </div>
+  )
+}
+
+function Intro() {
   return (
     <div className="flow max-w-[34rem]">
       <p>hi, im mara.</p>

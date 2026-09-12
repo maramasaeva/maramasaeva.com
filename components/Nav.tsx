@@ -2,11 +2,12 @@ import Link from "next/link"
 import ThemeToggle from "@/components/ThemeToggle"
 
 const items = [
-  { href: "/", label: "mara masaeva" },
+  { href: "/", label: "mara messier masaeva" },
   { href: "/about", label: "about" },
   { href: "/work", label: "work" },
   { href: "/portfolio", label: "portfolio" },
   { href: "/writing", label: "writing" },
+  { href: "/messageboard", label: "messageboard" },
 ]
 
 export default function Nav() {
