@@ -274,5 +274,5 @@ export const calendar: {
     "luma.com/yaott5rb", // the open intelligence stack
     "frame launch",
   ],
-  extra: [{ title: "rb miles! ai safety event", date: "2026-09-11" }],
+  extra: [],
 }
