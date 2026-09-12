@@ -107,3 +107,22 @@ p {
 :root[data-theme="dark"] .theme-icon-moon {
   display: none;
 }
+
+/* The activity panel sits on a wash of the accent: a few percent of pink over
+   the paper. It is mostly opaque and blurs what is behind it, so the binary
+   field and its cursor spotlight only faintly show through and the text
+   stays readable. The accent moves with dark mode, so the wash does too. */
+.activity-panel {
+  --panel-tint: color-mix(in srgb, var(--accent) 8%, var(--bg));
+  background: color-mix(in srgb, var(--panel-tint) 88%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: calc(var(--gap) * 0.9) calc(var(--gap) * 1.1);
+}
+:root[data-theme="dark"] .activity-panel {
+  --panel-tint: color-mix(in srgb, var(--accent) 12%, var(--bg));
+}
+.activity-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--accent) 35%, transparent) transparent;
+}

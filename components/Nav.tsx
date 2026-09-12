@@ -7,6 +7,7 @@ const items = [
   { href: "/work", label: "work" },
   { href: "/portfolio", label: "portfolio" },
   { href: "/writing", label: "writing" },
+  { href: "/messageboard", label: "messageboard" },
 ]
 
 export default function Nav() {
