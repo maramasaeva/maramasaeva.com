@@ -98,11 +98,9 @@ function Tweet({ it }: { it: ActivityItem }) {
 }
 
 export default function ActivityPanel({ data }: { data: ActivityResponse }) {
-  const [filter, setFilter] = useState<Category | "all">("all")
-
   const available = CATEGORIES.filter((c) => data.counts[c] > 0)
-  const items =
-    filter === "all" ? data.items : data.items.filter((i) => i.category === filter)
+  const [filter, setFilter] = useState<Category>(available[0] ?? "tweets")
+  const items = data.items.filter((i) => i.category === filter)
 
   return (
     <section
@@ -114,7 +112,7 @@ export default function ActivityPanel({ data }: { data: ActivityResponse }) {
           recent activity
         </h2>
         <ul className="flex flex-wrap gap-x-3 gap-y-1" role="tablist" aria-label="filter">
-          {(["all", ...available] as const).map((c) => {
+          {available.map((c) => {
             const active = filter === c
             return (
               <li key={c}>
@@ -171,7 +169,7 @@ export default function ActivityPanel({ data }: { data: ActivityResponse }) {
             <span className="min-w-0 flex-1">
               {(it.today || it.upcoming) && (
                 <span className="mr-2 font-mono text-meta text-accent">
-                  {it.today ? "today" : "upcoming"}
+                  {it.today ? "today" : "maybe"}
                 </span>
               )}
               {it.category === "tweets" ? (
