@@ -31,10 +31,10 @@ const FINDINGS = [
 function Meta({ k, v }: { k: string; v: string }) {
   return (
     <div className="flex gap-3">
-      <span className="w-[4.5rem] shrink-0 font-mono text-meta text-muted">
+      <span className="w-[4.5rem] shrink-0 font-sans text-meta text-muted">
         {k}
       </span>
-      <span className="font-mono text-meta">{v}</span>
+      <span className="font-sans text-meta">{v}</span>
     </div>
   )
 }
@@ -43,7 +43,7 @@ export default function Plzdontkillus() {
   return (
     <div className="flow-lg max-w-[34rem]">
       <div className="flow">
-        <p className="font-mono text-meta text-muted">
+        <p className="font-sans text-meta text-muted">
           <Link href="/work" className="hover:text-fg">
             ← work
           </Link>
@@ -57,7 +57,7 @@ export default function Plzdontkillus() {
       </div>
 
       <section className="flow">
-        <h2 className="font-mono text-meta text-muted">the target</h2>
+        <h2 className="font-sans text-meta text-muted">the target</h2>
         <p>
           <a
             href="https://plzdontkillus.com"
@@ -79,11 +79,11 @@ export default function Plzdontkillus() {
       </section>
 
       <section className="flow">
-        <h2 className="font-mono text-meta text-muted">what came back</h2>
+        <h2 className="font-sans text-meta text-muted">what came back</h2>
 
         <div className="flex items-baseline gap-3">
           <span style={{ fontSize: "2.6rem", lineHeight: 1 }}>{TOTAL}</span>
-          <span className="font-mono text-meta text-muted">
+          <span className="font-sans text-meta text-muted">
             findings, one critical
           </span>
         </div>
@@ -105,7 +105,7 @@ export default function Plzdontkillus() {
           ))}
         </div>
 
-        <ul className="flex flex-wrap gap-x-5 gap-y-1 font-mono text-meta">
+        <ul className="flex flex-wrap gap-x-5 gap-y-1 font-sans text-meta">
           {SEVERITY.map((s) => (
             <li key={s.label} className="flex items-center gap-1.5">
               <span
@@ -123,7 +123,7 @@ export default function Plzdontkillus() {
       </section>
 
       <section className="flow">
-        <h2 className="font-mono text-meta text-muted">the interesting ones</h2>
+        <h2 className="font-sans text-meta text-muted">the interesting ones</h2>
         <ul className="space-y-1">
           {FINDINGS.map((f) => (
             <li key={f} className="flex gap-2">
@@ -137,7 +137,7 @@ export default function Plzdontkillus() {
       </section>
 
       <section className="flow">
-        <h2 className="font-mono text-meta text-muted">scope</h2>
+        <h2 className="font-sans text-meta text-muted">scope</h2>
         <div className="space-y-1">
           <Meta k="surface" v="application api, static frontend, dns, osint" />
           <Meta k="stack" v="cloudflare, nginx, python http.server" />
@@ -147,7 +147,7 @@ export default function Plzdontkillus() {
       </section>
 
       <section className="flow">
-        <h2 className="font-mono text-meta text-muted">elsewhere</h2>
+        <h2 className="font-sans text-meta text-muted">elsewhere</h2>
         <p className="text-muted">
           in 2025 i found authentication and authorisation flaws in the order
           management of an e-commerce platform, little wonderland, that let an

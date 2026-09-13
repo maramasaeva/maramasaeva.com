@@ -111,8 +111,8 @@ export default function ThinkEssay() {
     <div className="flow-lg max-w-[34rem]">
       <div className="flow">
         <div className="flex items-baseline justify-between gap-4">
-          <p className="font-mono text-meta text-muted">{c.label}</p>
-          <div className="flex shrink-0 gap-2 font-mono text-meta">
+          <p className="font-sans text-meta text-muted">{c.label}</p>
+          <div className="flex shrink-0 gap-2 font-sans text-meta">
             {(["en", "nl"] as const).map((l) => (
               <button
                 key={l}
@@ -138,7 +138,7 @@ export default function ThinkEssay() {
       </div>
 
       <section className="flow">
-        <h2 className="font-mono text-meta text-muted">{c.concernsLabel}</h2>
+        <h2 className="font-sans text-meta text-muted">{c.concernsLabel}</h2>
         <div>
           {c.concerns.map((x) => (
             <details
@@ -147,7 +147,7 @@ export default function ThinkEssay() {
               style={{ borderColor: "var(--faint)" }}
             >
               <summary className="cursor-pointer list-none marker:hidden">
-                <span className="font-mono text-meta text-muted">{x.id}</span>{" "}
+                <span className="font-sans text-meta text-muted">{x.id}</span>{" "}
                 <span>{x.label}</span>
               </summary>
               <p className="mt-2 text-muted">{x.body}</p>
@@ -157,7 +157,7 @@ export default function ThinkEssay() {
       </section>
 
       <section className="flow">
-        <h2 className="font-mono text-meta text-muted">{c.standLabel}</h2>
+        <h2 className="font-sans text-meta text-muted">{c.standLabel}</h2>
         {c.stand.map((p) => (
           <p key={p}>
             <Emphasised text={p} />

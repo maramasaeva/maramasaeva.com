@@ -1,21 +1,25 @@
 import type { Metadata } from "next"
-import { Newsreader, DM_Mono } from "next/font/google"
+import { Cormorant_Garamond, Work_Sans } from "next/font/google"
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site"
 import BinaryField from "@/components/BinaryField"
 import Nav from "@/components/Nav"
 import Footer from "@/components/Footer"
 import "./globals.css"
 
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
+/* Cormorant Garamond for the prose, Work Sans for labels, nav and everything
+   small. Cormorant is light and sits small on the line, so the body runs at
+   weight 500 and the type scale in globals.css is a step larger. */
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  weight: ["500", "600"],
   subsets: ["latin"],
   display: "swap",
   style: ["normal", "italic"],
 })
 
-const dmMono = DM_Mono({
-  variable: "--font-dm-mono",
-  weight: ["300", "400"],
+const workSans = Work_Sans({
+  variable: "--font-work-sans",
+  weight: ["400", "500"],
   subsets: ["latin"],
   display: "swap",
 })
@@ -82,7 +86,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${newsreader.variable} ${dmMono.variable} font-serif text-body bg-bg text-fg`}
+        className={`${cormorant.variable} ${workSans.variable} font-serif text-body bg-bg text-fg`}
       >
         <BinaryField />
         <div className="relative z-10 mx-auto flex min-h-screen max-w-[46rem] flex-col px-5 pb-[var(--gap)] pt-[clamp(1.75rem,5vh,4rem)] sm:px-6">

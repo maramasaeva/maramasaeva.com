@@ -51,7 +51,7 @@ function Arrow({ href, label }: { href: string; label: string }) {
       rel="noreferrer"
       aria-label={label}
       title={label}
-      className="ml-1 inline-block font-mono text-meta text-muted transition-colors hover:text-accent"
+      className="ml-1 inline-block font-sans text-meta text-muted transition-colors hover:text-accent"
     >
       ↗
     </a>
@@ -67,7 +67,7 @@ function Tweet({ it }: { it: ActivityItem }) {
       {it.url && <Arrow href={it.url} label="open on x" />}
       {it.quote && (
         <span className="mt-1 block border-l border-faint pl-2 text-muted [hyphens:none]">
-          <span className="font-mono text-meta">{it.quote.name}</span>{" "}
+          <span className="font-sans text-meta">{it.quote.name}</span>{" "}
           {truncate(it.quote.text, QUOTE_MAX)}
         </span>
       )}
@@ -76,7 +76,7 @@ function Tweet({ it }: { it: ActivityItem }) {
           <button
             type="button"
             onClick={() => setOpen((o) => !o)}
-            className="cursor-pointer font-mono text-meta text-muted hover:text-fg hover:underline"
+            className="cursor-pointer font-sans text-meta text-muted hover:text-fg hover:underline"
           >
             {open ? "hide image" : images.length > 1 ? `show ${images.length} images` : "show image"}
           </button>
@@ -107,7 +107,7 @@ export default function ActivityPanel({ data }: { data: ActivityResponse }) {
       aria-labelledby="activity-heading"
       className="activity-panel text-[0.92em]"
     >
-      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 font-mono text-meta">
+      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 font-sans text-meta">
         <h2 id="activity-heading" className="text-fg">
           recent activity
         </h2>
@@ -134,7 +134,7 @@ export default function ActivityPanel({ data }: { data: ActivityResponse }) {
       </div>
 
       {now.place && (
-        <p className="mt-2 flex items-center gap-1.5 text-left font-mono text-meta text-muted [hyphens:none]">
+        <p className="mt-2 flex items-center gap-1.5 text-left font-sans text-meta text-muted [hyphens:none]">
           <svg
             width="11"
             height="11"
@@ -163,7 +163,7 @@ export default function ActivityPanel({ data }: { data: ActivityResponse }) {
             key={it.id}
             className="flex gap-3 border-b border-faint py-[calc(var(--gap)*0.5)]"
           >
-            <span className="w-[3.6rem] shrink-0 font-mono text-meta text-muted tabular-nums leading-[1.7]">
+            <span className="w-[3.6rem] shrink-0 font-sans text-meta text-muted tabular-nums leading-[1.7]">
               {shortDate(it.timestamp)}
             </span>
             <span className="min-w-0 flex-1">
@@ -179,7 +179,7 @@ export default function ActivityPanel({ data }: { data: ActivityResponse }) {
                     it.title
                   )}
                   {it.body && (
-                    <span className="mt-0.5 block whitespace-pre-line font-mono text-meta text-muted [hyphens:none]">
+                    <span className="mt-0.5 block whitespace-pre-line font-sans text-meta text-muted [hyphens:none]">
                       {it.body}
                     </span>
                   )}
@@ -190,7 +190,7 @@ export default function ActivityPanel({ data }: { data: ActivityResponse }) {
         ))}
       </ul>
 
-      <p className="mt-2 text-left font-mono text-meta text-muted [hyphens:none]">
+      <p className="mt-2 text-left font-sans text-meta text-muted [hyphens:none]">
         {SOURCES.map(({ name, href }, i) => (
           <span key={name} title={data.sources[name]}>
             {i > 0 && " "}

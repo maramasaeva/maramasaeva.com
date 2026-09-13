@@ -12,12 +12,12 @@ export default function About() {
         <ul>
           {cv.map((row) => (
             <li key={row.years + row.org} className="flex gap-3">
-              <span className="w-[4.5rem] shrink-0 font-mono text-meta text-muted tabular-nums leading-[1.7]">
+              <span className="w-[4.5rem] shrink-0 font-sans text-meta text-muted tabular-nums leading-[1.7]">
                 {row.years}
               </span>
               <span>
                 <Linkified text={row.what} refs={row.refs} />{" "}
-                <span className="font-mono text-meta text-muted">
+                <span className="font-sans text-meta text-muted">
                   ·{" "}
                   {row.href ? (
                     <a
@@ -40,7 +40,7 @@ export default function About() {
 
       <section>
         <h2 className="text-head mb-4">elsewhere</h2>
-        <ul className="flex flex-wrap gap-x-4 gap-y-1 font-mono text-meta">
+        <ul className="flex flex-wrap gap-x-4 gap-y-1 font-sans text-meta">
           {elsewhere.map((link) => (
             <li key={link.href}>
               <a
