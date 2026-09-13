@@ -6,14 +6,12 @@ export type Source =
   | "strava"
   | "substack"
   | "bandcamp"
-  | "calendar"
   | "x"
 
 export type Category =
   | "code"
   | "music"
   | "sports"
-  | "events"
   | "writing"
   | "tweets"
 
@@ -28,13 +26,6 @@ export type ActivityItem = {
   url?: string
   /** longer text shown under the title; used for tweets */
   body?: string
-  /** events that have not ended yet are rendered with a tag and sort first */
-  upcoming?: boolean
-  /** events happening today (in the calendar's timezone) */
-  today?: boolean
-  /** YYYY-MM-DD to show instead of the timestamp's UTC day (events, so a 7pm
-      pacific event does not read as the next day) */
-  day?: string
   /** tweets: attached images, shown on request */
   images?: string[]
   /** tweets: the quoted post, if any */
@@ -55,7 +46,6 @@ export const CATEGORIES: Category[] = [
   "tweets",
   "code",
   "music",
-  "events",
   "writing",
   "sports",
 ]

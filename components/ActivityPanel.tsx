@@ -5,12 +5,12 @@ import type { ActivityItem, ActivityResponse, Category, Source } from "@/lib/act
 import { CATEGORIES } from "@/lib/activity/types"
 import { now } from "@/lib/data"
 
-/* What i've been up to, pulled from github, strava, substack, bandcamp, a
-   calendar and a hand-kept tweet list. The server renders the data (an hour
+/* What i've been up to, pulled from github, substack, bandcamp and a
+   hand-kept tweet list. The server renders the data (an hour
    old at most); this only holds the active filter and which images are open. */
 
 /* the footer names link to the profiles; strava is parked until there is
-   something to show, and the calendar has no public page */
+   something to show */
 const SOURCES: { name: Source; href: string }[] = [
   { name: "github", href: "https://github.com/maramasaeva" },
   { name: "substack", href: "https://messinecessity.substack.com" },
@@ -164,14 +164,9 @@ export default function ActivityPanel({ data }: { data: ActivityResponse }) {
             className="flex gap-3 border-b border-faint py-[calc(var(--gap)*0.5)]"
           >
             <span className="w-[3.6rem] shrink-0 font-mono text-meta text-muted tabular-nums leading-[1.7]">
-              {shortDate(it.day ?? it.timestamp)}
+              {shortDate(it.timestamp)}
             </span>
             <span className="min-w-0 flex-1">
-              {(it.today || it.upcoming) && (
-                <span className="mr-2 font-mono text-meta text-accent">
-                  {it.today ? "today" : "maybe"}
-                </span>
-              )}
               {it.category === "tweets" ? (
                 <Tweet it={it} />
               ) : (

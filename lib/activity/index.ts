@@ -9,7 +9,6 @@ import { CATEGORIES } from "./types"
 import { fetchGitHub } from "./github"
 import { fetchSubstack } from "./substack"
 import { fetchBandcamp } from "./bandcamp"
-import { fetchEvents } from "./events"
 import { fetchTweets } from "./tweets"
 
 const MAX_ITEMS = 60
@@ -21,7 +20,6 @@ const fetchers: { name: Source; fn: () => Promise<ActivityItem[]> }[] = [
   { name: "github", fn: fetchGitHub },
   { name: "substack", fn: fetchSubstack },
   { name: "bandcamp", fn: fetchBandcamp },
-  { name: "calendar", fn: fetchEvents },
   { name: "x", fn: fetchTweets },
 ]
 
@@ -43,12 +41,7 @@ export async function aggregateActivity(): Promise<ActivityResponse> {
     items.push(...r.value)
   })
 
-  /* upcoming events float to the top; everything else newest first */
-  items.sort((a, b) => {
-    if (!!a.upcoming !== !!b.upcoming) return a.upcoming ? -1 : 1
-    if (a.upcoming && b.upcoming) return a.timestamp.localeCompare(b.timestamp)
-    return b.timestamp.localeCompare(a.timestamp)
-  })
+  items.sort((a, b) => b.timestamp.localeCompare(a.timestamp))
   const kept = items.slice(0, MAX_ITEMS)
 
   const counts = Object.fromEntries(CATEGORIES.map((c) => [c, 0])) as Record<Category, number>

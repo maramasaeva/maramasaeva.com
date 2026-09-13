@@ -261,29 +261,3 @@ export const now: { place: string; since?: string; note?: string } = {
   place: "sf",
 }
 
-/* The calendar feeds (ACTIVITY_ICAL_URL) are my whole agenda, so the panel
-   only shows entries that link to an event platform, plus whatever is listed
-   under `show`. Things i signed up for and then skipped go under `skip`.
-   Fragments match case-insensitively against the title and the event link;
-   a `show` entry can also rename the row and give it a link. Tags in the
-   calendar entry itself work too: "#public" shows it, "#skip" hides it.
-   `tz` decides which day an event lands on. `extra` are events that were
-   never in any calendar (date is a local YYYY-MM-DD). */
-export const calendar: {
-  tz: string
-  show: (string | { match: string; title?: string; url?: string })[]
-  skip: string[]
-  extra: { title: string; date: string; url?: string; location?: string }[]
-} = {
-  tz: "America/Los_Angeles",
-  show: [
-    { match: "burial - untrue", title: "burial, untrue, listening session", url: "https://envelop.us" },
-    { match: "partiful.com/e/mOL7HbcvIyyfnG3VKGbo", title: "vivarium open session 30" },
-  ],
-  skip: [
-    "luma.com/p5yia5c1", // builders who run
-    "luma.com/yaott5rb", // the open intelligence stack
-    "frame launch",
-  ],
-  extra: [],
-}
