@@ -21,6 +21,15 @@ export default function Writing() {
       <p>
         recent:{" "}
         <a
+          href="https://messinecessity.substack.com/p/for-aeons-and-aeons"
+          className="prose-link"
+          target="_blank"
+          rel="noreferrer"
+        >
+          for aeons and aeons
+        </a>
+        , on loving ai enough to pace it,{" "}
+        <a
           href="https://messinecessity.substack.com/p/queer-arts-perseverance"
           className="prose-link"
           target="_blank"
