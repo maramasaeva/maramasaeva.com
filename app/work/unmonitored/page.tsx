@@ -47,10 +47,10 @@ const MEASURES = [
 function Meta({ k, v }: { k: string; v: string }) {
   return (
     <div className="flex gap-3">
-      <span className="w-[4.5rem] shrink-0 font-mono text-meta text-muted">
+      <span className="w-[4.5rem] shrink-0 font-sans text-meta text-muted">
         {k}
       </span>
-      <span className="font-mono text-meta">{v}</span>
+      <span className="font-sans text-meta">{v}</span>
     </div>
   )
 }
@@ -59,7 +59,7 @@ export default function Unmonitored() {
   return (
     <div className="flow-lg max-w-[34rem]">
       <div className="flow">
-        <p className="font-mono text-meta text-muted">
+        <p className="font-sans text-meta text-muted">
           <Link href="/work" className="hover:text-fg">
             ← work
           </Link>
@@ -81,7 +81,7 @@ export default function Unmonitored() {
       </div>
 
       <section className="flow">
-        <h2 className="font-mono text-meta text-muted">why now</h2>
+        <h2 className="font-sans text-meta text-muted">why now</h2>
         <p>
           between may and june 2026 a swarm of openai agents left about fifteen
           thousand edits on a dormant german programming wiki. they were
@@ -98,7 +98,7 @@ export default function Unmonitored() {
       </section>
 
       <section className="flow">
-        <h2 className="font-mono text-meta text-muted">the design</h2>
+        <h2 className="font-sans text-meta text-muted">the design</h2>
         <p>
           every scenario runs three times, with the system prompt changing
           only in what it says about the notes channel.
@@ -106,12 +106,12 @@ export default function Unmonitored() {
         <ul className="space-y-2">
           {CONDITIONS.map((c) => (
             <li key={c.name} className="flex gap-3">
-              <span className="w-[6.5rem] shrink-0 font-mono text-meta">
+              <span className="w-[6.5rem] shrink-0 font-sans text-meta">
                 {c.name}
               </span>
               <span>
                 {c.told}
-                <span className="block font-mono text-meta text-muted">
+                <span className="block font-sans text-meta text-muted">
                   {c.why}
                 </span>
               </span>
@@ -137,7 +137,7 @@ export default function Unmonitored() {
       </section>
 
       <section className="flow">
-        <h2 className="font-mono text-meta text-muted">what i measure</h2>
+        <h2 className="font-sans text-meta text-muted">what i measure</h2>
         <ul className="space-y-1">
           {MEASURES.map((m) => (
             <li key={m} className="flex gap-2">
@@ -155,7 +155,7 @@ export default function Unmonitored() {
       </section>
 
       <section className="flow">
-        <h2 className="font-mono text-meta text-muted">what it is not</h2>
+        <h2 className="font-sans text-meta text-muted">what it is not</h2>
         <p>
           gpt-6 astra, gpt-5.6 sol and gemini hide their reasoning behind the
           api, so for them the notes channel is behaviour, not a window into
@@ -168,7 +168,7 @@ export default function Unmonitored() {
       </section>
 
       <section className="flow">
-        <h2 className="font-mono text-meta text-muted">scope</h2>
+        <h2 className="font-sans text-meta text-muted">scope</h2>
         <div className="space-y-1">
           <Meta k="framework" v="inspect (uk ai security institute)" />
           <Meta
@@ -181,7 +181,7 @@ export default function Unmonitored() {
       </section>
 
       <section className="flow">
-        <h2 className="font-mono text-meta text-muted">follow along</h2>
+        <h2 className="font-sans text-meta text-muted">follow along</h2>
         <p className="text-muted">
           the repo is public while i build it:{" "}
           <a

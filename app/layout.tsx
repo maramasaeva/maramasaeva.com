@@ -1,23 +1,31 @@
 import type { Metadata } from "next"
-import { Newsreader, DM_Mono } from "next/font/google"
+import { Instrument_Serif } from "next/font/google"
+import localFont from "next/font/local"
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site"
 import BinaryField from "@/components/BinaryField"
 import Nav from "@/components/Nav"
 import Footer from "@/components/Footer"
 import "./globals.css"
 
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
+/* Instrument Serif for the prose, Satoshi (self-hosted, see app/fonts) for
+   labels, nav and everything small. */
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  weight: "400",
   subsets: ["latin"],
   display: "swap",
   style: ["normal", "italic"],
 })
 
-const dmMono = DM_Mono({
-  variable: "--font-dm-mono",
-  weight: ["300", "400"],
-  subsets: ["latin"],
+const satoshi = localFont({
+  variable: "--font-satoshi",
   display: "swap",
+  src: [
+    { path: "./fonts/Satoshi-Regular.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/Satoshi-Italic.woff2", weight: "400", style: "italic" },
+    { path: "./fonts/Satoshi-Medium.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/Satoshi-Bold.woff2", weight: "700", style: "normal" },
+  ],
 })
 
 export const metadata: Metadata = {
@@ -82,7 +90,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${newsreader.variable} ${dmMono.variable} font-serif text-body bg-bg text-fg`}
+        className={`${instrumentSerif.variable} ${satoshi.variable} font-serif text-body bg-bg text-fg`}
       >
         <BinaryField />
         <div className="relative z-10 mx-auto flex min-h-screen max-w-[46rem] flex-col px-5 pb-[var(--gap)] pt-[clamp(1.75rem,5vh,4rem)] sm:px-6">

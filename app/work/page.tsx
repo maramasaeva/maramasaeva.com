@@ -31,7 +31,7 @@ export default function Work() {
                 item.title
               )}
             </h2>
-            <span className="shrink-0 font-mono text-meta text-muted tabular-nums">
+            <span className="shrink-0 font-sans text-meta text-muted tabular-nums">
               {item.year}
               {item.note && <span className="ml-2">{item.note}</span>}
             </span>

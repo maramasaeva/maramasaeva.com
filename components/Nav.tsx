@@ -14,7 +14,7 @@ export default function Nav() {
   const [home, ...rest] = items
 
   return (
-    <header className="font-mono text-meta">
+    <header className="font-sans text-meta">
       <nav className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
         <Link href={home.href} className="text-fg hover:underline">
           {home.label}

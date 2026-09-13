@@ -108,7 +108,7 @@ export default function Prikbord() {
           aria-hidden
           className="absolute -left-[9999px] h-0 w-0 opacity-0"
         />
-        <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-meta">
+        <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-2 font-sans text-meta">
           <input
             type="text"
             value={name}
@@ -128,19 +128,19 @@ export default function Prikbord() {
             {sending ? "pinning…" : "pin it"}
           </button>
         </div>
-        {error && <p className="mt-2 text-left font-mono text-meta text-accent">{error}</p>}
+        {error && <p className="mt-2 text-left font-sans text-meta text-accent">{error}</p>}
       </form>
 
       <ul className="mt-3">
         {state === "loading" && (
-          <li className="font-mono text-meta text-muted">reading the board…</li>
+          <li className="font-sans text-meta text-muted">reading the board…</li>
         )}
         {state === "ready" && messages.length === 0 && (
           <li className="text-muted">nothing pinned yet. you could be first.</li>
         )}
         {messages.map((m) => (
           <li key={m.id} className="border-t border-faint py-[calc(var(--gap)*0.7)]">
-            <p className="text-left font-mono text-meta text-muted [overflow-wrap:anywhere] [hyphens:none]">
+            <p className="text-left font-sans text-meta text-muted [overflow-wrap:anywhere] [hyphens:none]">
               {m.name} · {when(m.created_at)}
             </p>
             <p className="mt-1 whitespace-pre-line text-left [overflow-wrap:anywhere] [hyphens:none]">{m.body}</p>

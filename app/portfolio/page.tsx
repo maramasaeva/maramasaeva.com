@@ -40,7 +40,7 @@ function Frame({ media }: { media: Media }) {
           />
         )}
       </div>
-      <figcaption className="mt-1.5 font-mono text-meta text-muted">
+      <figcaption className="mt-1.5 font-sans text-meta text-muted">
         {media.caption}
       </figcaption>
     </figure>
@@ -54,18 +54,18 @@ export default function Portfolio() {
         <section key={piece.title}>
           <div className="flex items-baseline justify-between gap-3">
             <h2 className="text-head">{piece.title}</h2>
-            <span className="shrink-0 font-mono text-meta text-muted tabular-nums">
+            <span className="shrink-0 font-sans text-meta text-muted tabular-nums">
               {piece.year}
             </span>
           </div>
 
           {piece.role && (
-            <p className="font-mono text-meta text-muted">
+            <p className="font-sans text-meta text-muted">
               <Linkified text={piece.role} refs={piece.refs} />
             </p>
           )}
           {piece.stack && (
-            <p className="font-mono text-meta text-muted">{piece.stack}</p>
+            <p className="font-sans text-meta text-muted">{piece.stack}</p>
           )}
 
           {piece.body && (
@@ -82,7 +82,7 @@ export default function Portfolio() {
             <Frame key={media.src} media={media} />
           ))}
 
-          <p className="mt-[var(--gap)] flex flex-wrap gap-x-4 gap-y-1 font-mono text-meta">
+          <p className="mt-[var(--gap)] flex flex-wrap gap-x-4 gap-y-1 font-sans text-meta">
             {piece.links?.map((link) => (
               <a
                 key={link.href}
