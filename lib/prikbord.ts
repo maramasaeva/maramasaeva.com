@@ -17,6 +17,9 @@ export const LIST_LIMIT = 50
 /** posts allowed per ip per window */
 export const RATE_LIMIT = 3
 export const RATE_WINDOW_MS = 10 * 60 * 1000
+/** posts allowed on the whole board per window, against distributed floods */
+export const GLOBAL_LIMIT = 40
+export const GLOBAL_WINDOW_MS = 60 * 60 * 1000
 
 function config() {
   const url = process.env.SUPABASE_URL
@@ -48,15 +51,13 @@ export async function listMessages(): Promise<Message[]> {
   return (await res.json()) as Message[]
 }
 
-export async function countRecent(ipHash: string): Promise<number> {
+/** rows in the last `windowMs`, for one ip hash or (no hash) the whole board */
+export async function countRecent(ipHash: string | null, windowMs: number): Promise<number> {
   const c = config()
   if (!c) return 0
-  const since = new Date(Date.now() - RATE_WINDOW_MS).toISOString()
-  const q = new URLSearchParams({
-    select: "id",
-    ip_hash: `eq.${ipHash}`,
-    created_at: `gte.${since}`,
-  })
+  const since = new Date(Date.now() - windowMs).toISOString()
+  const q = new URLSearchParams({ select: "id", created_at: `gte.${since}` })
+  if (ipHash) q.set("ip_hash", `eq.${ipHash}`)
   const res = await fetch(`${c.base}?${q}`, {
     headers: { ...c.headers, Prefer: "count=exact", "Range-Unit": "items", Range: "0-0" },
     cache: "no-store",
