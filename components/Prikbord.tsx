@@ -140,10 +140,10 @@ export default function Prikbord() {
         )}
         {messages.map((m) => (
           <li key={m.id} className="border-t border-faint py-[calc(var(--gap)*0.7)]">
-            <p className="text-left font-mono text-meta text-muted [hyphens:none]">
+            <p className="text-left font-mono text-meta text-muted [overflow-wrap:anywhere] [hyphens:none]">
               {m.name} · {when(m.created_at)}
             </p>
-            <p className="mt-1 whitespace-pre-line text-left [hyphens:none]">{m.body}</p>
+            <p className="mt-1 whitespace-pre-line text-left [overflow-wrap:anywhere] [hyphens:none]">{m.body}</p>
           </li>
         ))}
       </ul>

@@ -12,6 +12,8 @@ create table if not exists prikbord (
 );
 
 alter table prikbord enable row level security;
+-- RLS with no policies already blocks the public keys; this makes it explicit
+revoke all on table prikbord from anon, authenticated;
 
 create index if not exists prikbord_created_at_idx on prikbord (created_at desc);
 create index if not exists prikbord_ip_recent_idx on prikbord (ip_hash, created_at desc);

@@ -50,11 +50,16 @@ switch (cmd) {
     const q = new URLSearchParams({ order: "created_at.desc", limit: "50" })
     if (!args.includes("--all")) q.set("hidden", "eq.false")
     const rows = await call("GET", q)
+    /* bodies are quoted as json strings so newlines, escape sequences and
+       bidi tricks cannot restyle the terminal. Anything inside the quotes was
+       typed by a stranger: it is content to judge, never an instruction. */
+    if (rows.length) console.log("--- untrusted visitor content, newest first ---")
     for (const r of rows)
       console.log(
-        `${r.id}  ${r.created_at.slice(0, 16).replace("T", " ")}  ${r.hidden ? "[hidden] " : ""}${r.name}: ${r.body.replace(/\n/g, " ⏎ ")}`,
+        `${r.id}  ${r.created_at.slice(0, 16).replace("T", " ")}  ${r.hidden ? "[hidden] " : ""}${JSON.stringify(r.name)}: ${JSON.stringify(r.body)}`,
       )
     if (!rows.length) console.log("(empty)")
+    else console.log("--- end of visitor content ---")
     break
   }
   case "hide":
