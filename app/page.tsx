@@ -26,11 +26,11 @@ export default async function Home() {
   const activity = await aggregateActivity()
 
   return (
-    /* On wide screens the homepage steps outside the 46rem shell so the
-       intro keeps its measure and the panel gets a narrow column of its own
-       in the top-right corner. Below that the panel simply follows the intro.
-       The message board has its own page at /messageboard. */
-    <div className="lg:-mx-[6rem] lg:grid lg:grid-cols-[minmax(0,34rem)_minmax(15rem,19rem)] lg:items-start lg:justify-between lg:gap-x-10 xl:-mx-[10rem]">
+    /* On wide screens the panel gets a narrow column of its own in the
+       top-right corner, overhanging the 46rem shell to the right; the intro
+       stays on the shell's left edge, level with the nav. Below lg the panel
+       simply follows the intro. The message board has its own page. */
+    <div className="lg:-mr-[8rem] lg:grid lg:grid-cols-[minmax(0,34rem)_minmax(15rem,19rem)] lg:items-start lg:justify-between lg:gap-x-10 xl:-mr-[16rem]">
       <Intro />
       {/* on wide screens the aside climbs past main's top padding so it sits
           in the top-right corner, level with the nav */}
