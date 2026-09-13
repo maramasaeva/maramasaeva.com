@@ -33,16 +33,16 @@
   --color-faint: var(--faint);
   --color-accent: var(--accent);
 
-  --font-serif: var(--font-instrument-serif), Georgia, "Times New Roman", serif;
-  --font-sans: var(--font-satoshi), system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-work-sans), system-ui, -apple-system, sans-serif;
 
   /* Type and rhythm shrink with viewport height so a page fits one screen
      on a laptop without clipping anything on a phone. */
-  --text-meta: clamp(0.71875rem, 0.55rem + 0.35vh, 0.78125rem);
+  --text-meta: clamp(0.6875rem, 0.5rem + 0.35vh, 0.75rem);
   --text-meta--line-height: 1.4;
-  --text-body: clamp(1.0625rem, 0.75rem + 0.65vh, 1.1875rem);
+  --text-body: clamp(1.125rem, 0.8rem + 0.7vh, 1.25rem);
   --text-body--line-height: 1.55;
-  --text-head: clamp(1.125rem, 0.85rem + 0.6vh, 1.25rem);
+  --text-head: clamp(1.1875rem, 0.9rem + 0.65vh, 1.3125rem);
   --text-head--line-height: 1.35;
 }
 
@@ -66,8 +66,17 @@ html {
 body {
   background: var(--bg);
   color: var(--fg);
+  /* cormorant's regular is too thin for paragraphs; medium is the reading weight */
+  font-weight: 500;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* labels in work sans go back to regular; explicit weight utilities still win */
+@layer base {
+  .font-sans {
+    font-weight: 400;
+  }
 }
 
 /* Body prose spreads to both margins; hyphenation keeps the rivers small
