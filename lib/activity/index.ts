@@ -7,7 +7,6 @@ import type {
 } from "./types"
 import { CATEGORIES } from "./types"
 import { fetchGitHub } from "./github"
-import { fetchStrava } from "./strava"
 import { fetchSubstack } from "./substack"
 import { fetchBandcamp } from "./bandcamp"
 import { fetchEvents } from "./events"
@@ -15,9 +14,11 @@ import { fetchTweets } from "./tweets"
 
 const MAX_ITEMS = 60
 
+/* strava (./strava.ts) is parked: add `{ name: "strava", fn: fetchStrava }`
+   back once the STRAVA_* env is set and there is activity to show */
+
 const fetchers: { name: Source; fn: () => Promise<ActivityItem[]> }[] = [
   { name: "github", fn: fetchGitHub },
-  { name: "strava", fn: fetchStrava },
   { name: "substack", fn: fetchSubstack },
   { name: "bandcamp", fn: fetchBandcamp },
   { name: "calendar", fn: fetchEvents },

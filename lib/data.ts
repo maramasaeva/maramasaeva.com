@@ -201,6 +201,17 @@ export type Tweet = {
  *  Give claude the urls and it fills this in. Text only, never embeds. */
 export const tweets: Tweet[] = [
   {
+    /* id still missing: mara has to send the url; until then the row has no arrow */
+    id: "",
+    date: "2026-09-12",
+    text: "oh my god, this feels like the moscow-washington hotline going up in 1963.",
+    quote: {
+      name: "Sam Altman",
+      handle: "sama",
+      text: "I agree with Dario that we need to pace the frontier. This has been a primary topic of discussions we've had at OpenAI in recent weeks.\n\nCommitting to having independent evaluators with employee-like access is a great idea, and we will do the same. We'll have more to share soon.",
+    },
+  },
+  {
     id: "2098463168821674163",
     date: "2026-09-11",
     text: "i love the sf tech scene, but it really needs more women. it is disheartening getting sexist remarks from people you've just met at an ai safety event. \n\nyou would not joke to a male engineer that he could always become a corgi boy if things did not work out. guys, you can do",
