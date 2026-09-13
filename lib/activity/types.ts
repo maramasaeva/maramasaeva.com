@@ -50,13 +50,14 @@ export type ActivityResponse = {
   lastSync: string
 }
 
+/** filter order in the panel; the first one with items is the default view */
 export const CATEGORIES: Category[] = [
+  "tweets",
   "code",
   "music",
-  "sports",
   "events",
   "writing",
-  "tweets",
+  "sports",
 ]
 
 /** Shared fetch options: an hour of server-side caching, and a UA so the
