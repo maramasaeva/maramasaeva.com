@@ -7,6 +7,7 @@ export type Watched = { handle: string; id: string; name: string }
 
 export const WATCHED: Watched[] = [
   { handle: "MTSlive", id: "2029271146445848578", name: "monitoring the situation" },
+  { handle: "RatOrthodox", id: "1360367297500741642", name: "brangus" },
   { handle: "JeffLadish", id: "1256004180", name: "jeffrey ladish" },
   { handle: "LeoMcKeeReid", id: "1688775987683803137", name: "leo mckee-reid" },
   { handle: "So8res", id: "245375936", name: "nate soares" },
