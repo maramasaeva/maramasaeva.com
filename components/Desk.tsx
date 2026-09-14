@@ -34,6 +34,16 @@ async function api<T>(path: string, init?: RequestInit): Promise<T> {
   return d
 }
 
+/* x refuses api replies and quotes unless the author mentioned you first (rule
+   since feb 2026, every tier below enterprise). so replies and quotes are
+   handed to x's own composer, prefilled; mara taps send in the app. */
+function intentUrl(kind: Kind, text: string, item: Item | null) {
+  const q = new URLSearchParams({ text })
+  if (item && kind === "reply") q.set("in_reply_to", item.id)
+  if (item && kind === "quote") q.set("url", `https://x.com/${item.author}/status/${item.id}`)
+  return `https://x.com/intent/post?${q}`
+}
+
 const btn =
   "cursor-pointer border border-faint px-2.5 py-1 text-fg transition-colors hover:border-muted disabled:cursor-default disabled:text-muted"
 const link = "cursor-pointer text-muted hover:text-fg"
@@ -98,7 +108,26 @@ function Composer({
   }
 
   const over = text.length > SOFT_MAX
-  const linky = HAS_LINK.test(text)
+  const linky = kind === "post" && HAS_LINK.test(text)
+  const viaX = kind !== "post"
+
+  function handoff() {
+    window.open(intentUrl(kind, text, item), "_blank", "noopener")
+    onDone({ id: "", text, kind, target: item?.id ?? null, created_at: new Date().toISOString() })
+    setPosted("handoff")
+  }
+
+  if (posted === "handoff")
+    return (
+      <div className="mt-3 border-l border-faint pl-3 font-sans text-meta">
+        <p className="text-fg">
+          opened in x. tap post there.{" "}
+          <button type="button" onClick={() => setPosted(null)} className={link}>
+            back
+          </button>
+        </p>
+      </div>
+    )
 
   if (posted)
     return (
@@ -178,10 +207,18 @@ function Composer({
         </span>
         {linky && <span className="text-accent">has a link: costs 0.20 instead of 0.015</span>}
         <span className="flex-1" />
-        {arm && <span className="text-muted">as @rssmrm, {kind === "post" ? "new post" : kind}. sure?</span>}
-        <button type="button" onClick={post} disabled={busy !== null || !text.trim()} className={`${btn} ${arm ? "border-accent" : ""}`}>
-          {busy === "post" ? "posting…" : arm ? "yes, post" : "post"}
-        </button>
+        {viaX ? (
+          <button type="button" onClick={handoff} disabled={!text.trim()} className={btn}>
+            open in x
+          </button>
+        ) : (
+          <>
+            {arm && <span className="text-muted">as @rssmrm, new post. sure?</span>}
+            <button type="button" onClick={post} disabled={busy !== null || !text.trim()} className={`${btn} ${arm ? "border-accent" : ""}`}>
+              {busy === "post" ? "posting…" : arm ? "yes, post" : "post"}
+            </button>
+          </>
+        )}
       </div>
       {error && <p className="font-sans text-meta text-accent">{error}</p>}
     </div>
@@ -325,7 +362,7 @@ export default function Desk() {
             <div className="mt-2 flex flex-wrap gap-x-3 font-sans text-meta">
               {done[it.id] ? (
                 <a href={done[it.id]} target="_blank" rel="noopener noreferrer" className="prose-link">
-                  sent ✓
+                  handed to x ✓
                 </a>
               ) : (
                 <>
@@ -348,8 +385,8 @@ export default function Desk() {
                 item={it}
                 onClose={() => setOpen(null)}
                 onDone={(s) => {
-                  setDone((d) => ({ ...d, [it.id]: `https://x.com/rssmrm/status/${s.id}` }))
-                  setFeed((f) => (f ? { ...f, sent: [s, ...f.sent] } : f))
+                  setDone((d) => ({ ...d, [it.id]: s.id ? `https://x.com/rssmrm/status/${s.id}` : `https://x.com/${it.author}/status/${it.id}` }))
+                  if (s.id) setFeed((f) => (f ? { ...f, sent: [s, ...f.sent] } : f))
                 }}
               />
             )}
