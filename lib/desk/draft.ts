@@ -8,8 +8,13 @@ import type { PostKind } from "./x"
 
 export type Draft = { kind: PostKind; text: string }
 
-/* anthropic when its key is set, otherwise openai; DESK_MODEL overrides either default */
-const provider = () => (process.env.ANTHROPIC_API_KEY ? "anthropic" : process.env.OPENAI_API_KEY ? "openai" : null)
+/* DESK_PROVIDER picks openai or anthropic; otherwise whichever key is set,
+   openai first. DESK_MODEL overrides the provider's default model. */
+const provider = (): "openai" | "anthropic" | null => {
+  const p = process.env.DESK_PROVIDER
+  if (p === "openai" || p === "anthropic") return p
+  return process.env.OPENAI_API_KEY ? "openai" : process.env.ANTHROPIC_API_KEY ? "anthropic" : null
+}
 export const draftConfigured = () => provider() !== null
 const MODEL = () => process.env.DESK_MODEL || (provider() === "anthropic" ? "claude-sonnet-5" : "gpt-4.1")
 
