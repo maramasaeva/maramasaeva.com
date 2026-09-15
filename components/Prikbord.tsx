@@ -6,7 +6,9 @@ import { BODY_MAX, NAME_MAX } from "@/lib/prikbord"
 
 /* The message board (/messageboard). Anyone can leave a note under any name,
    and everyone reads the same board. Storage and the rate limit live in
-   /api/prikbord; this fetches on mount so the list is always fresh. */
+   /api/prikbord. The page hands in the messages it read on the server, so the
+   board is complete on first paint; a fetch on mount only refreshes it
+   silently, and never empties it. */
 
 const NAME_KEY = "prikbord-name"
 
@@ -24,9 +26,15 @@ function when(iso: string) {
 
 type State = "loading" | "ready" | "off"
 
-export default function Prikbord() {
-  const [state, setState] = useState<State>("loading")
-  const [messages, setMessages] = useState<Message[]>([])
+type Props = {
+  /** messages read on the server; null when that read failed */
+  initial: Message[] | null
+  enabled: boolean
+}
+
+export default function Prikbord({ initial, enabled }: Props) {
+  const [state, setState] = useState<State>(!enabled ? "off" : initial ? "ready" : "loading")
+  const [messages, setMessages] = useState<Message[]>(initial ?? [])
   const [name, setName] = useState("")
   const [body, setBody] = useState("")
   const [sending, setSending] = useState(false)
@@ -37,14 +45,25 @@ export default function Prikbord() {
     try {
       setName(localStorage.getItem(NAME_KEY) ?? "")
     } catch {}
-    fetch("/api/prikbord")
-      .then((r) => r.json())
-      .then((d: { messages: Message[]; enabled: boolean }) => {
-        setMessages(d.messages ?? [])
-        setState(d.enabled ? "ready" : "off")
+    if (!enabled) return
+    fetch("/api/prikbord", { cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
+      .then((d: { messages?: Message[]; enabled: boolean }) => {
+        if (!d.enabled) return setState("off")
+        if (Array.isArray(d.messages)) {
+          setMessages((m) => {
+            /* keep anything pinned from here that the server list has not caught up on */
+            const known = new Set(d.messages!.map((x) => x.id))
+            return [...m.filter((x) => !known.has(x.id)), ...d.messages!]
+          })
+          setState("ready")
+        }
       })
-      .catch(() => setState("off"))
-  }, [])
+      .catch(() => {
+        /* the server-rendered list stays; only give up if we never had one */
+        if (!initial) setState("off")
+      })
+  }, [enabled, initial])
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -140,7 +159,10 @@ export default function Prikbord() {
         )}
         {messages.map((m) => (
           <li key={m.id} className="border-t border-faint py-[calc(var(--gap)*0.7)]">
-            <p className="text-left font-sans text-meta text-muted [overflow-wrap:anywhere] [hyphens:none]">
+            <p
+              className="text-left font-sans text-meta text-muted [overflow-wrap:anywhere] [hyphens:none]"
+              suppressHydrationWarning
+            >
               {m.name} · {when(m.created_at)}
             </p>
             <p className="mt-1 whitespace-pre-line text-left [overflow-wrap:anywhere] [hyphens:none]">{m.body}</p>
