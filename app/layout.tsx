@@ -4,6 +4,7 @@ import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site"
 import BinaryField from "@/components/BinaryField"
 import Nav from "@/components/Nav"
 import Footer from "@/components/Footer"
+import Portrait from "@/components/Portrait"
 import "./globals.css"
 
 /* Cormorant Garamond for the prose, Work Sans for labels, nav and everything
@@ -88,6 +89,7 @@ export default function RootLayout({
       <body
         className={`${cormorant.variable} ${workSans.variable} font-serif text-body bg-bg text-fg`}
       >
+        <Portrait />
         <BinaryField />
         <div className="relative z-10 mx-auto flex min-h-screen max-w-[46rem] flex-col px-5 pb-[var(--gap)] pt-[clamp(1.75rem,5vh,4rem)] sm:px-6">
           <Nav />
