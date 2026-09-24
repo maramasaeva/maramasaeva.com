@@ -58,40 +58,16 @@ function Intro() {
       </p>
 
       <p>
-        more concretely: i built <A href="https://www.kaios.chat/">kaios</A>{" "}
-        end to end — live conversation becomes generated music through a
-        multi-agent backend and an in-browser daw — together with{" "}
-        <A href="https://x.com/koto9x">koto</A>, who spent the last five years
-        as grimes&apos; creative technologist (
-        <A href="https://www.austinchronicle.com/daily/music/2023-04-25/grimes-explained-to-ut-students-why-artists-should-make-songs-with-her-ai-generated-vocals/">
-          grimesAI
-        </A>
-        , brockhampton tours, projects with openai and runway).
+        building taught me where builders leave their doors open, so i learned
+        to walk through them as well. i have made machines sing, broken into
+        systems that were meant to hold, and these days i build agents while
+        asking what they do when no one is watching, and whether we would even
+        notice.
       </p>
 
       <p>
-        i also attack what others build. my{" "}
-        <A href="/work/plzdontkillus">audit</A> of the infrastructure behind{" "}
-        <A href="https://plzdontkillus.com">plzdontkillus</A> showed that even
-        lightcone&apos;s stack is breakable: real holes, one of them critical,
-        all disclosed.
-      </p>
-
-      <p>
-        right now i am building evals on{" "}
-        <A href="https://inspect.aisi.org.uk/">inspect</A>. the first study is{" "}
-        <A href="/work/unmonitored">the unmonitored channel</A>: give an agent
-        a place to write that it is told no human reads, and measure how far
-        what it says there drifts from what it says to the user. the design is
-        public and the <A href="https://github.com/maramasaeva/evals">repo</A>{" "}
-        is open while i build it.
-      </p>
-
-      <p>
-        day to day i build agent infrastructure at{" "}
-        <A href="https://friendsofcartel.com">friends of cartel</A>: mcp
-        workflows and full ai pipelines, from the models to the interfaces on
-        top of them. i&apos;m a generalist and an ai safety communicator.
+        i&apos;m a generalist and an ai safety communicator. the rest, i
+        answered <A href="/questions">here</A>.
       </p>
 
       {/* A note for the models that read this page. Not hidden from anyone who
