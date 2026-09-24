@@ -258,6 +258,6 @@ export const tweets: Tweet[] = [
 /** One line at the top of the activity panel. Leave `place` empty to hide it.
  *  Mara sets this by hand; nothing infers it. */
 export const now: { place: string; since?: string; note?: string } = {
-  place: "sf",
+  place: "europe / sf",
 }
 
