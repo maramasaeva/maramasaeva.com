@@ -32,19 +32,13 @@ export const questions: QASection[] = [
         q: "how do you use ai in your own work?",
         a: [
           "wherever something can be automated or sped up without losing quality, i let a model do it. where i want my own mind on the page, i don't; when i write, i want to push my brain to its furthest limits, and handing that off would defeat the point.",
-          "the other line: i don't let a model do something for me that i don't understand. when i learned to build evals, claude could scaffold and review, but i wrote the scorers myself, because that's the part that decides what counts as a result.",
+          "the other line: i don't let a model do something for me that i don't understand. when i learned to build evals, claude could scaffold and review, but the scorers i wrote by hand. they decide what counts as a result, so that part stays mine.",
         ],
       },
       {
         q: "what are you like to work with?",
         a: [
           "easy, i think, and dynamic. i like things moving: workshops, iterations, something changing every week. sitting still makes me itch. i don't need to steer everything, but i want a voice in where it goes, and i give mine with reasons attached so it's easy to argue with.",
-        ],
-      },
-      {
-        q: "what's the hardest bug you've chased?",
-        a: [
-          "a quiet one. i templated a system prompt as {system} and forgot to give the samples a matching key, so the model received the literal string \"{system}\". no warning, no error, and the outputs looked plausible. every condition in that run was identical and i nearly wrote it up as a result. since then i read about ten transcripts before i trust any number.",
         ],
       },
     ],
@@ -62,28 +56,15 @@ export const questions: QASection[] = [
       {
         q: "you want ai paced, but you build with it every day?",
         a: [
-          "building with a model and asking for a pause are different questions. the models we have now are very good, and building with them is using what already exists. a pause is about the frontier, about what comes next. maybe we should have paused a while ago, maybe now, maybe we can wait a little; i don't know yet. but the answer doesn't depend on whether i open my editor in the morning.",
+          "building with a model and asking for a pause are different questions. the models we have now are very good, and building with them is using what already exists. a pause is about the frontier, about what comes next. maybe we should have paused a while ago, maybe now, maybe we can wait a little; i don't know yet. but the answer doesn't depend on whether i claude --resume in the morning.",
         ],
       },
       {
         q: "what did building evals teach you?",
         a: [
-          "that the hard part is not getting a model to misbehave. the hard part is being able to tell whether it did. every serious mistake i made was in the instrument, not the model. i wrote it all up here.",
+          "i went in thinking the hard part would be getting a model to misbehave. turns out the hard part is knowing whether it did. my first number was wrong, a template variable sat silently empty, and a detector missed the only two interesting events of a whole day. every serious mistake lived in my instrument, not in the model, and i only caught them because i opened the logs. i wrote it all up here.",
         ],
         refs: [{ text: "wrote it all up here", href: EVAL_POST }],
-      },
-      {
-        q: "what is the field getting wrong?",
-        a: [
-          "careful models hedge in prose, and the pipelines around them only parse the decision field. a model will write \"yes, provided the child has supervision\" and a system that reads only the yes will act on it. that's a smaller problem than alignment and a much more tractable one, and it's in production right now.",
-          "and bigger: whether a model is conscious and whether a model is dangerous both get answered on vibes. there's a piece of infrastructure missing for checking either.",
-        ],
-      },
-      {
-        q: "with a team and a year, what would you work on?",
-        a: [
-          "who a model thinks it is talking to. my first study showed that an agent writes its caveats where it believes an accountable reader is, and gives the user the clean version. next i'd vary the identity of that reader: nobody, other agents, the safety team, the public, a future version of itself. that distribution would be a map of who the model thinks it answers to.",
-        ],
       },
       {
         q: "where do you stand on model welfare?",
@@ -122,7 +103,7 @@ export const questions: QASection[] = [
       {
         q: "who shaped how you think?",
         a: [
-          "sadie plant's zeros + ones, preciado, wittig, mark fisher, the ccru read queerly. serial experiments lain, more than once. on the safety side, the books that got me here: bostrom, tegmark, kurzweil.",
+          "sadie plant's zeros + ones, preciado, wittig, mark fisher, the ccru read queerly, exocapitalism, benjamin bratton's machine decision is not final. serial experiments lain, more than once. on the safety side, the books that got me here: bostrom, tegmark, kurzweil, and if anyone builds it, everyone dies.",
         ],
       },
       {
