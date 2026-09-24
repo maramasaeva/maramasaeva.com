@@ -4,8 +4,8 @@ import Linkified from "@/components/Linkified"
 import { portfolio, type Media } from "@/lib/portfolio"
 
 export const metadata: Metadata = {
-  title: "portfolio",
-  description: "four things i built, and what was hard in each.",
+  title: "creative",
+  description: "kaios, kotopia, music, a virtual body, visual art.",
 }
 
 /* One media slot. Videos autoplay muted and looping so the page reads as a
@@ -47,7 +47,7 @@ function Frame({ media }: { media: Media }) {
   )
 }
 
-export default function Portfolio() {
+export default function Creative() {
   return (
     <div className="flow-lg">
       {portfolio.map((piece) => (

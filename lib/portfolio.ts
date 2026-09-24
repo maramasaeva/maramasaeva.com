@@ -1,7 +1,5 @@
-/* /portfolio is the long, shown version of /work.
-   /work is a dense list for readers who already know the vocabulary;
-   this page is four pieces with pictures for readers who want to see the thing.
-   Same facts, different door. Keep both in sync when a fact changes. */
+/* /creative: the art side of the work, with room for pictures.
+   The timeline and the code live on /work. */
 
 export type Media =
   /* self-hosted mp4 in public/portfolio. muted + loop, so no audio surprises;
@@ -76,9 +74,21 @@ export const portfolio: Piece[] = [
     ],
     links: [
       { label: "listen", href: "https://soundcloud.com/user-587494783/albums" },
-      { label: "ableton dj mcp", href: "https://github.com/KOTOPIA9X" },
+      { label: "bandcamp", href: "https://mmessier.bandcamp.com" },
       { label: "writing", href: "https://messinecessity.substack.com" },
     ],
+  },
+  {
+    title: "ableton dj mcp",
+    year: "2025",
+    role: "built in the kotopia org with koto",
+    refs: [
+      { text: "kotopia", href: "https://www.kotopia.world/" },
+      { text: "koto", href: "https://x.com/koto9x" },
+    ],
+    body: ["i taught an agent to dj. it beat-matches, rides the eq and mixes a whole set in ableton, and i get to dance"],
+    /* the repo lives in the kotopia org, not mine: koto cleared the link */
+    links: [{ label: "github", href: "https://github.com/KOTOPIA9X" }],
   },
   {
     /* no blurb on purpose: the work is at the other end of the links */

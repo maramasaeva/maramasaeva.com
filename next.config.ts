@@ -13,6 +13,14 @@ const SECURITY_HEADERS = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  /* /about merged into /work and /portfolio became /creative (2026-09-24);
+     old links keep landing somewhere. */
+  async redirects() {
+    return [
+      { source: "/about", destination: "/work", permanent: true },
+      { source: "/portfolio", destination: "/creative", permanent: true },
+    ]
+  },
   async headers() {
     return [{ source: "/(.*)", headers: SECURITY_HEADERS }]
   },

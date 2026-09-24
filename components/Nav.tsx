@@ -3,9 +3,8 @@ import ThemeToggle from "@/components/ThemeToggle"
 
 const items = [
   { href: "/", label: "mara messier masaeva" },
-  { href: "/about", label: "about" },
   { href: "/work", label: "work" },
-  { href: "/portfolio", label: "portfolio" },
+  { href: "/creative", label: "creative" },
   { href: "/writing", label: "writing" },
   { href: "/questions", label: "questions" },
   { href: "/messageboard", label: "messageboard" },

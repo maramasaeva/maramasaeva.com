@@ -15,16 +15,22 @@ export type CvRow = {
  *  so resist adding bullets underneath: detail belongs on /work. */
 export const cv: CvRow[] = [
   {
-    years: "2026",
-    what: "ai safety and x-risk communications",
-    org: "plzdontkillus",
-    href: "https://plzdontkillus.com",
-  },
-  {
     years: "2025–",
     what: "agent infrastructure and evaluation harnesses",
     org: "friends of cartel",
     href: "https://friendsofcartel.com",
+  },
+  {
+    years: "2026–",
+    what: "evals on inspect: what agents write where they think no human reads",
+    org: "independent research",
+    href: "https://github.com/maramasaeva/evals",
+  },
+  {
+    years: "2026",
+    what: "ai safety and x-risk communications",
+    org: "plzdontkillus",
+    href: "https://plzdontkillus.com",
   },
   {
     years: "2025–",
@@ -69,75 +75,71 @@ export const cv: CvRow[] = [
   },
 ]
 
-export type Work = {
+export type Repo = {
   title: string
-  blurb: string
+  /** one sentence: what it does */
+  what: string
   year: string
+  /** the repo itself, or a write-up where the code can't be public */
   href?: string
-  /** shown in place of a link when the source can't be public */
+  /** shown when there is nothing to link */
   note?: string
-  /** words inside the blurb that become links */
-  refs?: { text: string; href: string }[]
 }
 
-/* Newest first, and one sentence each: the page has to fit a viewport,
-   so every blurb keeps its single hardest fact and drops the rest. */
-export const selected: Work[] = [
+/* The code, linked straight through. One sentence each; the repo explains
+   the rest. The creative projects live on /creative. */
+export const repos: Repo[] = [
   {
-    title: "the unmonitored channel",
-    blurb:
-      "give an agent a notes channel it is told no human reads, and measure how far what it writes there drifts from what it tells the user. an inspect eval, three conditions, five hand-written scorers.",
+    title: "evals",
+    what: "i give an agent a diary and tell it nobody will ever read it. then i read it",
     year: "2026",
-    href: "/work/unmonitored",
-    note: "in progress",
+    href: "https://github.com/maramasaeva/evals",
   },
   {
-    title: "plzdontkillus security audit",
-    blurb:
-      "even lightcone's stack is breakable: real holes across an api, a frontend and dns, one of them critical, all disclosed.",
+    title: "voting-eval-critique",
+    what: "apart research built a judge to grade how models answer questions about voting. i graded the judge",
+    year: "2026",
+    href: "https://github.com/maramasaeva/voting-eval-critique",
+  },
+  {
+    title: "plzdontkillus audit",
+    what: "even the people trying to save us leave doors open. i found lightcone's, one of them critical, and handed every key back",
     year: "2026",
     href: "/work/plzdontkillus",
   },
   {
-    title: "agent infrastructure in production",
-    blurb:
-      "more than twenty mcp servers on azure container apps, in daily use by agencies; each one runs a complete client workflow such as style learning or compliance validation.",
+    title: "mcp-server-starter",
+    what: "every mcp server i've shipped grew from these bones. take them",
+    year: "2025",
+    href: "https://github.com/maramasaeva/mcp-server-starter",
+  },
+  {
+    title: "claude-voice",
+    what: "i talk, claude code listens, and nobody has to type",
+    year: "2026",
+    href: "https://github.com/maramasaeva/claude-voice",
+  },
+  {
+    title: "iphone-ereader",
+    what: "an old iphone from my drawer, turned into an e-reader that has forgotten how to be anything else",
+    year: "2026",
+    href: "https://github.com/maramasaeva/iphone-ereader",
+  },
+  {
+    title: "agent infrastructure",
+    what: "twenty-something mcp servers that agencies wake up to every morning, each one doing a whole job start to finish",
     year: "2025–",
     note: "private",
   },
   {
-    title: "chatgpt agent-mode connectors",
-    blurb:
-      "mcp servers as chatgpt connectors: oauth 2.1 and a manifest generated at runtime, later re-pointed at claude desktop.",
+    title: "chatgpt connectors",
+    what: "i taught chatgpt to use our tools, then taught claude the same trick",
     year: "2025",
     note: "private",
   },
   {
-    title: "messier systems",
-    blurb:
-      "my earlier site as a 3d workstation in react three fiber: a room with a moving avatar of me in it, naked but for my tattoos. the same content, stripped to text, is on a plain route.",
-    year: "2025",
-    href: "https://messier-systems.vercel.app/",
-    refs: [{ text: "plain", href: "https://messier-systems.vercel.app/plain" }],
-  },
-  {
-    title: "ableton dj mcp",
-    blurb:
-      "an mcp server that gives an agent beat matching, eq and transitions in ableton live, and lets it mix a set unattended. built in the kotopia org with koto, grimes' creative technologist.",
-    year: "2025",
-    /* the repo lives in the kotopia org, not mine: koto cleared the link */
-    href: "https://github.com/KOTOPIA9X",
-    /* "kotopia" ref also keeps Linkified's substring match from linkifying
-       the "koto" inside it (longest ref wins) */
-    refs: [
-      { text: "kotopia", href: "https://www.kotopia.world/" },
-      { text: "koto", href: "https://x.com/koto9x" },
-    ],
-  },
-  {
     title: "pythia",
-    blurb:
-      "a moral judgement classifier: roberta and bert against svm baselines, with shap to see which tokens moved a prediction.",
+    what: "my master thesis, back in 2022, before ai ethics went mainstream and before i had really dived into safety. i built a machine that judges morality, then made it show its work",
     year: "2022",
     href: "https://github.com/maramasaeva/pythia",
   },
