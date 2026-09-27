@@ -59,6 +59,7 @@ export default function BinaryField() {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
     let dpr = 1
+    let baseAlpha = 0.085
     let cols = 0
     let rows = 0
     let offX = 0
@@ -73,7 +74,11 @@ export default function BinaryField() {
 
     const readTokens = () => {
       const cs = getComputedStyle(document.documentElement)
-      muted = rgb(cs.getPropertyValue("--muted") || "#888")
+      muted = rgb(
+        cs.getPropertyValue("--field") || cs.getPropertyValue("--muted") || "#888",
+      )
+      const fa = parseFloat(cs.getPropertyValue("--field-alpha"))
+      baseAlpha = Number.isFinite(fa) ? fa : 0.085
       accent = rgb(cs.getPropertyValue("--accent") || "#a52a5f")
     }
 
@@ -88,7 +93,7 @@ export default function BinaryField() {
       const x = c * CELL_W + CELL_W / 2
       const y = r * CELL_H + CELL_H / 2
       bctx.clearRect(c * CELL_W, r * CELL_H, CELL_W, CELL_H)
-      bctx.fillStyle = `rgba(${muted[0]},${muted[1]},${muted[2]},0.085)`
+      bctx.fillStyle = `rgba(${muted[0]},${muted[1]},${muted[2]},${baseAlpha})`
       bctx.fillText(bits[i] ? "1" : "0", x, y)
     }
 
@@ -144,10 +149,37 @@ export default function BinaryField() {
     }
     window.addEventListener("pointermove", onMove, { passive: true })
 
+    /* Someone reported the page stuttering on their phone, and there were
+       three reasons for it, none of them the device pixel ratio.
+
+       The flip scan below walks every cell in the field on every frame, which
+       is around 4,000 on a phone and 15,000 on a laptop. The flips themselves
+       are on 500-3300ms timers, so checking ten times a second finds every
+       one of them and does 1/6th of the work.
+
+       On a touch screen there is no cursor for the spotlight to track, so it
+       only ever drifts, and 30fps is indistinguishable from 60 while costing
+       half as much.
+
+       And the loop used to keep running in a tab nobody is looking at. */
+    const coarse = window.matchMedia("(pointer: coarse)").matches
+    const minFrameMs = coarse ? 32 : 0
+    const FLIP_MS = 100
+
     let raf = 0
+    let lastFrame = -99999
+    let lastFlip = -99999
+
     const frame = (t: number) => {
+      if (t - lastFrame < minFrameMs) {
+        raf = requestAnimationFrame(frame)
+        return
+      }
+      lastFrame = t
+
       // shimmer: repaint only the cells whose timer expired
-      if (!reduce) {
+      if (!reduce && t - lastFlip >= FLIP_MS) {
+        lastFlip = t
         for (let i = 0; i < bits.length; i++) {
           if (t >= flipAt[i]) {
             bits[i] = Math.random() < 0.5 ? 1 : 0
@@ -188,10 +220,10 @@ export default function BinaryField() {
           const g = isGlyph(r, c)
           ctx.clearRect(c * CELL_W, r * CELL_H, CELL_W, CELL_H)
           if (g) {
-            ctx.fillStyle = `rgba(${accent[0]},${accent[1]},${accent[2]},${(0.085 + 0.62 * k).toFixed(3)})`
+            ctx.fillStyle = `rgba(${accent[0]},${accent[1]},${accent[2]},${(baseAlpha + 0.62 * k).toFixed(3)})`
             ctx.fillText("1", x, y)
           } else {
-            const a = 0.085 + 0.1 * k
+            const a = baseAlpha + 0.1 * k
             ctx.fillStyle = `rgba(${muted[0]},${muted[1]},${muted[2]},${a.toFixed(3)})`
             ctx.fillText(bits[r * cols + c] ? "1" : "0", x, y)
           }
@@ -211,6 +243,17 @@ export default function BinaryField() {
 
     window.addEventListener("resize", onResize)
 
+    /* Nothing to animate for a tab nobody is looking at. */
+    const onVisibility = () => {
+      cancelAnimationFrame(raf)
+      if (!document.hidden) {
+        lastFrame = -99999
+        lastFlip = -99999
+        raf = requestAnimationFrame(frame)
+      }
+    }
+    document.addEventListener("visibilitychange", onVisibility)
+
     /* The tokens live in css, so the field has to be told when they change.
        That happens when the toggle rewrites data-theme on <html>. */
     const onTheme = () => {
@@ -227,6 +270,7 @@ export default function BinaryField() {
       cancelAnimationFrame(raf)
       window.removeEventListener("pointermove", onMove)
       window.removeEventListener("resize", onResize)
+      document.removeEventListener("visibilitychange", onVisibility)
       themeWatch.disconnect()
     }
   }, [])

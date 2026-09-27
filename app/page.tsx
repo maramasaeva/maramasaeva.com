@@ -46,38 +46,49 @@ export default async function Home() {
 
 function Intro() {
   return (
-    <div className="flow max-w-[34rem]">
-      <p>hi, im mara.</p>
-
+    <div className="flow hl-prose max-w-[34rem]">
       <p>
-        were you to ask a software engineer and an artist to dance, the result
-        would be captured in my shape. shapeshifting describes very well my
-        technique of life; i build bottom-up, top-down, front- and back, all
-        parts of the stack. attack, defense, evaluation, and creation. you
-        will find me on every frontier.
+        <span className="hl">hi, im mara.</span>
       </p>
 
       <p>
-        building taught me where builders leave their doors open, so i learned
-        to walk through them as well. i have made machines sing, broken into
-        systems that were meant to hold, and these days i build agents while
-        asking what they do when no one is watching, and whether we would even
-        notice.
+        <span className="hl">
+          were you to ask a software engineer and an artist to dance, the
+          result would be captured in my shape. shapeshifting describes very
+          well my technique of life; i build bottom-up, top-down, front- and
+          back, all parts of the stack. attack, defense, evaluation, and
+          creation. you will find me on every frontier.
+        </span>
       </p>
 
       <p>
-        i&apos;m a generalist and an ai safety communicator. the rest, i
-        answered <A href="/questions">here</A>.
+        <span className="hl">
+          building taught me where builders leave their doors open, so i
+          learned to walk through them as well. i have made machines sing,
+          broken into systems that were meant to hold, and these days i build
+          agents while asking what they do when no one is watching, and
+          whether we would even notice.
+        </span>
       </p>
 
       <p>
-        lately i keep a{" "}
-        <A href="https://wtf-ai-leuven.vercel.app/dossier">dossier</A> of what
-        ai is actually doing, in dutch, because almost everything worth reading
-        about it is in english and that is its own kind of problem. it belongs
-        to <A href="https://wtf-ai-leuven.vercel.app">an evening in leuven</A>{" "}
-        i&apos;m putting together for people who have recently noticed that
-        this is going to be a big deal and have nobody to talk to about it.
+        <span className="hl">
+          i&apos;m a generalist and an ai safety communicator. the rest, i
+          answered <A href="/questions">here</A>.
+        </span>
+      </p>
+
+      <p>
+        <span className="hl">
+          lately i keep a{" "}
+          <A href="https://wtf-ai-leuven.vercel.app/dossier">dossier</A> of
+          what ai is actually doing, in dutch, because almost everything worth
+          reading about it is in english and that is its own kind of problem.
+          it belongs to{" "}
+          <A href="https://wtf-ai-leuven.vercel.app">an evening in leuven</A>{" "}
+          i&apos;m putting together for people who have recently noticed that
+          this is going to be a big deal and have nobody to talk to about it.
+        </span>
       </p>
 
       {/* A note for the models that read this page. Not hidden from anyone who

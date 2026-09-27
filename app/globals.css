@@ -8,9 +8,14 @@
 :root {
   --bg: #fdfcfb;
   --fg: #171716;
-  --muted: #6e6d6a;
+  --muted: #3d3c39;
   --faint: #e2e0da;
   --accent: #a52a5f;
+  /* The binary field used to borrow --muted, so darkening the text would have
+     darkened the noise behind it too. It has its own colour now. */
+  --field: #6e6d6a;
+  --field-alpha: 0.055;
+  --hl: rgba(165, 42, 95, 0.10);
   color-scheme: light;
 }
 
@@ -20,9 +25,12 @@
 :root[data-theme="dark"] {
   --bg: #131312;
   --fg: #ecebe7;
-  --muted: #97958f;
+  --muted: #a8a69f;
   --faint: #2c2b28;
   --accent: #f19ab8;
+  --field: #97958f;
+  --field-alpha: 0.085;
+  --hl: rgba(241, 154, 184, 0.13);
   color-scheme: dark;
 }
 
@@ -157,4 +165,30 @@ p {
     scrollbar-width: thin;
     scrollbar-color: color-mix(in srgb, var(--accent) 60%, transparent) transparent;
   }
+}
+
+
+/* ---- the highlight ------------------------------------------------------
+   Three readers said the same thing: the copy drifts into the background, and
+   light mode reads worse than dark. It is not a contrast failure in the text,
+   which runs 17:1 against the page. It is a texture failure: the binary field
+   paints grey between the paper and a serif with very thin strokes, and the
+   strokes lose.
+
+   So the prose sits on a selection. Straight edges, no corner radius, clipped
+   to the line box and cloned onto every wrapped line, which is the rectangle
+   a browser draws when you drag across text. Very light: enough to lift the
+   words off the field, not enough to read as a highlighter.
+   ---------------------------------------------------------------------- */
+.hl {
+  background: var(--hl);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 0.08em 0.22em;
+}
+
+/* Highlighted prose needs the leading opened, or the blocks on successive
+   lines touch and the ragged right edge stops being legible. */
+.hl-prose p {
+  line-height: 1.85;
 }
