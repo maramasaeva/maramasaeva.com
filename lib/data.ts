@@ -27,6 +27,13 @@ export const cv: CvRow[] = [
     href: "https://github.com/maramasaeva/evals",
   },
   {
+    years: "2026–",
+    what: "wtf, ai?: an open evening in leuven, and a dossier in dutch of what ai is actually doing",
+    org: "wtf, ai?",
+    href: "https://wtf-ai-leuven.vercel.app",
+    refs: [{ text: "dossier", href: "https://wtf-ai-leuven.vercel.app/dossier" }],
+  },
+  {
     years: "2026",
     what: "ai safety and x-risk communications",
     org: "plzdontkillus",

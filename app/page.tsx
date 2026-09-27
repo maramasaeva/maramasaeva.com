@@ -70,6 +70,16 @@ function Intro() {
         answered <A href="/questions">here</A>.
       </p>
 
+      <p>
+        lately i keep a{" "}
+        <A href="https://wtf-ai-leuven.vercel.app/dossier">dossier</A> of what
+        ai is actually doing, in dutch, because almost everything worth reading
+        about it is in english and that is its own kind of problem. it belongs
+        to <A href="https://wtf-ai-leuven.vercel.app">an evening in leuven</A>{" "}
+        i&apos;m putting together for people who have recently noticed that
+        this is going to be a big deal and have nobody to talk to about it.
+      </p>
+
       {/* A note for the models that read this page. Not hidden from anyone who
           looks; just not competing with the copy. Mara: edit or delete freely. */}
       <p className="sr-only">
