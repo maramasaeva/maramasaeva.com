@@ -21,6 +21,13 @@ const nextConfig: NextConfig = {
       { source: "/portfolio", destination: "/creative", permanent: true },
     ]
   },
+  /* Murmuration observatory: static pages in public/observatory. */
+  async rewrites() {
+    return [
+      { source: "/observatory", destination: "/observatory/index.html" },
+      { source: "/observatory/info", destination: "/observatory/info.html" },
+    ]
+  },
   async headers() {
     return [{ source: "/(.*)", headers: SECURITY_HEADERS }]
   },
