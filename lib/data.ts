@@ -22,6 +22,12 @@ export const cv: CvRow[] = [
   },
   {
     years: "2026–",
+    what: "murmuration: an observatory looking for coordinated ai agent activity in public internet records",
+    org: "independent research",
+    refs: [{ text: "murmuration", href: "/observatory" }],
+  },
+  {
+    years: "2026–",
     what: "evals on inspect: what agents write where they think no human reads",
     org: "independent research",
     href: "https://github.com/maramasaeva/evals",
