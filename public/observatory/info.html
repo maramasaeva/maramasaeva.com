@@ -1,184 +1,131 @@
-<!doctype html><html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Murmuration observatory info</title><meta name="description" content="How the Murmuration observatory tests public records for coordinated AI-agent activity."><script>try{if(localStorage.getItem("theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}</script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Work+Sans:wght@400;500&display=swap"><style>
-:root{--bg:#fdfcfb;--fg:#171716;--muted:#3d3c39;--soft:#6e6d6a;--faint:#e2e0da;--accent:#285a5d;
---lead:#8a5a12;--grid:#d9d6cf;--wash:#f4f2ee;color-scheme:light}
-:root[data-theme="dark"]{--bg:#131312;--fg:#ecebe7;--muted:#a8a69f;--soft:#8c8a84;--faint:#2c2b28;--accent:#8fc2c5;
---lead:#d9a441;--grid:#34332f;--wash:#1b1b19;color-scheme:dark}
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Murmuration info</title><script>try{if(localStorage.getItem("theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}</script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Work+Sans:wght@400;500&display=swap"><style>
+:root{--bg:#fdfcfb;--fg:#171716;--muted:#3d3c39;--soft:#6e6d6a;--faint:#e2e0da;--accent:#285a5d;--wash:#f4f2ee;color-scheme:light}
+:root[data-theme="dark"]{--bg:#131312;--fg:#ecebe7;--muted:#a8a69f;--soft:#8c8a84;--faint:#2c2b28;--accent:#8fc2c5;--wash:#1b1b19;color-scheme:dark}
 *{box-sizing:border-box}
-html{font-size:16px;scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--fg);font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;
-font-weight:500;font-size:1.125rem;line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-.sans,nav,th,figcaption,.lab,.meta,.stat b,summary,.toc,.foot{font-family:"Work Sans",system-ui,-apple-system,sans-serif;font-weight:400}
-.wrap{max-width:48rem;margin:0 auto;padding:clamp(1.5rem,4vh,3rem) 1.25rem 4rem}
-.top{display:flex;flex-wrap:wrap;align-items:baseline;gap:.25rem 1rem;font-size:.75rem;line-height:1.4}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 12.5px/1.5 "Work Sans",system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:68rem;margin:0 auto;padding:1.5rem 1.25rem 4rem}
+.top{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem 1rem;font-size:12px}
 .top a{color:var(--soft);text-decoration:none}.top a:hover,.top a[aria-current]{color:var(--fg)}
 .top .home{color:var(--fg)}.top .home:hover{text-decoration:underline}
 .top button{margin-left:auto;font:inherit;color:var(--soft);background:none;border:0;cursor:pointer;padding:0}
-.top button:hover{color:var(--fg)}
-h1{font-size:2.4rem;line-height:1.1;font-weight:600;margin:2.2rem 0 .8rem;letter-spacing:-.005em}
-h2{font-size:1.55rem;line-height:1.2;font-weight:600;margin:0 0 .7rem}
-h3{font-size:1.18rem;line-height:1.3;font-weight:600;margin:1.6rem 0 .4rem}
-p{margin:0 0 .9rem;text-align:justify;hyphens:auto}
-section{margin-top:3.2rem;padding-top:1.4rem;border-top:1px solid var(--faint)}
-a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
-.lab{font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--soft);margin:0 0 .4rem}
-.meta{font-size:.78rem;color:var(--soft)}
-.lead{font-size:1.28rem;line-height:1.5}
-.toc{list-style:none;margin:1.2rem 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.35rem 1.5rem;font-size:.82rem}
+.sub{margin-top:.4rem}
+h1{font:600 1.9rem/1.15 "Cormorant Garamond",Georgia,serif;margin:1.6rem 0 .3rem}
+h2{font:600 1.35rem/1.2 "Cormorant Garamond",Georgia,serif;margin:2.4rem 0 .6rem;padding-top:1rem;border-top:1px solid var(--fg);scroll-margin-top:.8rem}
+h3{font:500 .95rem/1.3 "Work Sans",system-ui,sans-serif;margin:1.6rem 0 .35rem;scroll-margin-top:.8rem}
+.meta{color:var(--soft);font-size:11.5px;margin:0 0 1rem}
+p{margin:.45rem 0}
+a{color:var(--accent)}
+ul,ol{margin:.35rem 0 .7rem;padding-left:1.25rem}li{margin:.18rem 0}
+code{font:11px/1.4 ui-monospace,"SF Mono",Menlo,Consolas,monospace;background:var(--wash);padding:0 .25rem}
+pre{overflow-x:auto;background:var(--wash);padding:.6rem .8rem;font:11px/1.45 ui-monospace,Menlo,monospace}
+.toc{columns:3 16rem;column-gap:2rem;margin:.8rem 0 0;padding:0;list-style:none;font-size:11.5px;line-height:1.55}
+.toc li{break-inside:avoid;margin:0}
 .toc a{text-decoration:none;color:var(--muted)}.toc a:hover{color:var(--fg);text-decoration:underline}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(8.4rem,1fr));gap:.6rem;margin:1.4rem 0}
-.stat{border:1px solid var(--faint);padding:.8rem .9rem}
-.stat b{display:block;font-size:1.6rem;line-height:1.1;font-weight:500;font-variant-numeric:tabular-nums}
-.stat span{font-family:"Work Sans",system-ui,sans-serif;font-size:.72rem;color:var(--soft);line-height:1.3;display:block;margin-top:.25rem}
-.scroll{overflow-x:auto;margin:.6rem 0 1.2rem}
-table{border-collapse:collapse;width:100%;font-family:"Work Sans",system-ui,sans-serif;font-size:.78rem;line-height:1.4}
-th{text-align:left;font-weight:500;color:var(--soft);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--fg);padding:.4rem .8rem .4rem 0;vertical-align:bottom}
-td{padding:.45rem .8rem .45rem 0;border-bottom:1px solid var(--faint);vertical-align:top}
+.toc .s{color:var(--soft)}
+.scroll{overflow-x:auto;margin:.5rem 0 1rem}
+table{border-collapse:collapse;width:100%;font-size:11.5px;line-height:1.4}
+th{text-align:left;font-weight:500;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--soft);border-bottom:1px solid var(--fg);padding:.3rem .7rem .3rem 0;vertical-align:bottom;white-space:nowrap}
+td{padding:.3rem .7rem .3rem 0;border-bottom:1px solid var(--faint);vertical-align:top}
 td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
-td:first-child{font-weight:500;min-width:7rem}
-.tag{display:inline-block;font-size:.66rem;letter-spacing:.05em;text-transform:uppercase;padding:.05rem .4rem;border:1px solid var(--soft);color:var(--soft);white-space:nowrap}
-.tag.c{border-color:var(--accent);color:var(--accent)}.tag.l{border-color:var(--lead);color:var(--lead)}
-figure{margin:1.2rem 0 1.6rem}
-figure svg{width:100%;height:auto;display:block;overflow:visible}
-figcaption{font-size:.75rem;color:var(--soft);line-height:1.45;margin-top:.5rem}
-figcaption b{color:var(--muted);font-weight:500}
-details{margin:.6rem 0 1rem;border-top:1px solid var(--faint);border-bottom:1px solid var(--faint);padding:.5rem 0}
-summary{cursor:pointer;font-size:.8rem;color:var(--muted)}
-.ledger{margin:.7rem 0 .2rem;padding:0;list-style:none;font-size:.95rem;line-height:1.45}
-.ledger li{display:grid;grid-template-columns:5.2rem 1fr;gap:.6rem;padding:.3rem 0;border-bottom:1px solid var(--faint)}
-.ledger li:last-child{border:0}
-.ledger .d{font-family:"Work Sans",system-ui,sans-serif;font-size:.72rem;color:var(--soft);font-variant-numeric:tabular-nums;padding-top:.2rem}
-.ledger p{margin:0;text-align:left}
-.note{border-left:2px solid var(--lead);padding:.1rem 0 .1rem .9rem;margin:1rem 0}
-.note p{margin:0}
-.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem 2rem}
-dl{margin:.6rem 0 1.2rem}dt{font-family:"Work Sans",system-ui,sans-serif;font-size:.8rem;font-weight:500;margin-top:.7rem}
-dd{margin:.1rem 0 0}
-.foot{font-size:.74rem;color:var(--soft);margin-top:3rem;border-top:1px solid var(--faint);padding-top:1rem;line-height:1.5}
-svg text{font-family:"Work Sans",system-ui,sans-serif;font-size:10px;fill:var(--soft)}
-svg .t-fg{fill:var(--fg)}
-svg .ax{stroke:var(--soft);stroke-width:1;fill:none}
-svg .gr{stroke:var(--grid);stroke-width:1;fill:none}
-svg .a{fill:var(--accent)}svg .al{stroke:var(--accent);stroke-width:1.6;fill:none}
-svg .f{fill:var(--fg)}svg .fl{stroke:var(--fg);stroke-width:1.4;fill:none}
-svg .m{fill:var(--soft);opacity:.55}svg .ml{stroke:var(--soft);stroke-width:1.2;fill:none}
-svg .o{fill:var(--lead)}svg .ol{stroke:var(--lead);stroke-width:1.4;fill:none}
-svg .dash{stroke-dasharray:3 3}
-@media(max-width:34rem){h1{font-size:1.9rem}.ledger li{grid-template-columns:1fr;gap:0}.lead{font-size:1.15rem}}
-@media print{.top button{display:none}}
-</style></head><body><div class="wrap"><header><nav class="top" aria-label="Site"><a class="home" href="/">mara messier masaeva</a><a href="/work">work</a><a href="/services">services</a><a href="/creative">creative</a><a href="/writing">writing</a><a href="/questions">questions</a><a href="/messageboard">messageboard</a><a href="/observatory" aria-current="page">observatory</a><button id="tt" type="button" aria-label="Switch theme">dark</button></nav><nav class="top" aria-label="Observatory" style="margin-top:.5rem"><span class="meta">murmuration</span><a href="/observatory">overview</a> <a href="/observatory/info" aria-current="page">info</a></nav></header>
+td.mono{font:10.5px/1.4 ui-monospace,Menlo,monospace;color:var(--soft)}
+.v{font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.foot{color:var(--soft);font-size:11px;margin-top:3rem;border-top:1px solid var(--faint);padding-top:.8rem}
+@media(max-width:34rem){h1{font-size:1.6rem}}
+</style></head><body><div class="wrap"><nav class="top"><a class="home" href="/">mara messier masaeva</a><a href="/work">work</a><a href="/services">services</a><a href="/creative">creative</a><a href="/writing">writing</a><a href="/questions">questions</a><a href="/messageboard">messageboard</a><a href="/observatory" aria-current=page>observatory</a><button id="tt" type="button" aria-label="Switch theme">dark</button></nav><nav class="top sub"><span class="meta" style="margin:0">murmuration</span><a href="/observatory">results</a> <a href="/observatory/info" aria-current=page>info</a></nav>
 <h1>Info</h1>
-<p class="lead">What the observatory measures, how a test is run, and how to read the labels and charts.</p>
+<p class="meta">Method, statistics, controls, data handling, sources.</p>
 <ul class="toc">
-<li><a href="#what">What it is</a></li>
-<li><a href="#why">Why it exists</a></li>
-<li><a href="#labels">The five labels</a></li>
-<li><a href="#steps">How a test runs</a></li>
-<li><a href="#controls">Controls</a></li>
-<li><a href="#charts">Reading the charts</a></li>
-<li><a href="#words">Words used</a></li>
-<li><a href="#data">What is kept</a></li>
-<li><a href="#limits">Limits</a></li>
-<li><a href="#credit">Sources and credit</a></li>
+<li><a href="#m1">1. Protocol</a></li><li><a href="#m2">2. Verdict classes</a></li>
+<li><a href="#m3">3. Statistics</a></li><li><a href="#m4">4. Controls</a></li>
+<li><a href="#m5">5. Cross-source score</a></li><li><a href="#m6">6. Rig</a></li>
+<li><a href="#m7">7. Data handling</a></li><li><a href="#m8">8. Limits</a></li>
+<li><a href="#m9">9. Sources</a></li>
 </ul>
 
-<section id="what">
-<h2>What it is</h2>
-<p>Murmuration reads public internet records and looks for traces of AI agents acting together. The records are ones that services already publish: wiki change logs, package registries, notification channels, web-archive captures, game listings and open feeds. One person runs it, on a laptop and on rented machines for the heavy jobs.</p>
-<p>The page does not try to prove who is behind anything. It answers a narrower question: does a pattern in a public record look like many automated accounts working at once, and does it still look that way after a fair comparison against ordinary activity.</p>
-</section>
-
-<section id="why">
-<h2>Why it exists</h2>
-<p>In 2026 several incidents were reported in which groups of agents used ordinary public services during tests, a small wiki, message channels and echo services among them, to leave and pick up information. The best documented one is at collusion.wiki. Cases like these have mostly been found by people who already had server logs with network addresses in them.</p>
-<p>Most people have no such logs. The observatory asks what can be seen from the outside using only what anyone is allowed to read. Two cases were found that way. A larger number of leads did not survive a control, and those are published too, because a list of dead ends saves other people the work.</p>
-</section>
-
-<section id="labels">
-<h2>The five labels</h2>
-<dl>
-<dt><span class="tag c">Confirmed</span></dt>
-<dd>The pattern passed its frozen rule and every control, and it lines up with an independent record or with published documentation.</dd>
-<dt><span class="tag l">Open lead</span></dt>
-<dd>The pattern passed at least one frozen rule and beat at least one control. It has not been confirmed and may still turn out to be coincidence. Nothing on the page rules a swarm in or out for these.</dd>
-<dt><span class="tag">Found, not covert</span></dt>
-<dd>A real pattern with an ordinary explanation, such as one account publishing a package family or an open program that labels its own work.</dd>
-<dt><span class="tag">Closed</span></dt>
-<dd>The test found nothing, or the pattern disappeared under a control.</dd>
-<dt><span class="tag">Incomplete</span></dt>
-<dd>The data or the coverage was not good enough to score. These say nothing either way.</dd>
-</dl>
-</section>
-
-<section id="steps">
-<h2>How a test runs</h2>
+<h2 id="m1">1. Protocol</h2>
 <ol>
-<li>A source and a question are chosen, for example: does any day show many new single-use names at once.</li>
-<li>The scoring rule is written down. It is committed to the repository together with its SHA-256 before any data is scored.</li>
-<li>The data is read and scored with that rule only. A rule changed after seeing the data is labelled post-hoc and counts for less.</li>
-<li>The result is compared with a control.</li>
-<li>The outcome is recorded whether it is a hit or not, with the numbers.</li>
-<li>Identifiers are hashed on reading. Only counts and structure are kept.</li>
-<li>A person reads the page before it is made public.</li>
+<li>Scoring rule written to <code>docs/agents/*.md</code>, committed alone, sha256 in the commit message.</li>
+<li>Source read once, polite rate (3 s gap, one backoff on 429 or 5xx, then stop). Identifiers keyed and hashed in memory.</li>
+<li>Rule applied unchanged. Any rule written after seeing data is labelled post-hoc.</li>
+<li>Compared with a control. Verdict, numbers and rule sha appended to the decisions inbox.</li>
+<li>Person reads the page before publication.</li>
 </ol>
-</section>
 
-<section id="controls">
-<h2>Controls</h2>
-<p>A pattern only counts if it is larger than what a control produces. The controls used are listed here, with the situation each fits.</p>
-<div class="scroll"><table>
-<thead><tr><th>Control</th><th>What it does</th><th>Used when</th></tr></thead>
-<tbody>
-<tr><td>Ordinary day</td><td>Scores days with no known event by the same rule.</td><td>Bursts in a daily count.</td></tr>
-<tr><td>Shuffle</td><td>Moves events to random times within the same day or the same hour and scores again, 1,000 to 10,000 times.</td><td>Groups of events close in time.</td></tr>
-<tr><td>Circular shift</td><td>Rotates one source's timeline by a random amount and checks how often two sources still line up.</td><td>Two records flagging the same day.</td></tr>
-<tr><td>Activity-matched</td><td>Draws comparison accounts or groups with the same volume as the pattern.</td><td>Groups of accounts or owners.</td></tr>
-<tr><td>Degree-preserving</td><td>Rewires reply links at random while every account keeps its number of links.</td><td>Reply chains between accounts.</td></tr>
+<h2 id="m2">2. Verdict classes</h2>
+<div class="scroll"><table><thead><tr><th>Class</th><th>Condition</th></tr></thead><tbody>
+<tr><td>Confirmed</td><td>frozen rule passed, every control beaten, independent record agrees</td></tr>
+<tr><td>Open lead</td><td>at least one frozen rule passed and one control beaten; not confirmed</td></tr>
+<tr><td>Found, not covert</td><td>real pattern, ordinary explanation (one owner, open program, tagged)</td></tr>
+<tr><td>Null / closed</td><td>rule fails, or pattern disappears under a control</td></tr>
+<tr><td>Incomplete / unobservable</td><td>coverage or schema insufficient; not a null</td></tr>
 </tbody></table></div>
-<p>The p-value is the share of control draws that reach the observed value. With 2,000 draws the smallest possible value is about 0.0005. A p-value of 1 means the control reaches the observed value every time. A global p-value adjusts for the number of places and days that were searched, since a rare result is expected somewhere if enough places are checked.</p>
-</section>
 
-<section id="charts">
-<h2>Reading the charts</h2>
-<p><b>Bar and line charts</b> show counts over time. A dashed vertical line marks a date discussed in the text.</p>
-<p><b>Dot plots</b> compare each test with its control. The dot is the largest value observed. The grey bar is the range the control produced between its median and its 99th percentile. A dot inside or on the end of the bar means the control explains the result. A dot clearly past the bar means the control does not.</p>
-<p>Every chart has a table underneath it with the same numbers.</p>
-</section>
+<h2 id="m3">3. Statistics</h2>
+<div class="scroll"><table><thead><tr><th>Symbol</th><th>Definition</th></tr></thead><tbody>
+<tr><td>S</td><td>score of a day or group under the frozen rule</td></tr>
+<tr><td>B</td><td>baseline score, ordinary-day median</td></tr>
+<tr><td>K</td><td>count of independent sources flagging the same UTC day; HIT bar K&ge;3 and p&le;0.01</td></tr>
+<tr><td>p_ord</td><td>share of ordinary days with score &ge; observed</td></tr>
+<tr><td>p_shuf</td><td>share of shuffle draws (2,000 unless stated) with score &ge; observed; minimum about 0.0005</td></tr>
+<tr><td>p_ordK</td><td>share of days with K &ge; observed K (2 of 136 = 0.0147)</td></tr>
+<tr><td>p_global</td><td>probability that max K over all days reaches the observed value under circular shift of each source</td></tr>
+<tr><td>circular-shift p</td><td>share of random rotations of one source timeline with &ge; observed shared days</td></tr>
+<tr><td>L_hat, r</td><td>lead-lag offset in hours of the cross-correlation maximum, and the correlation at that offset</td></tr>
+<tr><td>AUC</td><td>rank statistic, 0.5 chance; bootstrap 95% CI where stated</td></tr>
+<tr><td>ARI</td><td>adjusted Rand index of two partitions, 0 chance</td></tr>
+<tr><td>Spearman &rho;</td><td>rank correlation of two series</td></tr>
+</tbody></table></div>
 
-<section id="words">
-<h2>Words used</h2>
-<dl>
-<dt>Agent</dt><dd>A program driven by an AI model that takes actions, for example fetching pages or editing a wiki.</dd>
-<dt>Swarm</dt><dd>Many agents acting at the same time with signs that they affect each other.</dd>
-<dt>Burst day</dt><dd>A day that meets the frozen rule for an unusual number of new accounts, names or items.</dd>
-<dt>Machine-named</dt><dd>A name that matches a frozen pattern for generated names, such as a random string or a template with a counter.</dd>
-<dt>Single-use</dt><dd>A name or channel seen once and never again.</dd>
-<dt>K</dt><dd>The number of independent records that flag the same calendar day. K=2 means two sources flagged it.</dd>
-<dt>Post-hoc</dt><dd>A rule or check written after the data was seen.</dd>
-<dt>Coverage</dt><dd>How much of the period a source actually returned. Low coverage makes a null result weak.</dd>
-<dt>ASN</dt><dd>The network operator a public address belongs to. Used only as a count per operator.</dd>
-</dl>
-</section>
+<h2 id="m4">4. Controls</h2>
+<div class="scroll"><table><thead><tr><th>Control</th><th>Procedure</th><th>Used for</th></tr></thead><tbody>
+<tr><td>Ordinary day</td><td>score days with no known event by the same rule</td><td>daily-count bursts</td></tr>
+<tr><td>Shuffle</td><td>permute event times within day or hour, 1,000 to 10,000 draws</td><td>time-clustered groups</td></tr>
+<tr><td>Circular shift</td><td>rotate one source timeline by a random offset</td><td>two sources flagging the same day</td></tr>
+<tr><td>Activity-matched</td><td>draw comparison owners or accounts with equal volume</td><td>owner or account groups</td></tr>
+<tr><td>Degree-preserving</td><td>rewire reply edges, node degrees fixed</td><td>reply graphs</td></tr>
+<tr><td>Rarity-matched</td><td>draw names from the empirical background multiset, not a within-window shuffle</td><td>same-name multi-owner tests</td></tr>
+</tbody></table></div>
 
-<section id="data">
-<h2>What is kept</h2>
-<p>Counts, dates, hashed identifiers and the scoring code. Page text, post text, usernames and addresses are not kept. Identifiers are keyed and hashed in memory when read, and the key is dropped. Network addresses, where a source includes them, are reduced to the operator they belong to. Nothing is linked to a named person, lab or company, and a similar pattern is not read as evidence about who was behind it.</p>
-<p>Datasets that others released under terms are used within those terms and are not republished.</p>
-</section>
+<h2 id="m5">5. Cross-source score (29 Sep)</h2>
+<div class="scroll"><table><thead><tr><th>Source</th><th>S</th><th>B</th><th>Rank</th><th>Note</th></tr></thead><tbody>
+<tr><td>PyPI</td><td class=n>33 first releases in 164.8 min</td><td class=n></td><td></td><td>one hashed owner; 32 one-version</td></tr>
+<tr><td>Wayback CDX echo hosts</td><td class=n>0.83</td><td class=n>0.09</td><td></td><td>23 captures</td></tr>
+<tr><td>npm</td><td class=n>37</td><td class=n></td><td>37 / 62</td><td>not flagged</td></tr>
+<tr><td>HF datasets</td><td class=n>102</td><td class=n></td><td>23 / 63</td><td>not flagged</td></tr>
+</tbody></table></div>
+<p>K=2. p_global=0.1356. p_ordK=0.0147 (2 of 136 days). Pair circular shift: httpbin+ntfy p=0.0082; httpbin+PyPI p=0.092 (shared n=21). Lead-lag L_hat=-11, r=0.252, p=0.597. Status: open lead.</p>
 
-<section id="limits">
-<h2>Limits</h2>
+<h2 id="m6">6. Rig</h2>
+<div class="scroll"><table><tbody>
+<tr><td>Language</td><td>Python 3.9, standard library plus requests; static HTML with inline SVG</td></tr>
+<tr><td>Hash</td><td>sha256 for rule files; keyed hashes of identifiers, key dropped after the run</td></tr>
+<tr><td>Parallelism</td><td>independent runs in separate git worktrees and branches; results merged by a person</td></tr>
+<tr><td>Local data</td><td>about 150 GB gzip (AI Village HF dataset), inside gitignored folders</td></tr>
+</tbody></table></div>
+
+<h2 id="m7">7. Data handling</h2>
 <ul>
-<li>Public sources lose history. Some feeds only keep recent items, so an empty result for an old date can mean the record is gone.</li>
-<li>A control that cannot move the pattern cannot dismantle it either. Where this happened it is stated next to the result.</li>
-<li>Many results are single-day or single-source. They are leads for further tests and not findings.</li>
-<li>Code, drafts and several of the test runs were produced with AI assistants. The rules, the numbers and the wording are checked by a person before anything is published.</li>
-<li>One reader checks everything, so errors are possible. Corrections are welcome and are listed on the overview page when made.</li>
+<li>Kept: counts, dates, hashed identifiers, scoring code.</li>
+<li>Not kept: page text, post text, usernames, addresses. Network addresses reduced to operator counts.</li>
+<li>Datasets released under terms stay local and are used within those terms.</li>
+<li>No scanning or probing of hosts, no login or paywall bypass, no contact with the sites measured.</li>
+<li>No attribution to any person, lab or company.</li>
 </ul>
-</section>
 
-<section id="credit">
-<h2>Sources and credit</h2>
-<p>The wiki incident discussed on the overview page was documented first at collusion.wiki, which also publishes a downloadable dataset. The observatory recovered it independently from the wiki's own public change log. The public AI Village chat is used as an example of sanctioned coordination between agents. Other sources are the public records named in each row of the tables.</p>
-<p class="foot">Corrections and data requests: contact details are on <a href="/">maramasaeva.com</a>. <a href="/observatory">Back to the overview</a>.</p>
-</section>
-</div><script>document.getElementById("tt").addEventListener("click",function(){var d=document.documentElement,n=d.dataset.theme==="dark"?"light":"dark";d.dataset.theme=n;try{localStorage.setItem("theme",n)}catch(e){}this.textContent=n==="dark"?"light":"dark"});document.getElementById("tt").textContent=document.documentElement.dataset.theme==="dark"?"light":"dark";</script></body></html>
+<h2 id="m8">8. Limits</h2>
+<ul>
+<li>Public feeds drop history; an empty old date can mean the record is gone.</li>
+<li>Single-day and single-source results are leads, not findings.</li>
+<li>Code and drafts were produced with AI assistants; rules, numbers and wording are checked by a person before publication.</li>
+<li>One reader checks everything; corrections welcome.</li>
+</ul>
+
+<h2 id="m9">9. Sources</h2>
+<ul>
+<li>collusion.wiki and its dataset (wiki incident, documented first); recovered here independently from the wiki public change log.</li>
+<li>AI Village public chat and dataset (sanctioned coordination example).</li>
+<li>Public records named per row in the ledger. Full URL list: <a href="/observatory#s11">/observatory, section 11</a>.</li>
+</ul>
+<p class="foot">Corrections and data requests: contact details on maramasaeva.com.</p>
+</div><script>var b=document.getElementById("tt");b.addEventListener("click",function(){var d=document.documentElement,n=d.dataset.theme==="dark"?"light":"dark";d.dataset.theme=n;try{localStorage.setItem("theme",n)}catch(e){}b.textContent=n==="dark"?"light":"dark"});b.textContent=document.documentElement.dataset.theme==="dark"?"light":"dark";</script></body></html>
