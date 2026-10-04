@@ -4,7 +4,7 @@ import ThemeToggle from "@/components/ThemeToggle"
 const items = [
   { href: "/", label: "mara messier masaeva" },
   { href: "/work", label: "work" },
-  { href: "/services", label: "work with me" },
+  { href: "/services", label: "services" },
   { href: "/creative", label: "creative" },
   { href: "/writing", label: "writing" },
   { href: "/questions", label: "questions" },
