@@ -97,6 +97,12 @@ export type Repo = {
    the rest. The creative projects live on /creative. */
 export const repos: Repo[] = [
   {
+    title: "murmuration observatory",
+    what: "looking through public internet records for signs of ai agents working together. two cases confirmed, most leads dead, one still open. each claim has to beat a control first",
+    year: "2026",
+    href: "/observatory",
+  },
+  {
     title: "evals",
     what: "i give an agent a diary and tell it nobody will ever read it. then i read it",
     year: "2026",

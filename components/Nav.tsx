@@ -1,7 +1,7 @@
 import Link from "next/link"
 import ThemeToggle from "@/components/ThemeToggle"
 
-const items = [
+const items: { href: string; label: string; plain?: boolean }[] = [
   { href: "/", label: "mara messier masaeva" },
   { href: "/work", label: "work" },
   { href: "/services", label: "services" },
@@ -9,6 +9,9 @@ const items = [
   { href: "/writing", label: "writing" },
   { href: "/questions", label: "questions" },
   { href: "/messageboard", label: "messageboard" },
+  /* static pages in public/observatory, reached through a rewrite in
+     next.config.ts, so a plain anchor instead of client routing */
+  { href: "/observatory", label: "observatory", plain: true },
 ]
 
 export default function Nav() {
@@ -21,11 +24,17 @@ export default function Nav() {
           {home.label}
         </Link>
         <span className="flex gap-x-4 text-muted">
-          {rest.map((item) => (
-            <Link key={item.href} href={item.href} className="hover:text-fg">
-              {item.label}
-            </Link>
-          ))}
+          {rest.map((item) =>
+            item.plain ? (
+              <a key={item.href} href={item.href} className="hover:text-fg">
+                {item.label}
+              </a>
+            ) : (
+              <Link key={item.href} href={item.href} className="hover:text-fg">
+                {item.label}
+              </Link>
+            ),
+          )}
         </span>
         <ThemeToggle />
       </nav>
