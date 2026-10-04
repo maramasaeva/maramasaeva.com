@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Link from "next/link"
 
 import { SITE_NAME, SITE_URL } from "@/lib/site"
 
@@ -35,6 +36,11 @@ const services = [
   {
     title: "evaluation and research software",
     copy: "i like systems you can interrogate. i make tests, scorers, parsers, and research pipelines that leave a trail of why a model did what it did.",
+  },
+  {
+    title: "swarmchasing",
+    href: "/services/swarmchasing",
+    copy: "for people who have seen strange agent traffic and want more than a hunch. i reconstruct the trace, build a baseline, and say plainly what the evidence can and cannot show.",
   },
 ]
 
@@ -135,7 +141,15 @@ export default function ServicesPage() {
         <div className="flow">
           {services.map((service) => (
             <article key={service.title} className="flow">
-              <h3>{service.title}</h3>
+              <h3>
+                {service.href ? (
+                  <Link href={service.href} className="prose-link">
+                    {service.title} →
+                  </Link>
+                ) : (
+                  service.title
+                )}
+              </h3>
               <p>{service.copy}</p>
             </article>
           ))}
