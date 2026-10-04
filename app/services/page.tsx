@@ -5,12 +5,12 @@ import { SITE_NAME, SITE_URL } from "@/lib/site"
 export const metadata: Metadata = {
   title: "services",
   description:
-    "remote software and agentic engineering: product systems, integrations, creative tooling, and evaluation work.",
+    "remote software and agentic engineering: agents, creative systems, integrations, and evaluation work.",
   alternates: { canonical: SITE_URL + "/services" },
   openGraph: {
     title: "services · " + SITE_NAME,
     description:
-      "remote software and agentic engineering: product systems, integrations, creative tooling, and evaluation work.",
+      "remote software and agentic engineering: agents, creative systems, integrations, and evaluation work.",
     url: SITE_URL + "/services",
   },
 }
@@ -18,54 +18,54 @@ export const metadata: Metadata = {
 const services = [
   {
     title: "agentic engineering",
-    copy: "i build production systems around coding agents and language models: agent loops, tool use, custom mcp servers, integrations, evals, guardrails, and the operational software around them.",
+    copy: "when an agent has to touch a real system, somebody has to think about state, tools, permissions, retries, and what happens when it goes sideways. i make that layer.",
   },
   {
     title: "software systems and integrations",
-    copy: "i build the practical layer around an idea: product features, apis, data flows, authentication, deployment, and the interfaces people actually use.",
+    copy: "a lot of useful work is glue. apis, auth, data, a small interface, a deployment. i can take the thing that has been held together by a prompt and turn it into software people can use.",
   },
   {
     title: "ai production workflows",
-    copy: "i turn generative models into reliable systems. for wibra’s personalised-video campaign, i designed and built the complete technical workflow that produced more than 800 individual videos.",
+    copy: "for wibra, a person could give a name and receive a video made for them. i designed and built the whole technical workflow behind 800+ of those videos.",
   },
   {
     title: "creative and consumer ai products",
-    copy: "i work across the stack when the product calls for it. my work includes inku’s brand-native visual engine and kaios’s browser audio, realtime infrastructure, and generative-music tooling.",
+    copy: "i have worked across inku’s brand-native visual engine, and on kaios’s browser audio, realtime infrastructure, and generative-music tooling. this is where models meet taste, latency, and the strange things users actually do.",
   },
   {
     title: "evaluation and research software",
-    copy: "i build tools that make model behaviour inspectable: test harnesses, scoring and parsing pipelines, research workflows, and clear outputs for technical and non-technical teams.",
+    copy: "i like systems you can interrogate. i make tests, scorers, parsers, and research pipelines that leave a trail of why a model did what it did.",
   },
 ]
 
 const capabilities = [
   {
-    title: "agentic engineering",
+    title: "coding with agents",
     items:
-      "claude code · codex · cursor · agent loops · multi-agent workflows · model context protocol (mcp) · a2a · custom tool schemas · tool calling · structured outputs · oauth and jwt",
+      "claude code · codex · cursor · agent loops · multi-agent workflows · model context protocol (mcp) · a2a · custom tools · structured outputs · oauth and jwt",
   },
   {
-    title: "language-model systems",
+    title: "models, tests, and failure cases",
     items:
-      "openai · anthropic · google genai · inspect ai · evaluation harnesses · scenario design · scorers · parsers · dataset pipelines · model-behaviour analysis",
+      "openai · anthropic · google genai · inspect ai · scenario design · eval harnesses · scorers · parsers · dataset pipelines · model-behaviour analysis",
   },
   {
-    title: "application engineering",
+    title: "the normal software part",
     items:
       "typescript · python · node.js · react · next.js · vite · tailwind · rest apis · webhooks · cli tools · html and css",
   },
   {
-    title: "data and realtime systems",
+    title: "data that moves",
     items:
       "postgres · supabase · sqlalchemy · websockets · server-sent events · httpx · event-driven workflows · network analysis · scikit-learn",
   },
   {
-    title: "generative media",
+    title: "images, video, and sound",
     items:
       "image, video, and audio pipelines · flux · dreambooth · lora · hugging face · stable audio · tone.js · web audio · three.js",
   },
   {
-    title: "infrastructure and delivery",
+    title: "getting it out the door",
     items:
       "docker · azure container apps · vercel · github actions · ci/cd · cloud deployment · observability · production handover",
   },
@@ -111,13 +111,14 @@ export default function ServicesPage() {
         <p className="font-sans text-meta text-muted">remote · worldwide</p>
         <h1 className="text-head">services</h1>
         <p>
-          i&apos;m mara masaeva, a full-stack software and ai engineer. i help teams
-          take ambitious ideas from prototype to a working, maintained system.
+          i&apos;m mara masaeva. i work on software, agents, creative tools, and the
+          infrastructure around them. i can work across a product when that is what
+          the job needs.
         </p>
         <p>
-          i take on remote projects and embedded contracts. the best starting point
-          is usually a focused build, integration, or technical discovery that leaves
-          your team with a concrete result.
+          i take remote projects and embedded contracts. bring me in for a build,
+          an integration, or a problem that has become more complicated than it
+          looked at first.
         </p>
         <p>
           <a
@@ -130,7 +131,7 @@ export default function ServicesPage() {
       </header>
 
       <section>
-        <h2 className="text-head mb-4">what i build</h2>
+        <h2 className="text-head mb-4">what i do</h2>
         <div className="flow">
           {services.map((service) => (
             <article key={service.title} className="flow">
@@ -141,8 +142,12 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section>
-        <h2 className="text-head mb-4">what i can work with</h2>
+      <section className="flow">
+        <h2 className="text-head">a working inventory</h2>
+        <p>
+          this is the stuff i&apos;ve used, not a certification wall. if your stack
+          is nearby, i can probably get useful in it quickly.
+        </p>
         <div className="flow">
           {capabilities.map((capability) => (
             <article key={capability.title} className="flow">
@@ -154,7 +159,7 @@ export default function ServicesPage() {
       </section>
 
       <section>
-        <h2 className="text-head mb-4">selected work</h2>
+        <h2 className="text-head mb-4">things you can click</h2>
         <ul className="flow">
           {proof.map((item) => (
             <li key={item.href}>
@@ -171,12 +176,11 @@ export default function ServicesPage() {
         <h2 className="text-head">start a project</h2>
         <p>
           my starting rate is €100/hour excluding vat, or €800 for an eight-hour day.
-          for a defined outcome, i&apos;ll quote a fixed scope after we agree on the
-          inputs, acceptance criteria, and timeline.
+          if the work has a clean shape, i&apos;ll quote it as a fixed scope.
         </p>
         <p>
-          send a short note with the problem, your team, and the timing. i&apos;ll
-          reply with a direct view on fit and the most useful first step.
+          send the problem, the team, and the timing. a few plain sentences are
+          enough.
         </p>
         <p>
           <a
