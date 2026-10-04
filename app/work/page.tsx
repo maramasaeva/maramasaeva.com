@@ -7,6 +7,14 @@ export const metadata: Metadata = { title: "work" }
 
 /* Opens in the same tab for pages on this site, a new one for everything else. */
 function Out({ href, children }: { href: string; children: React.ReactNode }) {
+  /* the observatory is a static page behind a rewrite, so it gets a plain anchor */
+  if (href.startsWith("/observatory")) {
+    return (
+      <a href={href} className="prose-link">
+        {children}
+      </a>
+    )
+  }
   if (href.startsWith("/")) {
     return (
       <Link href={href} className="prose-link">
