@@ -85,6 +85,13 @@ export default function SwarmchasingPage() {
           pseudonymised event handling, and reproducible evaluation.
         </p>
         <p>
+          the current public work lives at{" "}
+          <Link href="/observatory" className="prose-link">
+            maramasaeva.com/observatory
+          </Link>
+          .
+        </p>
+        <p>
           the bar for a claim rises with the claim. timing alone does not prove
           coordination. text style alone does not identify an agent. naming an
           operator needs converging evidence and a disclosure process. those
