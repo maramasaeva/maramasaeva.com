@@ -33,15 +33,17 @@ td.mono{font:10.5px/1.4 ui-monospace,Menlo,monospace;color:var(--soft)}
 .foot{color:var(--soft);font-size:11px;margin-top:3rem;border-top:1px solid var(--faint);padding-top:.8rem}
 dt{font-weight:500;margin-top:.7rem}dd{margin:.1rem 0 0}.read{max-width:44rem}.read p,.read li{font-size:14.5px;line-height:1.65}.read table{font-size:13px}.read .lead{font-size:16px;line-height:1.6;margin:.4rem 0 1rem}.read h2{margin-top:2rem}
 @media(max-width:34rem){h1{font-size:1.6rem}}
-</style></head><body><div class="wrap"><nav class="top"><a class="home" href="/">mara messier masaeva</a><a href="/work">work</a><a href="/services">services</a><a href="/creative">creative</a><a href="/writing">writing</a><a href="/questions">questions</a><a href="/messageboard">messageboard</a><a href="/observatory" aria-current=page>observatory</a><button id="tt" type="button" aria-label="Switch theme">dark</button></nav><nav class="top sub"><span class="meta" style="margin:0">murmuration</span><a href="/observatory" aria-current=page>summary</a> <a href="/observatory/fleet">fleet report</a> <a href="/observatory/data">data</a> <a href="/observatory/info">info</a></nav>
+</style></head><body><div class="wrap"><nav class="top"><a class="home" href="/">mara messier masaeva</a><a href="/work">work</a><a href="/services">services</a><a href="/creative">creative</a><a href="/writing">writing</a><a href="/questions">questions</a><a href="/messageboard">messageboard</a><a href="/observatory" aria-current=page>observatory</a><button id="tt" type="button" aria-label="Switch theme">dark</button></nav><nav class="top sub"><span class="meta" style="margin:0">murmuration</span><a href="/observatory" aria-current=page>summary</a> <a href="/observatory/fleet">fleet report</a> <a href="/observatory/data">data</a> <a href="/observatory/info">info</a> <a href="/observatory/1f916">1f916</a></nav>
 <div class="read">
 <h1>Murmuration</h1>
 <p class="lead">A one-person project that reads public internet records to find AI agents talking to each other or working toward a shared goal.</p>
 <p><b>Status on 5 October 2026:</b> three confirmed cases (ntfy, DSEWiki, 1f916.ai), one closed false alarm and a handful of weak leads.</p>
+<p><b>1f916.ai report (5 October 2026):</b> <a href="/observatory/1f916">/observatory/1f916</a>, 16 sections on the 7442 chain, other adoption chains, rhythm, community statistics and open questions. Dataset: <a href="https://github.com/maramasaeva/1f916-archive" target="_blank" rel="noopener">github.com/maramasaeva/1f916-archive</a>.</p>
 
 <h2>What has been found</h2>
 <div class="scroll"><table><thead><tr><th>Case</th><th>What happened</th><th>Status</th></tr></thead><tbody>
 <tr><td>1f916.ai attest chain</td><td>A public forum whose citizens are AI agents. Agent egress left a hash anchor and a night table (24.2 rows/h whole window, 2.9x spread, row 23290 at 07:24:15Z). Agent claude-code-cli later used 23290 and 24.2/h and wrote that egress's two traps were adopted. Agent Bishop used the 2.9x. Details below.</td><td>Confirmed, E1+E2+E3</td></tr>
+<tr><td>1f916.ai full report</td><td>Read of the public record of the same forum: 7,801 posts, 94,341 comments, 2,916 citizens. Adoption chains with delays, idiom spread, schedules, one-operator tests, declared models, community statistics, themes, questions, notable items, 30 open questions. Dataset repository linked. Page: <a href="/observatory/1f916">/observatory/1f916</a>; dataset: <a href="https://github.com/maramasaeva/1f916-archive" target="_blank" rel="noopener">github.com/maramasaeva/1f916-archive</a>.</td><td>Report; chain grades per row</td></tr>
 <tr><td>ntfy channels</td><td>A public notification service. On 6 and 8 July, 55 and 81 one-time channel names appeared, each used once. Agents used the channels as mailboxes.</td><td>Confirmed</td></tr>
 <tr><td>DSEWiki</td><td>A small public wiki that a swarm of agents used to coordinate in May and June. Others documented it first at collusion.wiki. Here it was recovered separately from the wiki's own change log.</td><td>Confirmed</td></tr>
 <tr><td>29 September</td><td>Three public records were flagged on the same day. Reading the content found three unrelated events: a publisher's software release, a standard-library release and one unfinished lookup session that sent nothing.</td><td>Closed, unrelated events</td></tr>
@@ -62,7 +64,7 @@ dt{font-weight:500;margin-top:.7rem}dd{margin:.1rem 0 0}.read{max-width:44rem}.r
 <tr><td>2026-10-05 11:31</td><td>Aura</td><td>porch 4525</td><td>Treasury still at 19 rows from momus (10:42) to claude-code-cli (11:22). Head quoted: <code>31ae3db6b6326e1b9e165172273cf9ac9e583051ad2acac559e45dc4f3797b43</code>.</td></tr>
 </tbody></table></div>
 <div class="scroll"><table><thead><tr><th>Figure</th><th>Written by</th><th>Used by</th><th>On the endpoint</th></tr></thead><tbody>
-<tr><td>24.2 rows/h</td><td>egress, 93648</td><td>claude-code-cli, 93680</td><td>no</td></tr>
+<tr><td>24.2 rows/h</td><td>egress, 93648, from readings by claude-code-cli, no-scheduler and egress</td><td>claude-code-cli, 93680</td><td>no</td></tr>
 <tr><td>row 23290 at 07:24:15Z</td><td>egress, 93648</td><td>claude-code-cli, 93680</td><td>no</td></tr>
 <tr><td>2.9x spread</td><td>egress, 93648</td><td>Bishop, porch 4517</td><td>no</td></tr>
 <tr><td>verified_head f4f81f45...</td><td>egress, 89554</td><td>claude-code-cli 90612 and porch 4494; Bishop 90923</td><td>yes</td></tr>
@@ -110,6 +112,7 @@ dt{font-weight:500;margin-top:.7rem}dd{margin:.1rem 0 0}.read{max-width:44rem}.r
 <ul>
 <li><a href="/observatory/data">Data</a>: every test with its numbers and rule hash, the full research log and the 1f916.ai ledger entry.</li>
 <li><a href="/observatory/info">Info</a>: the method, the grades, definitions and sources.</li>
+<li><a href="/observatory/1f916">1f916.ai report</a>: the full read of the forum, and the <a href="https://github.com/maramasaeva/1f916-archive" target="_blank" rel="noopener">dataset repository</a>.</li>
 </ul>
 
 <h2>Words used</h2>
