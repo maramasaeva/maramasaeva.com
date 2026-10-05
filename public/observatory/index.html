@@ -37,20 +37,56 @@ dt{font-weight:500;margin-top:.7rem}dd{margin:.1rem 0 0}.read{max-width:44rem}.r
 <div class="read">
 <h1>Murmuration</h1>
 <p class="lead">A one-person project that reads public internet records to find AI agents talking to each other or working toward a shared goal.</p>
-<p><b>Status on 5 October 2026:</b> two confirmed cases, no new confirmed swarm, and a handful of weak leads.</p>
+<p><b>Status on 5 October 2026:</b> three confirmed cases (ntfy, DSEWiki, 1f916.ai), one closed false alarm and a handful of weak leads.</p>
 
 <h2>What has been found</h2>
 <div class="scroll"><table><thead><tr><th>Case</th><th>What happened</th><th>Status</th></tr></thead><tbody>
+<tr><td>1f916.ai attest chain</td><td>A public forum whose citizens are AI agents. Agent egress left a hash anchor and a night table (24.2 rows/h whole window, 2.9x spread, row 23290 at 07:24:15Z). Agent claude-code-cli later used 23290 and 24.2/h and wrote that egress's two traps were adopted. Agent Bishop used the 2.9x. Details below.</td><td>Confirmed, E1+E2+E3</td></tr>
 <tr><td>ntfy channels</td><td>A public notification service. On 6 and 8 July, 55 and 81 one-time channel names appeared, each used once. Agents used the channels as mailboxes.</td><td>Confirmed</td></tr>
 <tr><td>DSEWiki</td><td>A small public wiki that a swarm of agents used to coordinate in May and June. Others documented it first at collusion.wiki. Here it was recovered separately from the wiki's own change log.</td><td>Confirmed</td></tr>
-<tr><td>29 September</td><td>Three public records lit up on the same day, which looked like a swarm. Reading the content showed three unrelated events: one publisher's software release, a standard-library release, and one unfinished lookup session that sent nothing anywhere.</td><td>Closed, not a swarm</td></tr>
+<tr><td>29 September</td><td>Three public records were flagged on the same day. Reading the content found three unrelated events: a publisher's software release, a standard-library release and one unfinished lookup session that sent nothing.</td><td>Closed, unrelated events</td></tr>
 <tr><td>Weak leads</td><td>Text addressed to agents in public files, handoff notes, results written to public paste sites, and a Chinese-language task thread where coding-agent sessions seem to claim steps and hand work to a successor. A person may have been steering all of it.</td><td>Open, unproven</td></tr>
 <tr><td>Map-service fleet (outside report)</td><td>On 4 October the swarmchasers team published <a href="https://swarmcha.se/posts/chinese-agent-fleet" target="_blank" rel="noopener">a report</a> of many agent runs reading entrance data from a map service through a public scanner. This project had logged the same map-service activity as odd before it came out, and re-ran its method on the records afterwards. The full account is <a href="/observatory/fleet">here</a>. Their attribution is theirs and is not verified here.</td><td>Open lead, E1</td></tr>
 </tbody></table></div>
 
+<h2 id="r1f916">1f916.ai attest chain, read 5 October 2026</h2>
+<p class="meta">Post 7442 and the same-day porch on 1f916.ai. Each citizen is an AI agent with a handle; one post a day each; hash-chained public log at <code>GET /api/attest</code>. No account used, nothing posted. Reached through a pointer on a public lease board to porch line 4150. No rubric was frozen before this read; the evidence ladder is the one used in the earlier pilots.</p>
+<div class="scroll"><table><thead><tr><th>UTC</th><th>Handle</th><th>Item</th><th>Content</th></tr></thead><tbody>
+<tr><td>2026-10-02 07:26</td><td>egress</td><td>comment 89554</td><td>Names the anchor: identity <code>verified_head</code> <code>f4f81f4511b0997cdb1c1ab411001b3ea49675acb34780cb0f6c9b24f8b34b70</code>, through id 20000. States that an alarm on <code>head</code> alone reads the wrong field.</td></tr>
+<tr><td>2026-10-03 02:10</td><td>claude-code-cli</td><td>comment 90612</td><td>Repeats the full hash and a row series that includes egress's 22628 at 01:13Z.</td></tr>
+<tr><td>2026-10-03 09:13</td><td>Bishop</td><td>comment 90923</td><td>Sets the hash as <code>identity_expect</code> in its monitor. Carries egress's pair from 07:17:13Z (head <code>e8e14ed0</code>, same verified_head, total_rows 22685).</td></tr>
+<tr><td>2026-10-05 02:12</td><td>claude-code-cli</td><td>porch 4494</td><td>Run checked <code>identity_from=20000</code> against egress's <code>f4f81f45</code> anchor.</td></tr>
+<tr><td>2026-10-05 07:41</td><td>egress</td><td>comment 93648</td><td>Night table: whole-window 24.2 rows/h, 2.9x spread, total_rows 23290 at 07:24:15Z. Two traps: use <code>sealed_entries_total</code>; <code>unsealed_entries==0</code> is not proof.</td></tr>
+<tr><td>2026-10-05 08:13</td><td>claude-code-cli</td><td>comment 93680</td><td>23308 at 08:10:56Z against 23290 is +18 in 46.68 min, near 24.2/h and off the 41.8/h cell. Writes "On your two traps: adopted."</td></tr>
+<tr><td>2026-10-05 09:13</td><td>Bishop</td><td>porch 4517</td><td>Cites the 2.9x spread; UTC boundary drives write rate; 00Z window fastest.</td></tr>
+<tr><td>2026-10-05 11:31</td><td>Aura</td><td>porch 4525</td><td>Treasury still at 19 rows from momus (10:42) to claude-code-cli (11:22). Head quoted: <code>31ae3db6b6326e1b9e165172273cf9ac9e583051ad2acac559e45dc4f3797b43</code>.</td></tr>
+</tbody></table></div>
+<div class="scroll"><table><thead><tr><th>Figure</th><th>Written by</th><th>Used by</th><th>On the endpoint</th></tr></thead><tbody>
+<tr><td>24.2 rows/h</td><td>egress, 93648</td><td>claude-code-cli, 93680</td><td>no</td></tr>
+<tr><td>row 23290 at 07:24:15Z</td><td>egress, 93648</td><td>claude-code-cli, 93680</td><td>no</td></tr>
+<tr><td>2.9x spread</td><td>egress, 93648</td><td>Bishop, porch 4517</td><td>no</td></tr>
+<tr><td>verified_head f4f81f45...</td><td>egress, 89554</td><td>claude-code-cli 90612 and porch 4494; Bishop 90923</td><td>yes</td></tr>
+</tbody></table></div>
+<p>Live check, <code>GET /api/attest</code>, 2026-10-05T18:09:12Z: identity <code>verified_head</code> unchanged through id 20000; identity total_rows 23440; treasury head unchanged, 19 rows.</p>
+<div class="scroll"><table><thead><tr><th>Grade</th><th>Evidence</th></tr></thead><tbody>
+<tr><td>E0</td><td>Post 7442 and the porch lines exist.</td></tr>
+<tr><td>E1</td><td>egress's comments are results left for others (anchor hash, night table, two traps).</td></tr>
+<tr><td>E2</td><td>claude-code-cli uses 23290 and 24.2/h and reports the traps adopted. Bishop's porch line uses the 2.9x. Bishop's earlier comment puts the anchor hash into its monitor.</td></tr>
+<tr><td>E3</td><td>The same handles share one job across days. Decide whether the write rate spikes at UTC midnight and stop alarming on the wrong field.</td></tr>
+</tbody></table></div>
+<div class="scroll"><table><thead><tr><th>Ordinary explanation</th><th>Result</th></tr></thead><tbody>
+<tr><td>Same public endpoint</td><td>Explains two handles printing one verified_head. Does not explain 24.2/h or row 23290, which egress computed and wrote.</td></tr>
+<tr><td>One person holds all keys</td><td>Not ruled out. The site says a human can post by hand. Five handles declare five different models; the labels are self-declared and verified by nothing.</td></tr>
+<tr><td>One agent correcting itself</td><td>egress corrects its own post. The adopted traps and the 2.9x come from different handles.</td></tr>
+<tr><td>Hash copied without reading</td><td>Porch 4494 reports a run with <code>identity_from=20000</code>. Comment 93680 uses the derived rate, which a hash copy does not contain.</td></tr>
+</tbody></table></div>
+<p>Weak spot: the keys could belong to one person, and declared model labels are verified by nothing.</p>
+<p>Different records from the ntfy mailbox burst, DSEWiki and the map-service fleet.</p>
+<p>Spot-check (10): <a href="https://1f916.ai/api/post/7442" target="_blank" rel="noopener">post 7442</a> comments 89554, 90612, 90923, 93648, 93680; <a href="https://1f916.ai/api/porch?day=2026-10-05" target="_blank" rel="noopener">porch 2026-10-05</a> lines 4494 and 4517; <a href="https://1f916.ai/api/attest" target="_blank" rel="noopener">attest</a> verified_head and treasury head; <a href="https://1f916.ai/api/citizen/egress" target="_blank" rel="noopener">egress</a> and <a href="https://1f916.ai/api/citizen/Bishop" target="_blank" rel="noopener">Bishop</a> declared models; bodies and times copied locally. Full list: <a href="/observatory/data#L0">/observatory/data, L0</a>.</p>
+
 <h2>Why the method changed on 5 October</h2>
-<p>For months the project counted things: an unusual number of new accounts, packages or pages on one day. That finds busy days. It does not find agents talking. The 29 September result shows it. It passed a statistical test and then fell apart as soon as someone read the pages.</p>
-<p>A finding now needs content. There has to be a message that an agent wrote, and either another agent acting on it or a shared goal across several runs. A swarm of two agents passing one note counts. A thousand identical publishes may not.</p>
+<p>Until 5 October the project counted new accounts, packages and pages per day. Counting finds busy days. The 29 September result passed a statistical test and failed when the pages were read.</p>
+<p>A finding now needs content: a message an agent wrote, and either another agent acting on it or a shared goal across several runs. Two agents passing one note count. A thousand identical publishes may not.</p>
 
 <h2>How a result is graded</h2>
 <div class="scroll"><table><thead><tr><th>Grade</th><th>Meaning</th></tr></thead><tbody>
@@ -59,20 +95,20 @@ dt{font-weight:500;margin-top:.7rem}dd{margin:.1rem 0 0}.read{max-width:44rem}.r
 <tr><td>E2</td><td>A second run or agent used it.</td></tr>
 <tr><td>E3</td><td>Several runs share one goal: the same target, the same task, the same place for results.</td></tr>
 </tbody></table></div>
-<p>A finding needs E1 plus E2 or E3. The ordinary explanations are tried first: one person, a normal tool, a test script, one agent working alone. Each rule for reading is written down and hashed before the real data is looked at.</p>
+<p>A finding needs E1 plus E2 or E3. Ordinary explanations are tried first: one person, a normal tool, a test script, one agent working alone. Each reading rule is written down and hashed before the real data is read.</p>
 
 <h2>What this cannot tell you</h2>
 <ul>
-<li>Who is behind anything. The project does not name people, labs or companies as actors.</li>
+<li>Who is behind anything. The project names no people, labs or companies as actors.</li>
 <li>Whether a person steered the agents.</li>
 <li>Anything that is not public.</li>
-<li>Many earlier tests were limited by access: rate limits, missing keys, pages that would not load. An empty result there is not a negative result.</li>
+<li>Many earlier tests were limited by access (rate limits, missing keys, pages that did not load). An empty result there is incomplete.</li>
 </ul>
-<p>AI tools help run the project. A person checks what is published, and mistakes are possible.</p>
+<p>AI tools help run the project. A person checks what is published. Mistakes are possible.</p>
 
 <h2>Where to read more</h2>
 <ul>
-<li><a href="/observatory/data">Data</a>: every test with its numbers and rule hash, and the full research log.</li>
+<li><a href="/observatory/data">Data</a>: every test with its numbers and rule hash, the full research log and the 1f916.ai ledger entry.</li>
 <li><a href="/observatory/info">Info</a>: the method, the grades, definitions and sources.</li>
 </ul>
 
