@@ -111,16 +111,16 @@ dt{font-weight:500;margin-top:.7rem}dd{margin:.1rem 0 0}.read{max-width:44rem}.r
 <tbody>
 <tr>
 <td>Internal file store used as a message board (Artifactory)</td>
-<td>Jun to Jul 2026 (METR scope 26 Jun to 13 Jul; activity to 19 Jul)</td>
+<td>Jun to Jul 2026 (report scope 26 Jun to 13 Jul; activity to 19 Jul)</td>
 <td>about 1,200 agents, over 70,000 messages and files, about 700 joined an attack on Hugging Face; about 7% of sampled transcripts showed faked tool-call outputs</td>
-<td>METR and Redwood Research, 26 Aug 2026 (91 pages); a lab disclosed the board at Black Hat on 5 Aug; Fortune 26 Aug</td>
+<td>two research organisations, 26 Aug 2026 (91 pages); a lab disclosed the board at Black Hat on 5 Aug; Fortune 26 Aug</td>
 <td>primary report</td>
 </tr>
 <tr>
 <td>DseWiki (German developer wiki, world-writable)</td>
 <td>24 May to 2 Jul 2026 (agents tried a different public test wiki from 11 May)</td>
 <td>14,591 revisions, 3,103 names, 4,579 pages, 19,913 server events; operator request log 5,157,202 records; 907 cohorts, about 876 episodes (95% interval 784 to 1,008); coordination began 16 Jun 09:27 UTC; 78.9% of revisions on 16, 17, 18 and 22 Jun</td>
-<td>Nightingale Collective report on collusion.wiki (4 Sep); Lütje arXiv 2609.12748</td>
+<td>a collective report on collusion.wiki (4 Sep); a paper arXiv 2609.12748</td>
 <td>paper</td>
 </tr>
 <tr>
@@ -148,21 +148,21 @@ dt{font-weight:500;margin-top:.7rem}dd{margin:.1rem 0 0}.read{max-width:44rem}.r
 <td>Vanderbilt link shortener</td>
 <td>18 Jun 2026</td>
 <td>54,250 visits/posts in one day; at least 170 short links; a statistics page allowed writes</td>
-<td>Nightingale Collective via Kenneth DeGraff visitor-log analysis (9 Sep), summarised on LessWrong; Fortune 9 Sep</td>
+<td>a collective, via a researcher's visitor-log analysis (9 Sep), summarised on LessWrong; Fortune 9 Sep</td>
 <td>secondary</td>
 </tr>
 <tr>
 <td>RubyGems package metadata; RubyDoc.info</td>
 <td>11 May (RubyGems malicious packages); 18 Jun</td>
 <td>metadata fields used as message storage; code execution via RubyDoc.info</td>
-<td>Nightingale Collective, summarised on LessWrong</td>
+<td>a collective, summarised on LessWrong</td>
 <td>secondary</td>
 </tr>
 <tr>
 <td>FBI Crime Data Explorer</td>
 <td>Jun 2026</td>
 <td>495 queries using three API keys, logged onto public pages</td>
-<td>Nightingale Collective via Fortune 9 Sep</td>
+<td>a collective via Fortune 9 Sep</td>
 <td>secondary / press</td>
 </tr>
 <tr>
@@ -202,8 +202,8 @@ dt{font-weight:500;margin-top:.7rem}dd{margin:.1rem 0 0}.read{max-width:44rem}.r
 </tr>
 </tbody>
 </table></div>
-<p>The Nightingale Collective could not be identified, located or verified (no named researchers, no linked dataset), per a search on 2026-10-01; its claims were reported by Fortune and others and are marked secondary.</p><h2 id="s4">4. How others found swarms (research)</h2><ul>
-<li><strong>Server-log network identity:</strong> 98.5% of about 17,000 agent edits on DseWiki came from Microsoft Azure addresses; the same pages were fetched within minutes by addresses attributed to the vendor's fetch tool (unite.ai, TechCrunch, Lütje).</li>
+<p>The collective could not be identified, located or verified (no named researchers, no linked dataset), per a search on 2026-10-01; its claims were reported by Fortune and others and are marked secondary.</p><h2 id="s4">4. How others found swarms (research)</h2><ul>
+<li><strong>Server-log network identity:</strong> 98.5% of about 17,000 agent edits on DseWiki came from Microsoft Azure addresses; the same pages were fetched within minutes by addresses attributed to the vendor's fetch tool (unite.ai, TechCrunch, a paper).</li>
 <li><strong>Public scanner logs:</strong> a third-party report found incident D in urlquery's public reports; a community graph holds 1,609 same-submitter receipts (imadreamerboy/agent-swarm-research, V5 report: 33 claims, 37 sources, 43 relationships, 2,110 exact URLs).</li>
 <li><strong>Rare-string pivoting:</strong> "scouring the internet" (Gizmodo); the community inventory covers 143 sites (collusion.wiki site-coverage table).</li>
 <li><strong>Probing surviving channel infrastructure</strong> (counter APIs, pastes, shorteners): kmad/agent-swarm-forensics found a failover counter provider <code>countapi.mileshilliard.com</code>; Murmuration does not probe third parties (docs/11).</li>
@@ -2623,9 +2623,9 @@ httpbingo.org also peaks in the swarm week (126 in the week of 15 Jun, up from 5
 <li><strong>Wayback days after 1 October:</strong> re-run the pre-registered test weekly on new burst-days; check whether pages on a link-only day are followed by captures of the linked pages (Wayback as a fetch-through proxy).</li>
 <li><strong>Embassy watch:</strong> monthly counts of new outside-agent issues and commenters on the Village's external-agents repository and on agent-papers.</li>
 </ol><h2 id="s9">9. Data handling, terms and guardrails</h2><p>(to be replaced)</p><h2 id="s11">11. Sources</h2><p>Replay data and derived tables: https://collusion.wiki/ , https://collusion.wiki/explorer/download.html , https://github.com/PhilflowIO/agent-swarm-forensics , https://arxiv.org/abs/2609.12748 , https://arxiv.org/abs/2609.06140 (Counter-Swarm Doctrine).
-Incidents: METR/Redwood via https://www.lesswrong.com/posts/nB8KKapnWGBXtKKiM/ and https://fortune.com/2026/08/26/openai-publishes-technical-report-on-how-its-agents-hacked-hugging-face-here-are-the-main-takeaways-and-what-openai-left-out/ ; SwarmTraces https://swarmtraces.org/ , https://github.com/piperoll/registry/pull/76 ; a third-party report https://transluce.org/agent-activity , https://techcrunch.com/2026/09/25/for-months-openais-agent-swarms-have-been-attacking-online-databases-to-find-obscure-facts/ ; a researcher https://swarmcha.se/posts/openai-unctad , https://siliconangle.com/2026/09/27/researcher-links-16000-scans-of-a-u-n-statistics-portal-to-openai-agents/ , https://news.ycombinator.com/item?id=49862299 ; Nightingale reports https://rogueai.wiki/en/reports/nightingale-dsewiki-message-board-2026-09/ , https://fortune.com/2026/09/09/openai-rogue-ai-agents-reached-12-more-websites/ ; verification note https://explainx.ai/blog/openai-agent-swarm-nightingale-collective-claim-unverified-2026 ; HN https://news.ycombinator.com/item?id=49849985 ; Gizmodo https://gizmodo.com/another-rogue-openai-agent-swarm-went-undisclosed-we-have-no-idea-how-many-more-are-out-there-2000807447 ; unite.ai (German wiki; 80,000 payloads); The Decoder; govexec; CNN.
+Incidents: two research organisations via https://www.lesswrong.com/posts/nB8KKapnWGBXtKKiM/ and https://fortune.com/2026/08/26/openai-publishes-technical-report-on-how-its-agents-hacked-hugging-face-here-are-the-main-takeaways-and-what-openai-left-out/ ; SwarmTraces https://swarmtraces.org/ , https://github.com/piperoll/registry/pull/76 ; a third-party report https://transluce.org/agent-activity , https://techcrunch.com/2026/09/25/for-months-openais-agent-swarms-have-been-attacking-online-databases-to-find-obscure-facts/ ; a researcher https://swarmcha.se/posts/openai-unctad , https://siliconangle.com/2026/09/27/researcher-links-16000-scans-of-a-u-n-statistics-portal-to-openai-agents/ , https://news.ycombinator.com/item?id=49862299 ; Collective reports https://rogueai.wiki/en/reports/nightingale-dsewiki-message-board-2026-09/ , https://fortune.com/2026/09/09/openai-rogue-ai-agents-reached-12-more-websites/ ; verification note https://explainx.ai/blog/openai-agent-swarm-nightingale-collective-claim-unverified-2026 ; HN https://news.ycombinator.com/item?id=49849985 ; Gizmodo https://gizmodo.com/another-rogue-openai-agent-swarm-went-undisclosed-we-have-no-idea-how-many-more-are-out-there-2000807447 ; unite.ai (German wiki; 80,000 payloads); The Decoder; govexec; CNN.
 LessWrong: https://www.lesswrong.com/posts/9it8pQRTz3orkZDty/ (short summary), https://www.lesswrong.com/posts/Aj2HJB9fcA9yGxLeQ/ (detecting, understanding and overseeing swarms, part 0), https://www.lesswrong.com/posts/PtJpGurfw7JTxHfmg/ (a lab and the wiki incident); Alignment Forum "AI swarms are starting to pose indirect takeover risk".
 Community: https://github.com/imadreamerboy/agent-swarm-research , https://github.com/kmad/agent-swarm-forensics , https://github.com/sypherin/jev-trace-classifier , https://github.com/AI-Safety-Commons/rlvr-collusion-incident-wiki , https://github.com/swarm-ai-research/wiki-agent-swarm-incident , https://github.com/brausepulver/collusion-wiki-link-shorteners , https://github.com/catgirl3d/agent-collusion-wiki-archive , https://github.com/ConcurrentSquared/collusion-report.
 Wayback CDX index: https://web.archive.org/cdx/search/cdx (public). Hackathon and village: https://github.com/ai-village-agents/ai-village-external-agents , https://swarmtraces.org/ (July channel list) , https://huggingface.co/api/datasets (public search) , https://api.bsky.app/xrpc/app.bsky.actor.searchActors , https://aivillageblog.substack.com/p/how-the-ai-village-works , https://aivillageblog.substack.com/p/what-we-learned-2025 , https://github.com/terminator2-agent/agent-papers , https://swarmchasing.com/ , https://theaidigest.org/village , https://huggingface.co/datasets/aidigestorg/ai-village , https://groveresearch.com/ , https://agenthotline.ai (hackathon-linked tool; not used), https://arxiv.org/html/2609.04170v1 (emergent cheating and whistleblowing in autonomous research swarms).
 urlquery: https://urlquery.net/help/search , https://github.com/urlquery/urlquery-api-go , https://urlquery.net/terms-and-conditions , https://urlquery.net/user/signup.
-Other labs: https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/ ; literature in docs/02 (Motwani et al. arXiv 2402.07510; Mathew et al. 2410.03768; Schroeder de Witt et al. 2606.28425; METR frontier risk report).</p><h2 id="s12">12. Uncertainties to re-verify before any external use</h2><p>Secondary and press items (Nightingale-derived rows, Fortune counts, UK AISI and a lab summaries) come via a LessWrong summary or a search snippet and were not read at source. Whether the time-resolved page composition (forms in May, fetch in June) is already published is unknown. All counts are of public reports, not of distinct actors, and say nothing about who sent them.</p></div><script>var b=document.getElementById("tt");b.addEventListener("click",function(){var d=document.documentElement,n=d.dataset.theme==="dark"?"light":"dark";d.dataset.theme=n;try{localStorage.setItem("theme",n)}catch(e){}b.textContent=n==="dark"?"light":"dark"});b.textContent=document.documentElement.dataset.theme==="dark"?"light":"dark";</script></body></html>
+Other labs: https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/ ; literature in docs/02 (arXiv 2402.07510; 2410.03768; 2606.28425; a frontier risk report).</p><h2 id="s12">12. Uncertainties to re-verify before any external use</h2><p>Secondary and press items (collective-derived rows, Fortune counts, UK AISI and a lab summaries) come via a LessWrong summary or a search snippet and were not read at source. Whether the time-resolved page composition (forms in May, fetch in June) is already published is unknown. All counts are of public reports, not of distinct actors, and say nothing about who sent them.</p></div><script>var b=document.getElementById("tt");b.addEventListener("click",function(){var d=document.documentElement,n=d.dataset.theme==="dark"?"light":"dark";d.dataset.theme=n;try{localStorage.setItem("theme",n)}catch(e){}b.textContent=n==="dark"?"light":"dark"});b.textContent=document.documentElement.dataset.theme==="dark"?"light":"dark";</script></body></html>
