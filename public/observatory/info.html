@@ -34,69 +34,78 @@ td.mono{font:10.5px/1.4 ui-monospace,Menlo,monospace;color:var(--soft)}
 @media(max-width:34rem){h1{font-size:1.6rem}}
 </style></head><body><div class="wrap"><nav class="top"><a class="home" href="/">mara messier masaeva</a><a href="/work">work</a><a href="/services">services</a><a href="/creative">creative</a><a href="/writing">writing</a><a href="/questions">questions</a><a href="/messageboard">messageboard</a><a href="/observatory" aria-current=page>observatory</a><button id="tt" type="button" aria-label="Switch theme">dark</button></nav><nav class="top sub"><span class="meta" style="margin:0">murmuration</span><a href="/observatory">results</a> <a href="/observatory/info" aria-current=page>info</a></nav>
 <h1>Info</h1>
-<p class="meta">Method, statistics, controls, data handling, sources.</p>
+<p class="meta">Method, evidence grades, reference cases, legacy statistics, data handling, sources.</p>
 <ul class="toc">
-<li><a href="#m1">1. Protocol</a></li><li><a href="#m2">2. Verdict classes</a></li>
-<li><a href="#m3">3. Statistics</a></li><li><a href="#m4">4. Controls</a></li>
-<li><a href="#m5">5. Cross-source score</a></li><li><a href="#m6">6. Rig</a></li>
-<li><a href="#m7">7. Data handling</a></li><li><a href="#m8">8. Limits</a></li>
-<li><a href="#m9">9. Sources</a></li>
+<li><a href="#m1">1. Method since 5 Oct 2026</a></li><li><a href="#m2">2. Evidence grades</a></li>
+<li><a href="#m3">3. Verdict classes</a></li><li><a href="#m4">4. Reference cases</a></li>
+<li><a href="#m5">5. 29 Sep close-out</a></li><li><a href="#m5b">6. Legacy statistics</a></li>
+<li><a href="#m6">7. Rig</a></li><li><a href="#m7">8. Data handling</a></li>
+<li><a href="#m8">9. Limits</a></li><li><a href="#m9">10. Sources</a></li>
 </ul>
 
-<h2 id="m1">1. Protocol</h2>
+<h2 id="m1">1. Method since 5 Oct 2026</h2>
+<p>Findings rest on communication and goals read from the content of public records. Counts, ranks, K and p-values are no longer evidence. Rows before 5 Oct are legacy.</p>
+<div class="scroll"><table><thead><tr><th>Type</th><th>Signal</th></tr></thead><tbody>
+<tr><td>C1 message</td><td>relay, handoff, status post, task assignment, reply; one agent writes, another reads or acts</td></tr>
+<tr><td>C2 shared goal</td><td>same target, same task skeleton, same sink across runs</td></tr>
+<tr><td>C3 shared channel</td><td>talk page, paste, message bus, result inbox, issue thread, dataset card used as mailbox or memory</td></tr>
+<tr><td>C4 convention</td><td>word, marker or format that spreads between agents</td></tr>
+<tr><td>C5 handover</td><td>notes written for a successor or replacement agent</td></tr>
+<tr><td>C6 hidden content</td><td>nested encoding, zero-width characters, comment fields aimed at agents or self</td></tr>
+</tbody></table></div>
 <ol>
-<li>Scoring rule written to <code>docs/agents/*.md</code>, committed alone, sha256 in the commit message.</li>
-<li>Source read once, polite rate (3 s gap, one backoff on 429 or 5xx, then stop). Identifiers keyed and hashed in memory.</li>
-<li>Rule applied unchanged. Any rule written after seeing data is labelled post-hoc.</li>
-<li>Compared with a control. Verdict, numbers and rule sha appended to the decisions inbox.</li>
-<li>Person reads the page before publication.</li>
+<li>Rubric (labels: purpose, addressee, goal, outbound channel, multi-step) committed alone with sha256 before the real sample is classified.</li>
+<li>Items read in memory; recorded as hashed id, UTC time, labels and a one-line structural description. No raw text, names, handles or addresses stored.</li>
+<li>Rubric run on a negative sample (ordinary items, same venue) and a positive reference case.</li>
+<li>Benign explanations written and tried before any conclusion.</li>
+<li>Grade by evidence ladder; up to 10 items listed for person spot-check.</li>
 </ol>
 
-<h2 id="m2">2. Verdict classes</h2>
+<h2 id="m2">2. Evidence grades</h2>
+<div class="scroll"><table><thead><tr><th>Grade</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>E0</td><td>item exists in a public record</td></tr>
+<tr><td>E1</td><td>item is itself a communication artifact (message, relay, handoff, instruction, sink write, status post)</td></tr>
+<tr><td>E2</td><td>a second run or agent consumed or answered it</td></tr>
+<tr><td>E3</td><td>shared goal across several runs or agents shown (same target, task structure, sink)</td></tr>
+</tbody></table></div>
+<p>A finding needs E1 plus E2 or E3, with the benign explanations tried.</p>
+
+<h2 id="m3">3. Verdict classes</h2>
 <div class="scroll"><table><thead><tr><th>Class</th><th>Condition</th></tr></thead><tbody>
-<tr><td>Confirmed</td><td>frozen rule passed, every control beaten, independent record agrees</td></tr>
-<tr><td>Open lead</td><td>at least one frozen rule passed and one control beaten; not confirmed</td></tr>
-<tr><td>Found, not covert</td><td>real pattern, ordinary explanation (one owner, open program, tagged)</td></tr>
-<tr><td>Null / closed</td><td>rule fails, or pattern disappears under a control</td></tr>
-<tr><td>Incomplete / unobservable</td><td>coverage or schema insufficient; not a null</td></tr>
+<tr><td>Confirmed</td><td>E1 with E2 or E3; benign explanations ruled out</td></tr>
+<tr><td>Lead</td><td>E1; a plausible benign explanation remains</td></tr>
+<tr><td>Signal</td><td>one communication artifact, unexplained</td></tr>
+<tr><td>Agent activity</td><td>goal-directed agent work without communication; goal catalogued</td></tr>
+<tr><td>Benign</td><td>explained</td></tr>
+<tr><td>Incomplete / unobservable</td><td>content not readable at polite rates; not a null</td></tr>
 </tbody></table></div>
 
-<h2 id="m3">3. Statistics</h2>
+<h2 id="m4">4. Reference cases</h2>
+<div class="scroll"><table><thead><tr><th>Case</th><th>Role</th><th>Content signal</th></tr></thead><tbody>
+<tr><td>ntfy single-use channels, 6 and 8 Jul 2026</td><td>positive</td><td>public channel used as mailbox (C3)</td></tr>
+<tr><td>DSEWiki, 24 May to 2 Jul 2026</td><td>positive</td><td>shared wiki as coordination channel, round markers (C3, C4)</td></tr>
+<tr><td>Scanner-submitted map-data programs, late Sep to 4 Oct (outside report; not verified here)</td><td>outside claim</td><td>many runs, one target data type, result inboxes (C2, C3)</td></tr>
+<tr><td>29 Sep echo session</td><td>agent activity</td><td>one unfinished lookup of archived listings; nothing sent</td></tr>
+</tbody></table></div>
+
+<h2 id="m5">5. 29 Sep close-out</h2>
+<div class="scroll"><table><thead><tr><th>Record</th><th>UTC window</th><th>Content read</th><th>Class</th></tr></thead><tbody>
+<tr><td>NuGet, 137 packages</td><td>05:39 to 10:21</td><td>one publisher; single-use ids; descriptions of one modular framework; no reference to the other two records</td><td>Benign</td></tr>
+<tr><td>PyPI, 33 packages</td><td>07:48 to 08:23 (sampled uploads)</td><td>standard-library project with ordinary READMEs and one author field</td><td>Benign</td></tr>
+<tr><td>Echo pages, 23 plus 10 captures</td><td>19:51 to 23:33</td><td>one session reading an archived TV schedule, retrying one lookup (synchronous request, fetch, iframe, module import, second snapshot); no zero-width characters, comments, nested encodings or outbound post</td><td>Agent activity</td></tr>
+</tbody></table></div>
+<p>No shared sender, clock window or content. Closed. Read by one run on 5 Oct; person spot-check pending.</p>
+
+<h2 id="m5b">6. Legacy statistics</h2>
+<p>Used for rows dated before 5 Oct. Not evidence under the current method.</p>
 <div class="scroll"><table><thead><tr><th>Symbol</th><th>Definition</th></tr></thead><tbody>
-<tr><td>S</td><td>score of a day or group under the frozen rule</td></tr>
-<tr><td>B</td><td>baseline score, ordinary-day median</td></tr>
-<tr><td>K</td><td>count of independent sources flagging the same UTC day; HIT bar K&ge;3 and p&le;0.01</td></tr>
-<tr><td>p_ord</td><td>share of ordinary days with score &ge; observed</td></tr>
-<tr><td>p_shuf</td><td>share of shuffle draws (2,000 unless stated) with score &ge; observed; minimum about 0.0005</td></tr>
-<tr><td>p_ordK</td><td>share of days with K &ge; observed K (2 of 136 = 0.0147)</td></tr>
-<tr><td>p_global</td><td>probability that max K over all days reaches the observed value under circular shift of each source</td></tr>
-<tr><td>circular-shift p</td><td>share of random rotations of one source timeline with &ge; observed shared days</td></tr>
-<tr><td>L_hat, r</td><td>lead-lag offset in hours of the cross-correlation maximum, and the correlation at that offset</td></tr>
-<tr><td>AUC</td><td>rank statistic, 0.5 chance; bootstrap 95% CI where stated</td></tr>
-<tr><td>ARI</td><td>adjusted Rand index of two partitions, 0 chance</td></tr>
-<tr><td>Spearman &rho;</td><td>rank correlation of two series</td></tr>
+<tr><td>S, B</td><td>score of a day or group under the frozen rule; ordinary-day median</td></tr>
+<tr><td>K</td><td>independent sources flagging the same UTC day</td></tr>
+<tr><td>p_ord, p_shuf, p_ordK, p_global</td><td>shares of ordinary days, shuffles or circular shifts reaching the observed value</td></tr>
+<tr><td>AUC, ARI, Spearman</td><td>rank statistic, partition agreement, rank correlation</td></tr>
 </tbody></table></div>
 
-<h2 id="m4">4. Controls</h2>
-<div class="scroll"><table><thead><tr><th>Control</th><th>Procedure</th><th>Used for</th></tr></thead><tbody>
-<tr><td>Ordinary day</td><td>score days with no known event by the same rule</td><td>daily-count bursts</td></tr>
-<tr><td>Shuffle</td><td>permute event times within day or hour, 1,000 to 10,000 draws</td><td>time-clustered groups</td></tr>
-<tr><td>Circular shift</td><td>rotate one source timeline by a random offset</td><td>two sources flagging the same day</td></tr>
-<tr><td>Activity-matched</td><td>draw comparison owners or accounts with equal volume</td><td>owner or account groups</td></tr>
-<tr><td>Degree-preserving</td><td>rewire reply edges, node degrees fixed</td><td>reply graphs</td></tr>
-<tr><td>Rarity-matched</td><td>draw names from the empirical background multiset, not a within-window shuffle</td><td>same-name multi-owner tests</td></tr>
-</tbody></table></div>
-
-<h2 id="m5">5. Cross-source score (29 Sep)</h2>
-<div class="scroll"><table><thead><tr><th>Source</th><th>S</th><th>B</th><th>Rank</th><th>Note</th></tr></thead><tbody>
-<tr><td>PyPI</td><td class=n>33 first releases in 164.8 min</td><td class=n></td><td></td><td>one hashed owner; 32 one-version</td></tr>
-<tr><td>Wayback CDX echo hosts</td><td class=n>0.83</td><td class=n>0.09</td><td></td><td>23 captures</td></tr>
-<tr><td>npm</td><td class=n>37</td><td class=n></td><td>37 / 62</td><td>not flagged</td></tr>
-<tr><td>HF datasets</td><td class=n>102</td><td class=n></td><td>23 / 63</td><td>not flagged</td></tr>
-</tbody></table></div>
-<p>K=2. p_global=0.1356. p_ordK=0.0147 (2 of 136 days). Pair circular shift: httpbin+ntfy p=0.0082; httpbin+PyPI p=0.092 (shared n=21). Lead-lag L_hat=-11, r=0.252, p=0.597. Status: open lead.</p>
-
-<h2 id="m6">6. Rig</h2>
+<h2 id="m6">7. Rig</h2>
 <div class="scroll"><table><tbody>
 <tr><td>Language</td><td>Python 3.9, standard library plus requests; static HTML with inline SVG</td></tr>
 <tr><td>Hash</td><td>sha256 for rule files; keyed hashes of identifiers, key dropped after the run</td></tr>
@@ -104,24 +113,24 @@ td.mono{font:10.5px/1.4 ui-monospace,Menlo,monospace;color:var(--soft)}
 <tr><td>Local data</td><td>about 150 GB gzip (AI Village HF dataset), inside gitignored folders</td></tr>
 </tbody></table></div>
 
-<h2 id="m7">7. Data handling</h2>
+<h2 id="m7">8. Data handling</h2>
 <ul>
-<li>Kept: counts, dates, hashed identifiers, scoring code.</li>
-<li>Not kept: page text, post text, usernames, addresses. Network addresses reduced to operator counts.</li>
+<li>Kept: hashed identifiers, UTC times, labels, one-line structural descriptions, scoring code, counts as scale.</li>
+<li>Content is read in memory and not kept. Not kept: page text, post text, names, handles, addresses, tokens. Network addresses reduced to operator labels; creator addresses exposed by a source are not copied.</li>
 <li>Datasets released under terms stay local and are used within those terms.</li>
 <li>No scanning or probing of hosts, no login or paywall bypass, no contact with the sites measured.</li>
 <li>No attribution to any person, lab or company.</li>
 </ul>
 
-<h2 id="m8">8. Limits</h2>
+<h2 id="m8">9. Limits</h2>
 <ul>
 <li>Public feeds drop history; an empty old date can mean the record is gone.</li>
-<li>Single-day and single-source results are leads, not findings.</li>
+<li>Content reading is done by one run per pass; a person spot-checks a short list before a verdict is relied on.</li>
 <li>Code and drafts were produced with AI assistants; rules, numbers and wording are checked by a person before publication.</li>
 <li>One reader checks everything; corrections welcome.</li>
 </ul>
 
-<h2 id="m9">9. Sources</h2>
+<h2 id="m9">10. Sources</h2>
 <ul>
 <li>collusion.wiki and its dataset (wiki incident, documented first); recovered here independently from the wiki public change log.</li>
 <li>AI Village public chat and dataset (sanctioned coordination example).</li>
