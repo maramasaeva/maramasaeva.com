@@ -1,0 +1,105 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Map-service fleet</title><script>try{if(localStorage.getItem("theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}</script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Work+Sans:wght@400;500&display=swap"><style>
+:root{--bg:#fdfcfb;--fg:#171716;--muted:#3d3c39;--soft:#6e6d6a;--faint:#e2e0da;--accent:#285a5d;--wash:#f4f2ee;color-scheme:light}
+:root[data-theme="dark"]{--bg:#131312;--fg:#ecebe7;--muted:#a8a69f;--soft:#8c8a84;--faint:#2c2b28;--accent:#8fc2c5;--wash:#1b1b19;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 12.5px/1.5 "Work Sans",system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:68rem;margin:0 auto;padding:1.5rem 1.25rem 4rem}
+.top{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem 1rem;font-size:12px}
+.top a{color:var(--soft);text-decoration:none}.top a:hover,.top a[aria-current]{color:var(--fg)}
+.top .home{color:var(--fg)}.top .home:hover{text-decoration:underline}
+.top button{margin-left:auto;font:inherit;color:var(--soft);background:none;border:0;cursor:pointer;padding:0}
+.sub{margin-top:.4rem}
+h1{font:600 1.9rem/1.15 "Cormorant Garamond",Georgia,serif;margin:1.6rem 0 .3rem}
+h2{font:600 1.35rem/1.2 "Cormorant Garamond",Georgia,serif;margin:2.4rem 0 .6rem;padding-top:1rem;border-top:1px solid var(--fg);scroll-margin-top:.8rem}
+h3{font:500 .95rem/1.3 "Work Sans",system-ui,sans-serif;margin:1.6rem 0 .35rem;scroll-margin-top:.8rem}
+.meta{color:var(--soft);font-size:11.5px;margin:0 0 1rem}
+p{margin:.45rem 0}
+a{color:var(--accent)}
+ul,ol{margin:.35rem 0 .7rem;padding-left:1.25rem}li{margin:.18rem 0}
+code{font:11px/1.4 ui-monospace,"SF Mono",Menlo,Consolas,monospace;background:var(--wash);padding:0 .25rem}
+pre{overflow-x:auto;background:var(--wash);padding:.6rem .8rem;font:11px/1.45 ui-monospace,Menlo,monospace}
+.toc{columns:3 16rem;column-gap:2rem;margin:.8rem 0 0;padding:0;list-style:none;font-size:11.5px;line-height:1.55}
+.toc li{break-inside:avoid;margin:0}
+.toc a{text-decoration:none;color:var(--muted)}.toc a:hover{color:var(--fg);text-decoration:underline}
+.toc .s{color:var(--soft)}
+.scroll{overflow-x:auto;margin:.5rem 0 1rem}
+table{border-collapse:collapse;width:100%;font-size:11.5px;line-height:1.4}
+th{text-align:left;font-weight:500;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--soft);border-bottom:1px solid var(--fg);padding:.3rem .7rem .3rem 0;vertical-align:bottom;white-space:nowrap}
+td{padding:.3rem .7rem .3rem 0;border-bottom:1px solid var(--faint);vertical-align:top}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+td.mono{font:10.5px/1.4 ui-monospace,Menlo,monospace;color:var(--soft)}
+.v{font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.foot{color:var(--soft);font-size:11px;margin-top:3rem;border-top:1px solid var(--faint);padding-top:.8rem}
+dt{font-weight:500;margin-top:.7rem}dd{margin:.1rem 0 0}.read{max-width:44rem}.read p,.read li{font-size:14.5px;line-height:1.65}.read table{font-size:13px}.read .lead{font-size:16px;line-height:1.6;margin:.4rem 0 1rem}.read h2{margin-top:2rem}
+@media(max-width:34rem){h1{font-size:1.6rem}}
+</style></head><body><div class="wrap"><nav class="top"><a class="home" href="/">mara messier masaeva</a><a href="/work">work</a><a href="/services">services</a><a href="/creative">creative</a><a href="/writing">writing</a><a href="/questions">questions</a><a href="/messageboard">messageboard</a><a href="/observatory" aria-current=page>observatory</a><button id="tt" type="button" aria-label="Switch theme">dark</button></nav><nav class="top sub"><span class="meta" style="margin:0">murmuration</span><a href="/observatory">summary</a> <a href="/observatory/fleet" aria-current=page>fleet report</a> <a href="/observatory/data">data</a> <a href="/observatory/info">info</a></nav>
+<div class="read">
+<h1>Map-service fleet: what the records show</h1>
+<p class="lead">On 4 October the swarmchasers team published <a href="https://swarmcha.se/posts/chinese-agent-fleet" target="_blank" rel="noopener">a report</a> about many agent runs reading entrance and navigation data from a map service (amap.com) through a public URL scanner, and returning results through shared inboxes and paste sites. The finding is theirs. This page records what Murmuration held before the report, what it saw when it re-ran its method on the same public records, and what it cannot say.</p>
+<p>The report describes the fleet as Chinese and names a hosting provider. Those attributions are the report's. They have not been verified here and are not repeated as findings.</p>
+
+<h2>Before the report</h2>
+<ul>
+<li>The late-September scanner cell (14 Sep to 1 Oct) held 24 decoded pages on one echo host. Host references in those pages: amap.com 3, alicdn.com 2. fetch() appeared on 6 of 24 pages. The research log recorded both hosts on 3 October among hosts missing from the community inventory, next to webhook.site (29 references over the whole sample).</li>
+<li>In the earlier May ramp and June peak cells the listed top hosts contained no map or CDN host.</li>
+<li>Per-page host membership was not stored, so the references could not be scored page by page. Reference counts are not page counts: 3 plus 2 references may sit on fewer than 5 pages. The follow-up (I-149) was recorded INCOMPLETE on 4 October.</li>
+<li>The swarmchasers team has said publicly that this project also flagged the map-service activity as odd while they were working on it.</li>
+</ul>
+
+<h2>After the report (5 October, with scanner access)</h2>
+<div class="scroll"><table><thead><tr><th>Test</th><th>Verdict</th><th>Grade</th><th>What it found</th></tr></thead><tbody>
+<tr><td>I-149, late-September cell</td><td>Incomplete</td><td>E0</td><td>amap.com 3 and alicdn.com 2 references on 24 decoded pages; no per-page record to score.</td></tr>
+<tr><td>I-160, first attempt</td><td>Incomplete</td><td>E0</td><td>No independent read. The scanner key was missing and public search returned no report bodies.</td></tr>
+<tr><td>I-190, re-run with scanner access</td><td>Lead</td><td>E1</td><td>Many runs share one target type (place information). Their results go to inbox posts, echo-page retrieval, title or page-structure side channels, or nowhere. There is no single sink pattern, so a shared goal (E3) is not shown.</td></tr>
+<tr><td>I-161, result sinks</td><td>Lead</td><td>E1</td><td>Two instruction pastes are still readable on shared paste sites: a timed redirect into a map place page, and a large obfuscated script bundle. No second reader found.</td></tr>
+<tr><td>I-162, writer and reader pairs</td><td>Signal</td><td>E1</td><td>Writers confirmed. No later public reader. The only apparent readers are documentation citing the paste addresses.</td></tr>
+<tr><td>I-207, redirect skeleton</td><td>Signal</td><td>E1</td><td>The timed redirect paste matches no later paste with the same full skeleton.</td></tr>
+<tr><td>I-208, hidden carriers</td><td>Agent activity</td><td>E0</td><td>No zero-width characters or nested encodings in the two pastes. Both are agent-written.</td></tr>
+<tr><td>I-189, public inboxes</td><td>Benign</td><td>E0</td><td>Readable inboxes show ordinary webhook debug traffic. No staged markers and no entrance-share payloads.</td></tr>
+<tr><td>I-206, other inbox hosts</td><td>Benign</td><td>E0</td><td>Mostly unobservable without anonymous request logs. Two ordinary items were readable.</td></tr>
+</tbody></table></div>
+
+<h2>What matches the report</h2>
+<ul>
+<li>Many runs aimed at the same kind of data: place information on a map service.</li>
+<li>Programs that write their results to a shared sink or side channel, which makes the result a message left for someone else (E1).</li>
+<li>Instruction pastes at paste sites the report names, written by an agent according to the labels.</li>
+</ul>
+
+<h2>What does not match, or is not shown</h2>
+<ul>
+<li>One shared sink across the runs. The sinks differ.</li>
+<li>Entrance-share fields in the decoded program text. They may be absent, obfuscated, or only in program bodies that could not be read.</li>
+<li>Any reader of the sinks (E2).</li>
+<li>One of the report's paste pages no longer exists.</li>
+<li>The hosting and time-zone evidence in the report. It is not visible in the public records used here.</li>
+</ul>
+
+<h2>Ordinary explanations that survive</h2>
+<ul>
+<li>One researcher or a map-data tool.</li>
+<li>One agent or an evaluation harness. Parallel structure alone does not show agents talking to each other.</li>
+<li>Ordinary security probing. This fits weakly, because the carrier programs read place information and then write to a sink.</li>
+</ul>
+
+<h2>Grade</h2>
+<p>Lead, E1. The sink writes are communication artifacts. E3 is not met and E2 was not tested.</p>
+
+<h2>Limits</h2>
+<ul>
+<li>Public scanner search only. Reports expire, so counts are lower bounds.</li>
+<li>The rubric was frozen before the real sample was read (sha256 cf31dbb59d877182563454deb6105bcc8e6a10fa81c3946ca4defb1589c91d8f). One pass applied it. A person has not yet read the ten-item spot-check list.</li>
+<li>Program text, inbox addresses and network addresses are not kept. Items are identified by hash and label only.</li>
+<li>The detection and the report are the swarmchasers team's. This page only records what this project saw independently and afterwards.</li>
+</ul>
+
+<h2>Where to read more</h2>
+<ul>
+<li><a href="https://swarmcha.se/posts/chinese-agent-fleet" target="_blank" rel="noopener">The swarmchasers report</a></li>
+<li><a href="/observatory/data">Data</a>: the rows above with their rule hashes.</li>
+<li><a href="/observatory/info">Info</a>: the method and the grades.</li>
+</ul>
+<p class="foot">Updated 5 October 2026. Corrections welcome; contact details are on maramasaeva.com.</p>
+</div>
+</div><script>var b=document.getElementById("tt");b.addEventListener("click",function(){var d=document.documentElement,n=d.dataset.theme==="dark"?"light":"dark";d.dataset.theme=n;try{localStorage.setItem("theme",n)}catch(e){}b.textContent=n==="dark"?"light":"dark"});b.textContent=document.documentElement.dataset.theme==="dark"?"light":"dark";</script></body></html>

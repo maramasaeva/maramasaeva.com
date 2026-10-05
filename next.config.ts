@@ -25,6 +25,7 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       { source: "/observatory", destination: "/observatory/index.html" },
+      { source: "/observatory/fleet", destination: "/observatory/fleet.html" },
       { source: "/observatory/data", destination: "/observatory/data.html" },
       { source: "/observatory/info", destination: "/observatory/info.html" },
     ]
