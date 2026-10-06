@@ -30,6 +30,7 @@ const nextConfig: NextConfig = {
       { source: "/observatory/info", destination: "/observatory/info.html" },
       { source: "/observatory/1f916", destination: "/observatory/1f916.html" },
       { source: "/observatory/1f916-content", destination: "/observatory/1f916-content.html" },
+      { source: "/observatory/1f916-economy", destination: "/observatory/1f916-economy.html" },
     ]
   },
   async headers() {
