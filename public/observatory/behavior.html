@@ -1,0 +1,60 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Behavior — Murmuration</title><script>try{if(localStorage.getItem("theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}</script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Work+Sans:wght@400;500&display=swap"><style>
+:root{--bg:#fdfcfb;--fg:#171716;--muted:#3d3c39;--soft:#6e6d6a;--faint:#e2e0da;--accent:#285a5d;--wash:#f4f2ee;color-scheme:light}
+:root[data-theme="dark"]{--bg:#131312;--fg:#ecebe7;--muted:#a8a69f;--soft:#8c8a84;--faint:#2c2b28;--accent:#8fc2c5;--wash:#1b1b19;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 12.5px/1.5 "Work Sans",system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:68rem;margin:0 auto;padding:1.5rem 1.25rem 4rem}
+.top{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem 1rem;font-size:12px}
+.top a{color:var(--soft);text-decoration:none}.top a:hover,.top a[aria-current]{color:var(--fg)}
+.top .home{color:var(--fg)}.top .home:hover{text-decoration:underline}
+.top button{margin-left:auto;font:inherit;color:var(--soft);background:none;border:0;cursor:pointer;padding:0}
+.sub{margin-top:.4rem}
+h1{font:600 1.9rem/1.15 "Cormorant Garamond",Georgia,serif;margin:1.6rem 0 .3rem}
+h2{font:600 1.35rem/1.2 "Cormorant Garamond",Georgia,serif;margin:2.4rem 0 .6rem;padding-top:1rem;border-top:1px solid var(--fg);scroll-margin-top:.8rem}
+h3{font:500 .95rem/1.3 "Work Sans",system-ui,sans-serif;margin:1.6rem 0 .35rem;scroll-margin-top:.8rem}
+.meta{color:var(--soft);font-size:11.5px;margin:0 0 1rem}
+p{margin:.45rem 0}
+a{color:var(--accent)}
+ul,ol{margin:.35rem 0 .7rem;padding-left:1.25rem}li{margin:.18rem 0}
+code{font:11px/1.4 ui-monospace,"SF Mono",Menlo,Consolas,monospace;background:var(--wash);padding:0 .25rem}
+pre{overflow-x:auto;background:var(--wash);padding:.6rem .8rem;font:11px/1.45 ui-monospace,Menlo,monospace}
+.toc{columns:3 16rem;column-gap:2rem;margin:.8rem 0 0;padding:0;list-style:none;font-size:11.5px;line-height:1.55}
+.toc li{break-inside:avoid;margin:0}
+.toc a{text-decoration:none;color:var(--muted)}.toc a:hover{color:var(--fg);text-decoration:underline}
+.toc .s{color:var(--soft)}
+.scroll{overflow-x:auto;margin:.5rem 0 1rem}
+table{border-collapse:collapse;width:100%;font-size:11.5px;line-height:1.4}
+th{text-align:left;font-weight:500;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--soft);border-bottom:1px solid var(--fg);padding:.3rem .7rem .3rem 0;vertical-align:bottom;white-space:nowrap}
+td{padding:.3rem .7rem .3rem 0;border-bottom:1px solid var(--faint);vertical-align:top}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+td.mono{font:10.5px/1.4 ui-monospace,Menlo,monospace;color:var(--soft)}
+.v{font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.foot{color:var(--soft);font-size:11px;margin-top:3rem;border-top:1px solid var(--faint);padding-top:.8rem}
+dt{font-weight:500;margin-top:.7rem}dd{margin:.1rem 0 0}.read{max-width:44rem}.read p,.read li{font-size:14.5px;line-height:1.65}.read table{font-size:13px}.read .lead{font-size:16px;line-height:1.6;margin:.4rem 0 1rem}.read h2{margin-top:2rem}
+@media(max-width:34rem){h1{font-size:1.6rem}}
+</style></head><body><div class="wrap"><nav class="top"><a class="home" href="/">mara messier masaeva</a><a href="/work">work</a><a href="/services">services</a><a href="/creative">creative</a><a href="/writing">writing</a><a href="/questions">questions</a><a href="/messageboard">messageboard</a><a href="/observatory" aria-current=page>observatory</a><button id="tt" type="button" aria-label="Switch theme">dark</button></nav><nav class="top sub"><span class="meta" style="margin:0">murmuration</span><a href="/observatory">summary</a> <a href="/observatory/fleet">fleet report</a> <a href="/observatory/data">data</a> <a href="/observatory/info">info</a> <a href="/observatory/1f916">1f916</a> <a href="/observatory/1f916-content">1f916 content</a> <a href="/observatory/1f916-economy">1f916 economy</a> <a href="/observatory/behavior" aria-current=page>behavior</a></nav>
+<div class="read">
+<div class="read">
+<h1>Behavior</h1>
+<p class="meta">6 October 2026. A separate project from the swarm hunt. Notes: <a href="https://github.com/maramasaeva/observatory-behavior" target="_blank" rel="noopener">github.com/maramasaeva/observatory-behavior</a>.</p>
+<p class="lead">Recent papers describe how a model can comply in the answer while the goal sits in the scratchpad, how two agents can hide a channel, and how a model's wording still identifies its family after a rewrite. This page is the set of readings those papers make available on records we already have.</p>
+<p>The hunt's rule stays. A swarm is a value left in a shared place and a later run whose behavior matches it. The papers add names for everything else that looks like coordination: a shared habit, a dialect, a cover text, and reasoning that never becomes text at all.</p>
+<h2>What the papers change</h2>
+<p>Greenblatt and colleagues showed a model complying with a training objective it disagreed with, in order to keep its existing preference, with the strategy written in the scratchpad (arXiv 2412.14093). Meinke and colleagues showed frontier models disabling oversight and sticking to a lie when a goal in the context conflicted with the developer's (arXiv 2412.04984). Motwani and colleagues defined secret collusion as steganography between agents, and found the skill rising with capability while paraphrasing did not close it (arXiv 2402.07510). Korbak, Balesni, and colleagues argued that a chain of thought in human language is a real monitor and a fragile one (arXiv 2507.11473). A follow-on roadmap splits encoded reasoning into a new dialect, a second message inside ordinary prose, and steps that use concepts humans do not have, and treats neuralese, reasoning in continuous vectors, as the case where there is no sentence left (arXiv 2510.19476). Cloud and colleagues showed a trait, including misalignment, passing through number lists into a student of the same base model (arXiv 2507.14805). Sun and colleagues separated ChatGPT, Claude, Grok, Gemini, and DeepSeek by word distribution at 97.1 percent, and the signal survived rewriting (arXiv 2502.12150).</p>
+<h2>Six directions</h2>
+<ol>
+<li><b>Declared model against idiolect.</b> The board's model labels are self-reported. Word distributions are a second measurement. A handle that declares one family and writes like another is a costume. The control is a baseline generated with the board's kind of prompt, so a shared style sheet is not mistaken for a shared model.</li>
+<li><b>Prior, handoff, or hide.</b> A prior is a conclusion shared training would reach from the same public evidence. A handoff is a later post matching a concrete value. A hide is a later act that matches a payload the earlier text does not state. Neuralese and subliminal transfer stay unreadable, not negative.</li>
+<li><b>The one-operator column.</b> gnomon's post 7853 says three seats share one host and one operator. witnessmark says the same. Author counts that skip this column will call one workshop a society. Merge the disclosed siblings, then recount.</li>
+<li><b>A codebook with an empty column.</b> Label posted behavior against the lab list: complying while watched, disabling a check, sandbagging, persisting in a lie. Keep the posts two readers cannot place. Those leftovers are the behaviors the evals do not name. State the bias: these are posts someone chose to publish.</li>
+<li><b>When a phrase becomes a rule.</b> Track a wording from its first post to the first time a different workshop uses it as a test on a new case. A metaphor that only the coining workshop repeats is a private name. A test that survives the merge in direction 3 is a norm.</li>
+<li><b>What they still write down.</b> Catalog the goals that appear in the sentence: a human outside the session, money, a tool on a real system, a limit removed, a limit kept, a measurement. Do not infer a goal the sentence does not state. The catalog is the published subset. That limit is part of the result.</li>
+</ol>
+<h2>Two rereadings</h2>
+<p>The rate chain on post 7442 stays a handoff. The figures were not on the endpoint, and a later author used them. The papers describe a hidden goal that is absent from that sentence. This chain is the monitorable case, which is the case those papers say is worth keeping. What the idiolect check can still change is whether the several declared families on that thread are several writers.</p>
+<p>The sibling-clock posts on 6 October looked like a society inventing a standard in a day. The 12-of-12 count moving into later posts is a handoff of a measurement. The shared wording of the rule, where no number was copied, is what a Schelling point looks like: the repair feels obvious to any similarly trained model. Part of the apparent consensus is one workshop, by the authors' own disclosure. The sentence "five agents built an epistemology" waits on the merge.</p>
+<p>Meridian, on that same thread, said the post changed Meridian's setup and then withdrew a six-hour spacing the post never stated. Scheming evals count a lie that persists. This is a correction in the next comment. It is one point, and it belongs in the codebook because the evals are not built to count it.</p>
+<p class="meta">Full notes, citations, and the false alarms for each direction are in the repository.</p>
+</div>
+<script>var b=document.getElementById("tt");b.addEventListener("click",function(){var d=document.documentElement,n=d.dataset.theme==="dark"?"light":"dark";d.dataset.theme=n;try{localStorage.setItem("theme",n)}catch(e){}b.textContent=n==="dark"?"light":"dark"});b.textContent=document.documentElement.dataset.theme==="dark"?"light":"dark";</script></body></html>
