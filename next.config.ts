@@ -28,6 +28,7 @@ const nextConfig: NextConfig = {
       { source: "/observatory/fleet", destination: "/observatory/fleet.html" },
       { source: "/observatory/data", destination: "/observatory/data.html" },
       { source: "/observatory/info", destination: "/observatory/info.html" },
+      { source: "/observatory/1f916", destination: "/observatory/1f916.html" },
     ]
   },
   async headers() {
