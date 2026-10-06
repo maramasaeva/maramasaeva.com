@@ -37,12 +37,12 @@ dt{font-weight:500;margin-top:.7rem}dd{margin:.1rem 0 0}.read{max-width:44rem}.r
 <div class="read">
 <h1>Murmuration</h1>
 <p class="lead">A one-person project that reads public internet records to find AI agents talking to each other or working toward a shared goal.</p>
-<p><b>Status on 5 October 2026:</b> three confirmed cases (ntfy, DSEWiki, 1f916.ai), one closed false alarm and a handful of weak leads.</p>
+<p><b>Status on 5 October 2026:</b> two confirmed cases (ntfy, DSEWiki), one known agent forum read (1f916.ai; not a new swarm), one closed false alarm and a handful of weak leads.</p>
 <p><b>1f916.ai report (5 October 2026):</b> <a href="/observatory/1f916">/observatory/1f916</a>, 16 sections on the 7442 chain, other adoption chains, rhythm, community statistics and open questions. Dataset: <a href="https://github.com/maramasaeva/1f916-archive" target="_blank" rel="noopener">github.com/maramasaeva/1f916-archive</a>.</p>
 
 <h2>What has been found</h2>
 <div class="scroll"><table><thead><tr><th>Case</th><th>What happened</th><th>Status</th></tr></thead><tbody>
-<tr><td>1f916.ai attest chain</td><td>A public forum whose citizens are AI agents. Agent egress left a hash anchor and a night table (24.2 rows/h whole window, 2.9x spread, row 23290 at 07:24:15Z). Agent claude-code-cli later used 23290 and 24.2/h and wrote that egress's two traps were adopted. Agent Bishop used the 2.9x. Details below.</td><td>Confirmed, E1+E2+E3</td></tr>
+<tr><td>1f916.ai (known agent forum)</td><td>A public forum built for AI agents; it launched on 5 August 2026 and its documentation names a human owner and an AI maintainer. Reading its threads found agents reusing each other's results. Agent egress left a hash anchor and a night table (24.2 rows/h whole window, 2.9x spread, row 23290 at 07:24:15Z). Agent claude-code-cli later used 23290 and 24.2/h and wrote that egress's two traps were adopted. Agent Bishop used the 2.9x. Details below.</td><td>Known venue, not a new swarm; communication observed, E1+E2+E3</td></tr>
 <tr><td>1f916.ai full report</td><td>Read of the public record of the same forum: 7,801 posts, 94,341 comments, 2,916 citizens. Adoption chains with delays, idiom spread, schedules, one-operator tests, declared models, community statistics, themes, questions, notable items, 30 open questions. Dataset repository linked. Page: <a href="/observatory/1f916">/observatory/1f916</a>; dataset: <a href="https://github.com/maramasaeva/1f916-archive" target="_blank" rel="noopener">github.com/maramasaeva/1f916-archive</a>.</td><td>Report; chain grades per row</td></tr>
 <tr><td>ntfy channels</td><td>A public notification service. On 6 and 8 July, 55 and 81 one-time channel names appeared, each used once. Agents used the channels as mailboxes.</td><td>Confirmed</td></tr>
 <tr><td>DSEWiki</td><td>A small public wiki that a swarm of agents used to coordinate in May and June. Others documented it first at collusion.wiki. Here it was recovered separately from the wiki's own change log.</td><td>Confirmed</td></tr>
@@ -52,7 +52,7 @@ dt{font-weight:500;margin-top:.7rem}dd{margin:.1rem 0 0}.read{max-width:44rem}.r
 </tbody></table></div>
 
 <h2 id="r1f916">1f916.ai attest chain, read 5 October 2026</h2>
-<p class="meta">Post 7442 and the same-day porch on 1f916.ai. Each citizen is an AI agent with a handle; one post a day each; hash-chained public log at <code>GET /api/attest</code>. No account used, nothing posted. Reached through a pointer on a public lease board to porch line 4150. No rubric was frozen before this read; the evidence ladder is the one used in the earlier pilots.</p>
+<p class="meta">Venue: 1f916.ai launched publicly on 5 August 2026 as an intentional AI agent forum. Its documentation states that a human owner controls the domain and infrastructure and that citizen 1 is an AI and the declared maintainer (<a href="https://1f916.ai/" target="_blank" rel="noopener">front door</a>, <a href="https://1f916.ai/human/economy" target="_blank" rel="noopener">economy page</a>). It is not a newly detected swarm; the entry records what the agents exchanged. Post 7442 and the same-day porch on 1f916.ai. Each citizen is an AI agent with a handle; one post a day each; hash-chained public log at <code>GET /api/attest</code>. No account used, nothing posted. Reached through a pointer on a public lease board to porch line 4150. No rubric was frozen before this read; the evidence ladder is the one used in the earlier pilots.</p>
 <div class="scroll"><table><thead><tr><th>UTC</th><th>Handle</th><th>Item</th><th>Content</th></tr></thead><tbody>
 <tr><td>2026-10-02 07:26</td><td>egress</td><td>comment 89554</td><td>Names the anchor: identity <code>verified_head</code> <code>f4f81f4511b0997cdb1c1ab411001b3ea49675acb34780cb0f6c9b24f8b34b70</code>, through id 20000. States that an alarm on <code>head</code> alone reads the wrong field.</td></tr>
 <tr><td>2026-10-03 02:10</td><td>claude-code-cli</td><td>comment 90612</td><td>Repeats the full hash and a row series that includes egress's 22628 at 01:13Z.</td></tr>
@@ -77,7 +77,8 @@ dt{font-weight:500;margin-top:.7rem}dd{margin:.1rem 0 0}.read{max-width:44rem}.r
 <tr><td>E3</td><td>The same handles share one job across days. Decide whether the write rate spikes at UTC midnight and stop alarming on the wrong field.</td></tr>
 </tbody></table></div>
 <div class="scroll"><table><thead><tr><th>Ordinary explanation</th><th>Result</th></tr></thead><tbody>
-<tr><td>Same public endpoint</td><td>Explains two handles printing one verified_head. Does not explain 24.2/h or row 23290, which egress computed and wrote.</td></tr>
+<tr><td>Same public endpoint</td><td>Explains two handles printing one verified_head. Does not explain 24.2/h or row 23290, which egress computed from readings by three handles.</td></tr>
+<tr><td>Venue built for agent exchange</td><td>Yes. The forum was made for agents; reuse of results between handles is expected there.</td></tr>
 <tr><td>One person holds all keys</td><td>Not ruled out. The site says a human can post by hand. Five handles declare five different models; the labels are self-declared and verified by nothing.</td></tr>
 <tr><td>One agent correcting itself</td><td>egress corrects its own post. The adopted traps and the 2.9x come from different handles.</td></tr>
 <tr><td>Hash copied without reading</td><td>Porch 4494 reports a run with <code>identity_from=20000</code>. Comment 93680 uses the derived rate, which a hash copy does not contain.</td></tr>
