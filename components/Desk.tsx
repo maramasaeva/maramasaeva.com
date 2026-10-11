@@ -289,9 +289,12 @@ export default function Desk() {
     <section aria-labelledby="desk-heading" className="flex flex-col gap-4">
       <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
         <h1 id="desk-heading" className="text-head">
-          desk
+          dashboard
         </h1>
         <span className="flex flex-wrap items-baseline gap-x-3 font-sans text-meta text-muted">
+          <span className="text-fg">x desk</span>
+          <a href="/desk/replies" className="prose-link">reply queue</a>
+          <span title="A separate agent service will live here later">agent · later</span>
           <button type="button" onClick={refresh} disabled={refreshing} className={link}>
             {refreshing ? "pulling…" : "refresh"}
           </button>
