@@ -34,10 +34,10 @@ export const cv: CvRow[] = [
   },
   {
     years: "2026–",
-    what: "wtf, ai?: an open evening in leuven, and a dossier in dutch of what ai is actually doing",
-    org: "wtf, ai?",
-    href: "https://wtf-ai-leuven.vercel.app",
-    refs: [{ text: "dossier", href: "https://wtf-ai-leuven.vercel.app/dossier" }],
+    what: "aiaiai: an open evening at STUK in leuven, and a dossier in dutch of what ai is actually doing",
+    org: "aiaiai",
+    href: "https://aiaiai.maramasaeva.com",
+    refs: [{ text: "dossier", href: "https://aiaiai.maramasaeva.com/dossier" }],
   },
   {
     years: "2026",

@@ -81,11 +81,11 @@ function Intro() {
       <p>
         <span className="hl">
           lately i keep a{" "}
-          <A href="https://wtf-ai-leuven.vercel.app/dossier">dossier</A> of
+          <A href="https://aiaiai.maramasaeva.com/dossier">dossier</A> of
           what ai is actually doing, in dutch, because almost everything worth
           reading about it is in english and that is its own kind of problem.
           it belongs to{" "}
-          <A href="https://wtf-ai-leuven.vercel.app">an evening in leuven</A>{" "}
+          <A href="https://aiaiai.maramasaeva.com">aiaiai at STUK in leuven</A>{" "}
           i&apos;m putting together for people who have recently noticed that
           this is going to be a big deal and have nobody to talk to about it.
         </span>
