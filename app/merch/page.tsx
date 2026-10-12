@@ -3,7 +3,7 @@ import Image from "next/image"
 
 export const metadata: Metadata = {
   title: "merch",
-  description: "shirts, €24, shipping included. printed when someone orders one.",
+  description: "shirts.",
 }
 
 /* One price for both. PayPal pays messiermara@gmail.com; she places the
@@ -43,14 +43,12 @@ const shirts: {
 export default function Merch() {
   return (
     <div className="flow-lg max-w-[34rem]">
-      <p>shirts. €24, shipping included. printed when someone orders one.</p>
-
       {shirts.map((shirt) => (
         <section key={shirt.title} className="flow">
           <div className="flex items-baseline justify-between gap-3">
             <h2 className="text-head">{shirt.title}</h2>
             <span className="shrink-0 font-sans text-meta text-muted tabular-nums">
-              €24
+              €24 / $27
             </span>
           </div>
           {shirt.images.map((image) => (
