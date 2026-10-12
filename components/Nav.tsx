@@ -37,6 +37,7 @@ export default function Nav() {
           )}
         </span>
         <ThemeToggle />
+        <Link href="/desk" className="text-muted hover:text-fg">desk</Link>
       </nav>
     </header>
   )

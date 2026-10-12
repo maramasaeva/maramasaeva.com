@@ -1,12 +1,14 @@
 import { deskConfigured, isDesk } from "@/lib/desk/auth"
-import Desk from "@/components/Desk"
-import DeskLogin from "@/components/DeskLogin"
+import { redirect } from "next/navigation"
 
 export const dynamic = "force-dynamic"
 
-/* /desk: mara's private reply desk. Not linked from anywhere, noindex, and
-   the page renders the login form to anyone without the cookie. */
+/* Messaging is now the private desk entry; X public replies live at /desk/x. */
 export default async function DeskPage() {
-  if (!deskConfigured()) return <p className="text-muted">nothing here.</p>
-  return (await isDesk()) ? <Desk /> : <DeskLogin />
+  if (await isDesk()) redirect("/desk/app")
+  return <section className="flex flex-col gap-4">
+    <h1 className="text-xl">your desk</h1>
+    <p className="text-muted">Your private workspace, from any device. Replies in your voice stay drafts until you approve them.</p>
+    {deskConfigured() ? <a href="/api/desk/google/start" className="self-start border border-faint px-3 py-2 font-sans text-meta hover:border-muted">Sign in with Google</a> : <p className="font-sans text-meta text-muted">Google sign-in is not configured yet.</p>}
+  </section>
 }
