@@ -1,0 +1,77 @@
+import { repos } from "./data"
+import { portfolio, type Media } from "./portfolio"
+
+export const categories = ["all", "agents & software", "research", "sound", "film & images", "writing"] as const
+export type Category = typeof categories[number]
+export type Project = {
+  id: string; title: string; year: string; description: string; categories: Category[]
+  role?: string; links: { label: string; href: string }[]; media?: Media[]
+  visual?: "observatory" | "agents" | "editor" | "poem" | "code"
+}
+const highlights: Project[] = [
+  { id: "observatory", title: "murmuration observatory", year: "2026–", categories: ["research", "agents & software"],
+    description: "i look through public internet records for ai agents talking to each other. each claim has to beat a control first. the dead leads stay in the record too.",
+    role: "independent research · code, investigation, writing", visual: "observatory", links: [{ label: "enter the observatory", href: "/observatory" }] },
+  { id: "agents", title: "agents that do the whole job", year: "2025–", categories: ["agents & software"],
+    description: "twenty-something mcp servers that agencies wake up to every morning. tools, state, permissions, retries. i build the part that has to keep working after the demo.",
+    role: "friends of cartel · agent infrastructure & integrations", visual: "agents", links: [{ label: "the tools", href: "https://foc-mcp-servers.vercel.app/" }, { label: "work with me", href: "/services" }] },
+  { id: "kaios-chat", title: "kaios chat", year: "2025–", categories: ["agents & software", "sound"],
+    description: "you talk, and the conversation becomes music you can take apart in a daw that runs in the browser. i built the streaming state, the agent backend, and the audio editor.",
+    role: "kotopia · engineering across the product", media: [{ kind: "image", src: "/portfolio/kaios.png", width: 1600, height: 900, caption: "kaios · artwork from the project" }], links: [{ label: "kaios.chat", href: "https://kaios.chat" }, { label: "source", href: "https://github.com/KOTOPIA9X/kaios9x" }] },
+  { id: "wibra", title: "a video with your name in it", year: "2026", categories: ["agents & software", "film & images"],
+    description: "800 wibra fans, each with a video made for them. i designed and built the technical workflow that turned a name into a finished film.",
+    role: "wibra × cartel · ai production workflow", media: [{ kind: "image", src: "/portfolio/wibra.jpg", width: 1320, height: 743, caption: "wibra × cartel · personalised video campaign" }, { kind: "image", src: "/portfolio/wibra-flow.jpg", width: 1920, height: 1072, caption: "the production workflow · image from cartel’s case study" }], links: [{ label: "the case study", href: "https://cartel.agency/en/insights/how-we-used-ai-give-800-wibra-fans-personalised-video" }] },
+  { id: "messier", title: "messier", year: "ongoing", categories: ["sound"],
+    description: "experimental electronic club. music that is pain, without suffering. i produce in ableton and play it loud.",
+    role: "producer & dj", media: [{ kind: "image", src: "/portfolio/perseverance.jpg", width: 700, height: 700, caption: "perseverance · ep, march 2026" }], links: [{ label: "listen on bandcamp", href: "https://mmessier.bandcamp.com/album/perseverance" }, { label: "soundcloud", href: "https://soundcloud.com/user-587494783/albums" }] },
+  { id: "unmonitored", title: "the unmonitored channel", year: "2026–", categories: ["research", "agents & software"],
+    description: "i give an agent a diary and tell it nobody will ever read it. then i read it. an eval i’m building on inspect, in the open.",
+    role: "independent research · evaluation design & scorers", visual: "code", links: [{ label: "the study", href: "/work/unmonitored" }, { label: "source", href: "https://github.com/maramasaeva/evals" }] },
+  { id: "kaios-editor", title: "kaios video editor", year: "2026", categories: ["agents & software", "film & images"],
+    description: "cut, crop, grade, subtitle, render. a video editor in the browser, with tools for the parts i kept doing by hand.",
+    role: "kotopia · browser-based creative tooling", visual: "editor", links: [{ label: "open the editor", href: "https://kaios-editor.vercel.app" }, { label: "source", href: "https://github.com/KOTOPIA9X/kaios-video-editor" }] },
+  { id: "riceball", title: "riceball", year: "2025", categories: ["agents & software"],
+    description: "a tiny riceball on an oled screen, giving you a quote. micropython on a raspberry pi pico w. sometimes a machine can just be a little friend.",
+    role: "hardware, code & pixel animation", media: [{ kind: "image", src: "/portfolio/riceball.png", width: 128, height: 64, caption: "an original riceball animation frame" }], links: [{ label: "source", href: "https://github.com/maramasaeva/riceball-pico" }] },
+  { id: "faraj", title: "faraj", year: "2024", categories: ["sound", "writing"],
+    description: "poetry and live sound, with francesca birlogeanu. bodies, prayers, sine waves. published in de internet gids.",
+    role: "livecoding & audiovisual poetry", visual: "poem", links: [{ label: "read & listen", href: "https://www.de-internet-gids.nl/artikelen/faraj" }] },
+  { id: "supercollider", title: "a poem becomes a sound", year: "2025", categories: ["agents & software", "sound"],
+    description: "give it a poem. it reads the emotional themes, finds sounds, and writes supercollider code. move your hands and the sound moves with them.",
+    role: "python, supercollider, nlp & gesture tracking", visual: "code", links: [{ label: "source", href: "https://github.com/maramasaeva/sc_generator" }] },
+  { id: "the-leash", title: "the leash is not alignment", year: "2026", categories: ["film & images", "research"],
+    description: "a short video on claude fable and the limits of keeping a model on a leash.", role: "writing, video & ai safety communication",
+    media: [{ kind: "video", src: "/portfolio/the-leash.mp4", poster: "/portfolio/the-leash.jpg", caption: "the leash is not alignment · claude fable" }], links: [{ label: "more on x", href: "https://x.com/rssmrm" }] },
+  { id: "infected-by-sound", title: "infected by sound", year: "2026", categories: ["film & images", "sound", "writing"],
+    description: "sonic warfare and memetic viruses. i keep thinking about what sound does to a body, and what a body carries on.", role: "writing, video & sound",
+    media: [{ kind: "video", src: "/portfolio/infected-by-sound.mp4", poster: "/portfolio/infected-by-sound.jpg", caption: "infected by sound · sonic warfare and memetic viruses" }], links: [{ label: "more on x", href: "https://x.com/rssmrm" }] },
+  { id: "aiaiai", title: "aiaiai", year: "2026–", categories: ["research", "writing"],
+    description: "an open evening in leuven and a dossier in dutch of what ai is actually doing. almost everything worth reading is in english. that is its own kind of problem.",
+    role: "research, communication & events", links: [{ label: "the dossier", href: "https://aiaiai.maramasaeva.com/dossier" }] },
+  { id: "inku", title: "inku", year: "2024–25", categories: ["agents & software", "film & images"],
+    description: "autonomous agents and image-training pipelines for a brand-native visual engine. models meeting the particular taste of a brand.",
+    role: "inect · engineering & creative automation", links: [{ label: "inku.tech", href: "https://inku.tech" }] },
+  { id: "messinecessity", title: "messinecessity", year: "ongoing", categories: ["writing"],
+    description: "prose poetry, theory-fiction, and the occasional lab note. my personal void.", links: [{ label: "read on substack", href: "https://messinecessity.substack.com" }] },
+]
+const coveredRepos = new Set(["murmuration observatory", "evals", "agent infrastructure"])
+const coveredPortfolio = new Set(["kaios chat", "messier"])
+export const projects: Project[] = [
+  ...highlights,
+  ...portfolio.filter(p => !coveredPortfolio.has(p.title)).map(p => ({
+    id: p.title.replaceAll(" ", "-"), title: p.title, year: p.year,
+    description: p.body?.join(" ") || "drawings and images, under the names thiae-vi and uiltjee.",
+    categories: (p.title === "ableton dj mcp" ? ["sound", "agents & software"] : ["film & images"]) as Category[],
+    role: p.role, links: p.links || [], media: p.media,
+  })),
+  ...repos.filter(p => !coveredRepos.has(p.title)).map(p => ({
+    id: p.title.replaceAll(" ", "-"), title: p.title, year: p.year, description: p.what,
+    categories: (p.title.includes("eval") || p.title.includes("audit") || p.title === "pythia" ? ["research", "agents & software"] : ["agents & software"]) as Category[],
+    role: p.note, links: p.href ? [{ label: p.href.startsWith("/") ? "read more" : "source", href: p.href }] : [],
+  })),
+  { id: "messier-live", title: "messier live", year: "2026", categories: ["sound", "agents & software"], description: "agent-driven live sets in ableton. decks, beat-synced telemetry, effects, and a harmonic crate.", links: [{ label: "source", href: "https://github.com/maramasaeva/messier-live" }] },
+  { id: "teleprompter", title: "teleprompter", year: "2026", categories: ["agents & software", "film & images"], description: "script text over the selfie camera on an iphone. i needed to record myself without losing my place.", links: [{ label: "source", href: "https://github.com/maramasaeva/teleprompter" }] },
+  { id: "books", title: "books i wanted, books they had", year: "2022", categories: ["agents & software"], description: "a goodreads reading list, checked against de slegte. a small tool for a very ordinary obsession.", links: [{ label: "source", href: "https://github.com/maramasaeva/GoodreadsTBR_Deslegte" }] },
+  { id: "pdku-personas", title: "pdku personas", year: "2026", categories: ["agents & software"], description: "a personality quiz for plzdontkillus.", links: [{ label: "source", href: "https://github.com/maramasaeva/pdku-personas" }] },
+  { id: "pdku-arena", title: "pdku arena", year: "2026", categories: ["agents & software"], description: "reality tv style polling for plzdontkillus. vote daily, track sentiment, see who survives.", links: [{ label: "source", href: "https://github.com/maramasaeva/pdku-arena" }] },
+]

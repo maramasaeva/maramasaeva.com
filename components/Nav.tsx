@@ -1,44 +1,9 @@
+"use client"
 import Link from "next/link"
-import ThemeToggle from "@/components/ThemeToggle"
-
-const items: { href: string; label: string; plain?: boolean }[] = [
-  { href: "/", label: "mara messier masaeva" },
-  { href: "/work", label: "work" },
-  { href: "/services", label: "services" },
-  { href: "/creative", label: "creative" },
-  { href: "/writing", label: "writing" },
-  { href: "/questions", label: "questions" },
-  { href: "/messageboard", label: "messageboard" },
-  /* static pages in public/observatory, reached through a rewrite in
-     next.config.ts, so a plain anchor instead of client routing */
-  { href: "/observatory", label: "observatory", plain: true },
-]
-
+import { usePathname } from "next/navigation"
+import ThemeToggle from "./ThemeToggle"
+const items = ["work", "creative", "services", "writing", "questions", "messageboard", "observatory"]
 export default function Nav() {
-  const [home, ...rest] = items
-
-  return (
-    <header className="font-sans text-meta">
-      <nav className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-        <Link href={home.href} className="text-fg hover:underline">
-          {home.label}
-        </Link>
-        <span className="flex gap-x-4 text-muted">
-          {rest.map((item) =>
-            item.plain ? (
-              <a key={item.href} href={item.href} className="hover:text-fg">
-                {item.label}
-              </a>
-            ) : (
-              <Link key={item.href} href={item.href} className="hover:text-fg">
-                {item.label}
-              </Link>
-            ),
-          )}
-        </span>
-        <ThemeToggle />
-        <Link href="/desk" className="text-muted hover:text-fg">desk</Link>
-      </nav>
-    </header>
-  )
+  const path = usePathname()
+  return <header className="site-header"><Link href="/" className="site-name">mara messier masaeva<span>engineer, artist, shapeshifter</span></Link><nav aria-label="main navigation">{items.map(name => <a key={name} href={`/${name}`} aria-current={path.startsWith(`/${name}`) ? "page" : undefined}>{name}</a>)}</nav><div className="nav-tools"><ThemeToggle /><Link href="/desk" className="desk-link">desk ↗</Link></div></header>
 }

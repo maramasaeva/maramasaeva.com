@@ -1,10 +1,7 @@
 import type { Metadata } from "next"
 import { Cormorant_Garamond, Work_Sans } from "next/font/google"
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site"
-import BinaryField from "@/components/BinaryField"
-import Nav from "@/components/Nav"
-import Footer from "@/components/Footer"
-import Portrait from "@/components/Portrait"
+import SiteFrame from "@/components/SiteFrame"
 import "./globals.css"
 
 /* Cormorant Garamond for the prose, Work Sans for labels, nav and everything
@@ -89,15 +86,7 @@ export default function RootLayout({
       <body
         className={`${cormorant.variable} ${workSans.variable} font-serif text-body bg-bg text-fg`}
       >
-        <Portrait />
-        <BinaryField />
-        <div className="relative z-10 mx-auto flex min-h-screen max-w-[46rem] flex-col px-5 pb-[var(--gap)] pt-[clamp(1.75rem,5vh,4rem)] sm:px-6">
-          <Nav />
-          <main className="flex-1 pt-[clamp(1.5rem,4.5vh,2.75rem)]">
-            {children}
-          </main>
-          <Footer />
-        </div>
+        <SiteFrame>{children}</SiteFrame>
       </body>
     </html>
   )

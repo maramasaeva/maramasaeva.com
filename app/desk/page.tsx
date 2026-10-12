@@ -1,14 +1,8 @@
 import { deskConfigured, isDesk } from "@/lib/desk/auth"
 import { redirect } from "next/navigation"
-
+import ThemeToggle from "@/components/ThemeToggle"
 export const dynamic = "force-dynamic"
-
-/* Messaging is now the private desk entry; X public replies live at /desk/x. */
 export default async function DeskPage() {
   if (await isDesk()) redirect("/desk/app")
-  return <section className="flex flex-col gap-4">
-    <h1 className="text-xl">your desk</h1>
-    <p className="text-muted">Your private workspace, from any device. Replies in your voice stay drafts until you approve them.</p>
-    {deskConfigured() ? <a href="/api/desk/google/start" className="self-start border border-faint px-3 py-2 font-sans text-meta hover:border-muted">Sign in with Google</a> : <p className="font-sans text-meta text-muted">Google sign-in is not configured yet.</p>}
-  </section>
+  return <main className="desk-login"><header><a href="/">mara messier masaeva ↗</a><ThemeToggle /></header><section><p className="eyebrow">a private corner of the internet</p><h1>mara’s <em>desk.</em></h1><p>your conversations, drafts in your voice, and a little room to answer people.</p><div className="login-card"><span className="eyebrow">owner access only</span>{deskConfigured() ? <><a href="/api/desk/google/start" className="desk-button primary"><span aria-hidden>g</span> sign in with google →</a><p>use your authorised google account. every reply stays a draft until you approve it.</p></> : <><h2>not connected yet.</h2><p>google sign-in is not configured. your private workspace stays closed until owner access is ready.</p></>}</div><div className="login-modules"><span>messages</span><span>calendar · later</span><span>notes & tasks · later</span><span>images · later</span></div></section><footer>nothing sends automatically.</footer></main>
 }

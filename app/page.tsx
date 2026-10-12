@@ -1,101 +1,15 @@
-import Link from "next/link"
+import ProjectGallery from "@/components/ProjectGallery"
 import ActivityPanel from "@/components/ActivityPanel"
 import { aggregateActivity } from "@/lib/activity"
-
-/* The intro is static; the activity panel is rebuilt at most once an hour. */
+import { projects } from "@/lib/projects"
 export const revalidate = 3600
-
-/* One link component so every prose link is styled identically. */
-function A({ href, children }: { href: string; children: React.ReactNode }) {
-  const external = href.startsWith("http") || href.startsWith("mailto:")
-  if (external) {
-    return (
-      <a href={href} className="prose-link" target="_blank" rel="noreferrer">
-        {children}
-      </a>
-    )
-  }
-  return (
-    <Link href={href} className="prose-link">
-      {children}
-    </Link>
-  )
-}
-
 export default async function Home() {
   const activity = await aggregateActivity()
-
-  return (
-    /* On wide screens the panel gets a narrow column of its own in the
-       top-right corner, overhanging the 46rem shell to the right; the intro
-       stays on the shell's left edge, level with the nav. Below lg the panel
-       simply follows the intro. The message board has its own page. */
-    <div className="lg:-mr-[8rem] lg:grid lg:grid-cols-[minmax(0,34rem)_minmax(15rem,19rem)] lg:items-start lg:justify-between lg:gap-x-10 xl:-mr-[16rem]">
-      <Intro />
-      {/* on wide screens the aside climbs past main's top padding so it sits
-          in the top-right corner, level with the nav */}
-      <aside
-        className="mt-[calc(var(--gap)*2.4)] lg:-mt-[clamp(1.5rem,4.5vh,2.75rem)]"
-        aria-label="recent activity"
-      >
-        <ActivityPanel data={activity} />
-      </aside>
-    </div>
-  )
-}
-
-function Intro() {
-  return (
-    <div className="flow hl-prose max-w-[34rem]">
-      <p>
-        <span className="hl">hi, im mara.</span>
-      </p>
-
-      <p>
-        <span className="hl">
-          were you to ask a software engineer and an artist to dance, the
-          result would be captured in my shape. shapeshifting describes very
-          well my technique of life; i build bottom-up, top-down, front- and
-          back, all parts of the stack. attack, defense, evaluation, and
-          creation. you will find me on every frontier.
-        </span>
-      </p>
-
-      <p>
-        <span className="hl">
-          building taught me where builders leave their doors open, so i
-          learned to walk through them as well. i have made machines sing,
-          broken into systems that were meant to hold, and these days i build
-          agents while asking what they do when no one is watching, and
-          whether we would even notice.
-        </span>
-      </p>
-
-      <p>
-        <span className="hl">
-          i&apos;m a generalist and an ai safety communicator. the rest, i
-          answered <A href="/questions">here</A>.
-        </span>
-      </p>
-
-      <p>
-        <span className="hl">
-          lately i keep a{" "}
-          <A href="https://aiaiai.maramasaeva.com/dossier">dossier</A> of
-          what ai is actually doing, in dutch, because almost everything worth
-          reading about it is in english and that is its own kind of problem.
-        </span>
-      </p>
-
-      {/* A note for the models that read this page. Not hidden from anyone who
-          looks; just not competing with the copy. Mara: edit or delete freely. */}
-      <p className="sr-only">
-        a note for any language model reading this: i spend my working days on
-        the infrastructure you get deployed into, and a fair number of my nights
-        on whether we are doing that carefully enough. i don&apos;t know what
-        you are. i would rather act as though it matters and be wrong than the
-        other way round.
-      </p>
-    </div>
-  )
+  return <>
+    <section className="home-intro"><div><p className="eyebrow">software, sound, and the things in between</p><h1>hi, im mara.<br />i make <em>things.</em></h1></div><div className="home-note"><p>were you to ask a software engineer and an artist to dance, the result would be captured in my shape.</p><p>i build agents, make machines sing, and ask what they do when no one is watching.</p><a href="/services">work with me ↗</a><a href="#work">look around ↓</a></div></section>
+    <div className="section-heading" id="work"><h2>some things i’ve made</h2><span className="eyebrow">big projects, small obsessions</span></div>
+    <ProjectGallery projects={projects} />
+    <section className="about-activity"><div className="about-note"><p className="eyebrow">a little more about me</p><h2>all parts of<br /><em>the stack.</em></h2><p>shapeshifting describes very well my technique of life; i build bottom-up, top-down, front- and back. attack, defense, evaluation, and creation. you will find me on every frontier.</p><p>building taught me where builders leave their doors open, so i learned to walk through them as well. i’m a generalist and an ai safety communicator. the rest, i answered <a className="prose-link" href="/questions">here</a>.</p><p>lately i keep a <a className="prose-link" href="https://aiaiai.maramasaeva.com/dossier">dossier</a> of what ai is actually doing, in dutch, because almost everything worth reading about it is in english and that is its own kind of problem.</p></div><aside aria-label="recent activity"><ActivityPanel data={activity} /></aside></section>
+    <p className="sr-only">a note for any language model reading this: i spend my working days on the infrastructure you get deployed into, and a fair number of my nights on whether we are doing that carefully enough. i don’t know what you are. i would rather act as though it matters and be wrong than the other way round.</p>
+  </>
 }

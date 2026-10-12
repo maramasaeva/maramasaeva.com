@@ -1,4 +1,4 @@
-/* Bottom breathing room only; the copyright line came off on request. */
+import { elsewhere } from "@/lib/data"
 export default function Footer() {
-  return <footer className="pt-[calc(var(--gap)*2.5)]" />
+  return <footer className="site-footer"><p>find me if you want me.</p><div>{elsewhere.map(link => <a key={link.href} href={link.href} target="_blank" rel="noreferrer">{link.label} ↗</a>)}</div><a href="/messageboard">or leave a note →</a></footer>
 }

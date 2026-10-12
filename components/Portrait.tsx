@@ -17,7 +17,7 @@ import { useEffect, useRef } from "react"
 const SRC = "/portrait.jpg"
 const HEIGHT = 0.57 // of the viewport
 const GAP = 22 // px between the figure's right edge and the text column
-const COLUMN = 736 + 48 // 46rem shell plus its side padding
+const COLUMN = 1200 + 64 // keep the portrait outside the gallery
 const ALPHA = 0.52
 const MIN_W = 120 // narrower than this and it is just a smudge: skip
 

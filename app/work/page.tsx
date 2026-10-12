@@ -2,6 +2,9 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import Linkified from "@/components/Linkified"
 import { cv, elsewhere, repos } from "@/lib/data"
+import ProjectGallery from "@/components/ProjectGallery"
+import PageHeading from "@/components/PageHeading"
+import { projects } from "@/lib/projects"
 
 export const metadata: Metadata = { title: "work" }
 
@@ -33,9 +36,12 @@ function Out({ href, children }: { href: string; children: React.ReactNode }) {
    the timeline first, then the repositories, each a link and one sentence. */
 export default function Work() {
   return (
-    <div className="flow-lg">
+    <div className="work-page">
+      <PageHeading title="what i’ve been doing" note="an archive, still growing"><p>research, software, sound, and small things i needed to exist.</p></PageHeading>
+      <ProjectGallery projects={projects} />
+      <div className="career-archive">
       <section>
-        <h1 className="text-head mb-4">what i&apos;ve been doing</h1>
+        <h2 className="text-head mb-4">the longer version</h2>
         <ul>
           {cv.map((row) => (
             <li key={row.years + row.org} className="flex gap-3">
@@ -102,6 +108,7 @@ export default function Work() {
           ))}
         </ul>
       </section>
+      </div>
     </div>
   )
 }
