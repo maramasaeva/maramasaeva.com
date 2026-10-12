@@ -28,6 +28,19 @@ export function googleAuthConfig(env: Env = process.env) {
   return { clientId, clientSecret, redirectUri, origin: uri.origin }
 }
 export function googleAuthConfigured(env: Env = process.env) { try { googleAuthConfig(env); return true } catch { return false } }
+// NextURL normalizes 127.0.0.1 to localhost. Keep the actual browser Host
+// canonical so the transient cookie and Google's callback share one hostname.
+export function googleRequestOriginMatches(origin: string, host: string | null, configured: string, env: Env = process.env) {
+  if (origin === configured) return true
+  if (env.NODE_ENV === "production" || !host) return false
+  try {
+    const actual = new URL(origin), expected = new URL(configured)
+    return actual.protocol === "http:" && expected.protocol === "http:" &&
+      ["localhost", "127.0.0.1"].includes(actual.hostname) &&
+      ["localhost", "127.0.0.1"].includes(expected.hostname) &&
+      actual.port === expected.port && host === expected.host
+  } catch { return false }
+}
 function same(a: string, b: string) { const x=Buffer.from(a), y=Buffer.from(b); return x.length === y.length && timingSafeEqual(x,y) }
 function flowKey(env: Env) { return createHash("sha256").update("desk-google-flow-v1\0" + secret(env)).digest() }
 

@@ -1,12 +1,12 @@
 import { NextResponse, type NextRequest } from "next/server"
-import { beginGoogleLogin, FLOW_COOKIE, FLOW_MAX_AGE, googleAuthConfig } from "@/lib/desk/google-auth"
+import { beginGoogleLogin, FLOW_COOKIE, FLOW_MAX_AGE, googleAuthConfig, googleRequestOriginMatches } from "@/lib/desk/google-auth"
 
 export const dynamic = "force-dynamic"
 export const runtime = "nodejs"
 export async function GET(req: NextRequest) {
   try {
     const config=googleAuthConfig()
-    if (req.nextUrl.origin !== config.origin) return NextResponse.redirect(new URL("/desk",config.origin))
+    if (!googleRequestOriginMatches(req.nextUrl.origin,req.headers.get("host"),config.origin)) return NextResponse.redirect(new URL("/desk",config.origin))
     const flow=beginGoogleLogin()
     const res=NextResponse.redirect(flow.url)
     res.headers.set("Cache-Control","no-store");res.headers.set("Referrer-Policy","no-referrer")

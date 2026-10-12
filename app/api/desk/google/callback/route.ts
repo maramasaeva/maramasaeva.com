@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { sessionCookie } from "@/lib/desk/auth"
-import { finishGoogleLogin, FLOW_COOKIE, googleAuthConfig, validateGoogleFlow } from "@/lib/desk/google-auth"
+import { finishGoogleLogin, FLOW_COOKIE, googleAuthConfig, googleRequestOriginMatches, validateGoogleFlow } from "@/lib/desk/google-auth"
 
 export const dynamic = "force-dynamic"
 export const runtime = "nodejs"
@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
   let identity: Awaited<ReturnType<typeof finishGoogleLogin>> | null=null
   try {
     const config=googleAuthConfig();destination=new URL("/desk?login=failed",config.origin).toString()
-    if(req.nextUrl.origin!==config.origin)throw new Error("invalid-origin")
+    if(!googleRequestOriginMatches(req.nextUrl.origin,req.headers.get("host"),config.origin))throw new Error("invalid-origin")
     const flow=validateGoogleFlow(req.cookies.get(FLOW_COOKIE)?.value,req.nextUrl.searchParams.get("state"))
     if(req.nextUrl.searchParams.has("error"))throw new Error("google-login-denied")
     identity=await finishGoogleLogin(req.nextUrl.searchParams.get("code")||"",flow)
