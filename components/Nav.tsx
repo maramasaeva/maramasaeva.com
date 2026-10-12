@@ -6,6 +6,7 @@ const items: { href: string; label: string; plain?: boolean }[] = [
   { href: "/work", label: "work" },
   { href: "/services", label: "services" },
   { href: "/creative", label: "creative" },
+  { href: "/merch", label: "merch" },
   { href: "/writing", label: "writing" },
   { href: "/questions", label: "questions" },
   { href: "/messageboard", label: "messageboard" },
