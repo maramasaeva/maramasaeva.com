@@ -14,6 +14,11 @@ test("fixed HTTPS origin is required; credentials, local targets and paths fail 
 test("only specific messaging endpoints and methods are reachable", () => {
   for (const path of ["v1/health", "v1/drafts", "v1/inbox/whatsapp", "v1/thread/signal", "v1/send/tasks/abc-123"]) assert.equal(allowedEndpoint("GET", path.split("/")), true)
   assert.equal(allowedEndpoint("POST", ["v1", "send"]), true)
+  for (const path of ["v1/queue/dismiss", "v1/queue/restore"]) {
+    assert.equal(allowedEndpoint("POST", path.split("/")), true)
+    for (const method of ["GET", "PUT", "DELETE"]) assert.equal(allowedEndpoint(method, path.split("/")), false)
+  }
+  assert.equal(allowedEndpoint("POST", ["v1", "queue", "delete"]), false)
   assert.equal(allowedEndpoint("PUT", ["v1", "drafts"]), true)
   for (const [method, path] of [["GET", "setup/drafts"], ["GET", "v1/extension/whatsapp/tasks"], ["POST", "v1/thread/whatsapp"], ["POST", "v1/connectors/whatsapp/link"], ["GET", "v1/send"], ["DELETE", "v1/drafts"], ["GET", "v1/thread/../../setup"], ["GET", "v1/thread/whatsapp%2fsetup"]]) assert.equal(allowedEndpoint(method, path.split("/")), false)
 })

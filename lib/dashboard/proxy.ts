@@ -26,7 +26,7 @@ export function allowedEndpoint(method: string, parts: string[]) {
   const path = parts.join("/")
   if (method === "GET") return READ.some(pattern => pattern.test(path))
   if (method === "PUT") return path === "v1/drafts"
-  if (method === "POST") return path === "v1/draft" || path === "v1/send"
+  if (method === "POST") return ["v1/draft", "v1/send", "v1/queue/dismiss", "v1/queue/restore"].includes(path)
   return false
 }
 

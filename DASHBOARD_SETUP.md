@@ -59,6 +59,8 @@ Run `node --experimental-strip-types --test lib/dashboard/proxy.test.mts` and `n
 
 Drafts use the configured background host's voice profile and conversation history and remain editable. New platform links, Signal history limitations, paid X API usage and model credentials are configured privately on the host, not through publicly reachable account-setup routes.
 
+Queue dismissal uses same-origin authenticated `POST /api/dashboard/v1/queue/dismiss` with `{channel,chat}`. Undo uses `POST /api/dashboard/v1/queue/restore`. These only update the host's reply queue: they never delete provider messages, mark them read, or send a reply. Drafts remain saved; a new incoming message reopens the conversation. Reply destinations are read-only and come from the verified queue record, never cached browser recipient fields. Timeouts and missing delivery confirmations remain unknown and require checking the conversation before another attempt.
+
 ## Handoff: Google data permissions
 
 Google sign-in currently grants identity access only. A separate, explicit Gmail + Calendar consent flow is still pending; no mailbox/calendar grant is silently added during sign-in. The next implementation should bind an encrypted PKCE/state/nonce flow to the signed-in owner's verified Google `sub` and email, require `gmail.readonly`, `gmail.send`, `calendar.events.readonly` and an offline refresh token, and transfer credentials server-to-server to the relay's fixed `/internal/google/link` endpoint. Tokens must never reach browser responses, source code, logs or Supabase. The dedicated web client will need a separately registered `/api/desk/google/connect/callback` redirect URI. Calendar is not included in the website BFF allowlist until that flow is implemented and verified.
