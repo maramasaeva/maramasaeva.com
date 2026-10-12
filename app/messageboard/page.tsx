@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Prikbord from "@/components/Prikbord"
 import { configured, listMessages } from "@/lib/prikbord"
+import PageHeading from "@/components/PageHeading"
 
 export const metadata: Metadata = { title: "messageboard" }
 export const dynamic = "force-dynamic"
@@ -14,7 +15,8 @@ export default async function Messageboard() {
     return null
   })
   return (
-    <div className="max-w-[34rem]">
+    <div className="messageboard-page">
+      <PageHeading title="messageboard"><p>leave me a message.</p></PageHeading>
       <Prikbord initial={initial} enabled={configured()} />
     </div>
   )

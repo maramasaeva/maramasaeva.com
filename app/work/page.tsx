@@ -37,7 +37,7 @@ function Out({ href, children }: { href: string; children: React.ReactNode }) {
 export default function Work() {
   return (
     <div className="work-page">
-      <PageHeading title="what i’ve been doing" note="an archive, still growing"><p>research, software, sound, and small things i needed to exist.</p></PageHeading>
+      <PageHeading title="what i’ve been doing"><p>software, research, music, livecoding, videos, and a few smaller projects.</p></PageHeading>
       <ProjectGallery projects={projects} />
       <div className="career-archive">
       <section>

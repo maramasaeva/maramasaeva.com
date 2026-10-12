@@ -13,3 +13,6 @@ next-env.d.ts
 # supabase cli scratch
 supabase/.temp/
 env.local
+
+# python asset-script bytecode
+__pycache__/

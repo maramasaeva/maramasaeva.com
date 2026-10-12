@@ -112,7 +112,7 @@ const proof = [
 
 export default function ServicesPage() {
   return (
-    <main className="flow-lg">
+    <div className="services-page">
       <header className="flow">
         <p className="font-sans text-meta text-muted">remote · worldwide</p>
         <h1 className="text-head">services</h1>
@@ -138,7 +138,7 @@ export default function ServicesPage() {
 
       <section>
         <h2 className="text-head mb-4">what i do</h2>
-        <div className="flow">
+        <div className="service-grid">
           {services.map((service) => (
             <article key={service.title} className="flow">
               <h3>
@@ -162,7 +162,7 @@ export default function ServicesPage() {
           this is the stuff i&apos;ve used, not a certification wall. if your stack
           is nearby, i can probably get useful in it quickly.
         </p>
-        <div className="flow">
+        <div className="capability-grid">
           {capabilities.map((capability) => (
             <article key={capability.title} className="flow">
               <h3>{capability.title}</h3>
@@ -205,6 +205,6 @@ export default function ServicesPage() {
           </a>
         </p>
       </section>
-    </main>
+    </div>
   )
 }

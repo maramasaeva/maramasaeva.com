@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import ThemeToggle from "./ThemeToggle"
 import {
   channels, channelNames, registers, normalise, defaultDraft, editDraft, mergeRemoteDraft,
-  acknowledgeDraft, generatedDraft, sendAvailability, snapshot, sameReply, sendResult,
+  acknowledgeDraft, generatedDraft, sendAvailability, snapshot, sameReply, sendResult, messageTime, mergeMessages,
   type Channel, type Conversation, type Draft, type DraftMetadata, type Health,
   type Thread, type SendJob, type SendSnapshot,
 } from "@/lib/dashboard/frontend"
@@ -28,7 +28,7 @@ const modules = [
 ]
 function dateLabel(value: string | number | undefined) {
   if (!value) return ""
-  const date = new Date(typeof value === "number" && value < 1e12 ? value * 1000 : value)
+  const date = new Date(messageTime(value))
   return Number.isNaN(date.valueOf()) ? "" : date.toLocaleString([], { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })
 }
 function Review({ reply, busy, onCancel, onApprove }: { reply: SendSnapshot; busy: boolean; onCancel: () => void; onApprove: () => void }) {
@@ -72,6 +72,8 @@ export default function DeskWorkspace() {
   const remoteRef = useRef<DraftResponse>({})
   const editor = useRef<HTMLTextAreaElement>(null)
   const history = useRef<HTMLDivElement>(null)
+  const followHistory = useRef(true)
+  const historyAnchor = useRef<{ key: string; height: number; top: number } | null>(null)
   const syncing = useRef(new Set<string>())
   const refreshingRef = useRef(false)
   const mounted = useRef(false)
@@ -111,6 +113,7 @@ export default function DeskWorkspace() {
   const refresh = useCallback(async () => {
     if (refreshingRef.current) return
     refreshingRef.current = true; setRefreshing(true)
+    const beforeRefresh = draftRef.current
     try {
       const status = await api<Health>("health")
       if (!mounted.current) return
@@ -133,7 +136,7 @@ export default function DeskWorkspace() {
           if (old < 0) next.push(item); else next[old] = item
         }
       })
-      next.sort((a, b) => (Date.parse(b.receivedAt) || 0) - (Date.parse(a.receivedAt) || 0))
+      next.sort((a, b) => messageTime(b.receivedAt) - messageTime(a.receivedAt))
       itemsRef.current = next; setItems(next); setConnectorErrors(errors)
       if (remote) { remoteRef.current = remote; setMetadata(remote.metadata || {}); setBackground(Boolean(remote.background?.enabled)) }
       const book = { ...draftRef.current }
@@ -157,7 +160,8 @@ export default function DeskWorkspace() {
             } catch { /* no remembered job */ }
           }
         }
-        if (remote && !generationRequests.current.has(item.key)) book[item.key] = mergeRemoteDraft(book[item.key], remote.drafts?.[item.key], remote.metadata?.[item.key], selectedRef.current === item.key && document.activeElement?.closest(".draft-editor") !== null)
+        // A stale poll must not replace an edit that was saved while the request ran.
+        if (remote && !generationRequests.current.has(item.key)) book[item.key] = mergeRemoteDraft(book[item.key], remote.drafts?.[item.key], remote.metadata?.[item.key], selectedRef.current === item.key && Boolean(document.activeElement?.closest(".draft-editor")), beforeRefresh[item.key] || book[item.key])
       }
       storeDrafts(book)
       setConnection("connected to your private host")
@@ -192,20 +196,19 @@ export default function DeskWorkspace() {
     }
     if (historyRequests.current.has(item.key)) return
     historyRequests.current.add(item.key)
+    if (before && selectedRef.current === item.key && history.current) historyAnchor.current = { key: item.key, height: history.current.scrollHeight, top: history.current.scrollTop }
     try {
       const query = new URLSearchParams({ chat: item.chat, limit: "80" })
       if (before) query.set("before", String(before))
       const thread = await api<Thread>("thread/" + item.channel + "?" + query)
       if (!mounted.current) return
       setThreads(previous => {
-        if (!before) return { ...previous, [item.key]: thread }
-        const old = previous[item.key]?.messages || [], older = thread.messages || []
-        const all = [...older, ...old].filter((m, i, list) => list.findIndex(x => (x.id && m.id ? x.id === m.id : x.text === m.text && x.timestamp === m.timestamp && x.fromMe === m.fromMe)) === i)
-        return { ...previous, [item.key]: { ...thread, messages: all } }
+        const all = mergeMessages(previous[item.key]?.messages || [], thread.messages || [])
+        return { ...previous, [item.key]: { ...thread, messages: all, hasMore: item.channel === "whatsapp" && (thread.messages?.length || 0) >= 80 } }
       })
       setThreadErrors(previous => { const next = { ...previous }; delete next[item.key]; return next })
-      historyChecked.current.add(item.key)
-    } catch (error) { if (mounted.current) setThreadErrors(previous => ({ ...previous, [item.key]: error instanceof Error ? error.message : "history unavailable." })) }
+      if (Array.isArray(thread.messages) && !["queued", "pending", "running", "failed"].includes(thread.status || "")) historyChecked.current.add(item.key)
+    } catch (error) { historyAnchor.current = null; if (mounted.current) setThreadErrors(previous => ({ ...previous, [item.key]: error instanceof Error ? error.message : "history unavailable." })) }
     finally { historyRequests.current.delete(item.key) }
   }, [])
 
@@ -217,11 +220,14 @@ export default function DeskWorkspace() {
     const timer = setInterval(() => { if (document.visibilityState === "visible") void readHistory(item) }, 10000)
     return () => clearInterval(timer)
   }, [selected, readHistory])
-  useEffect(() => { if (history.current && selected) history.current.scrollTop = history.current.scrollHeight }, [selected])
+  useEffect(() => { followHistory.current = true; historyAnchor.current = null; if (history.current && selected) history.current.scrollTop = history.current.scrollHeight }, [selected])
   useEffect(() => {
     const el = history.current
-    if (el && el.scrollHeight - el.scrollTop - el.clientHeight < 160) el.scrollTop = el.scrollHeight
-  }, [threads])
+    if (!el) return
+    const anchor = historyAnchor.current
+    if (anchor && anchor.key === selected) { el.scrollTop = anchor.top + el.scrollHeight - anchor.height; historyAnchor.current = null }
+    else if (followHistory.current) el.scrollTop = el.scrollHeight
+  }, [threads, selected])
 
   function choose(key: string | null) { selectedRef.current = key; setSelected(key); setNotice("") }
   function change(fields: Partial<Pick<Draft, "text" | "register" | "intent" | "to" | "subject">>) {
@@ -240,7 +246,7 @@ export default function DeskWorkspace() {
       if (result.status !== "generated" || !result.text) throw new Error(result.error || "a draft provider is not connected.")
       const current = draftRef.current[item.key]
       storeDrafts({ ...draftRef.current, [item.key]: generatedDraft(current, saved.revision, result.text) })
-      setNotice(current.revision === saved.revision ? "suggestion ready. read it, make it yours." : "your edits were kept while the suggestion generated.")
+      setNotice(current.revision === saved.revision ? "draft ready. review and edit before sending." : "your edits were kept while the suggestion generated.")
       await syncDraft(item.key)
     } catch (error) { if (mounted.current) setDraftErrors(previous => ({ ...previous, [item.key]: error instanceof Error ? error.message : "could not generate a draft." })) }
     finally { generationRequests.current.delete(item.key); if (mounted.current) setGenerating(previous => ({ ...previous, [item.key]: false })) }
@@ -252,6 +258,7 @@ export default function DeskWorkspace() {
       setReview(null); setNotice("the reply or connection changed. review it again before sending."); return
     }
     inFlightSend.current = true
+    historyChecked.current.delete(reply.key)
     let job: SendJob = { status: "submitting", text: reply.text, to: reply.to, subject: reply.subject }
     storeJob(reply.key, job)
     try {
@@ -297,18 +304,18 @@ export default function DeskWorkspace() {
   const counts = channels.map(channel => items.filter(x => x.channel === channel).length)
   const status = current && draft ? draft.dirty ? "edited · syncing" : generating[current.key] || meta?.status === "generating" ? "drafting in your voice" : meta?.stale ? "new context · draft kept" : meta?.error ? "draft needs attention" : draft.text ? meta?.userEdited ? "your edited draft" : "draft ready" : meta?.status === "waiting-provider" ? "draft model not connected" : meta?.status === "rate-limited" ? "queued · hourly limit" : background ? "queued in the background" : "write a reply or prepare a draft" : ""
   return <div className="desk-workspace">
-    <aside className="desk-sidebar"><a href="/" className="desk-brand">m<span>mara’s desk</span></a><p className="eyebrow">a place to gather things</p><nav aria-label="workspace modules">{modules.map(x => <button key={x.id} onClick={() => setModule(x.id)} aria-current={module === x.id ? "page" : undefined}><span aria-hidden>{x.icon}</span>{x.label}{x.id !== "messages" && <small>later</small>}</button>)}</nav><div className="desk-sidebar-bottom"><a href="/desk/x">x public replies ↗</a><a href="/">back to the website ↗</a><div><ThemeToggle /><button onClick={signOut}>sign out</button></div></div></aside>
+    <aside className="desk-sidebar"><a href="/" className="desk-brand">m<span>mara’s desk</span></a><p className="eyebrow">private dashboard</p><nav aria-label="workspace modules">{modules.map(x => <button key={x.id} onClick={() => setModule(x.id)} aria-current={module === x.id ? "page" : undefined}><span aria-hidden>{x.icon}</span>{x.label}{x.id !== "messages" && <small>later</small>}</button>)}</nav><div className="desk-sidebar-bottom"><a href="/desk/x">x public replies ↗</a><a href="/">back to the website ↗</a><div><ThemeToggle /><button onClick={signOut}>sign out</button></div></div></aside>
     <main className="desk-main"><header className="desk-topbar"><div><span className="status-dot" data-connected={Boolean(health)} /> <span>{health ? "private workspace" : "connection unavailable"}</span></div><button className="desk-text-button" onClick={() => void refresh()} disabled={refreshing}>{refreshing ? "checking…" : "refresh ↻"}</button></header>
-      <section className="desk-heading"><p className="eyebrow">your desk / {unavailable?.label}</p><h1>{module === "messages" ? <>a little room<br />to <em>answer people.</em></> : unavailable?.label}</h1><p>{module === "messages" ? "your conversations, a draft in your voice, and the time to make it yours." : "this part of your desk is not connected yet."}</p></section>
-      {module !== "messages" ? <section className="desk-unavailable"><span className="unavailable-icon" aria-hidden>{unavailable?.icon}</span><h2>room for later.</h2><p>{module === "calendar" ? "google sign-in grants identity access only. calendar consent and integration are still pending." : module === "notes" ? "obsidian-linked tasks and notes are not connected. no vault files are being read here." : module === "visuals" ? "visualisations will appear here when a data source is connected." : "your image workspace is not connected. no images or files have been accessed."}</p><button className="desk-button secondary" onClick={() => setModule("messages")}>back to messages →</button></section> : <>
+      <section className="desk-heading"><p className="eyebrow">your desk / {unavailable?.label}</p><h1>{module === "messages" ? "messages" : unavailable?.label}</h1><p>{module === "messages" ? "read the conversation, edit your draft, then review the exact message before sending." : "this part of your desk is not connected yet."}</p></section>
+      {module !== "messages" ? <section className="desk-unavailable"><span className="unavailable-icon" aria-hidden>{unavailable?.icon}</span><h2>not connected yet.</h2><p>{module === "calendar" ? "google sign-in grants identity access only. calendar consent and integration are still pending." : module === "notes" ? "obsidian-linked tasks and notes are not connected. no vault files are being read here." : module === "visuals" ? "visualisations will appear here when a data source is connected." : "your image workspace is not connected. no images or files have been accessed."}</p><button className="desk-button secondary" onClick={() => setModule("messages")}>back to messages →</button></section> : <>
       <div className="desk-connection" role="status">{connection}<span>{health?.sendEnabled ? "every send needs your approval" : "sending paused"}</span></div>
       <div className={`messaging-grid ${current ? "conversation-open" : ""}`}>
         <section className="inbox-panel"><div className="panel-heading"><h2>conversations</h2><span>{items.length}</span></div><label className="desk-search"><span className="sr-only">search conversations</span><input type="search" value={query} onChange={e => setQuery(e.target.value)} placeholder="find someone…" /></label><div className="channel-filters" role="group" aria-label="filter messaging channels"><button aria-pressed={filter === "all"} onClick={() => setFilter("all")}>all</button>{channels.map((channel, i) => <button key={channel} aria-pressed={filter === channel} onClick={() => setFilter(channel)}>{channelNames[channel]} <span>{counts[i]}</span></button>)}</div>
         <div className="inbox-list">{visible.length ? visible.map(item => <button key={item.key} className="conversation-item" aria-pressed={selected === item.key} onClick={() => choose(item.key)}><div className="conversation-line"><span className="conversation-name">{item.name}</span><time>{dateLabel(item.receivedAt)}</time></div><p>{item.text || "attachment"}</p><div className="conversation-line conversation-labels"><span>{channelNames[item.channel]}{item.unread ? " · unread" : ""}</span><span>{drafts[item.key]?.dirty ? "edited · syncing" : drafts[item.key]?.text ? "draft saved" : metadata[item.key]?.status === "generating" ? "drafting…" : "awaiting draft"}</span></div></button>) : <div className="desk-empty"><span aria-hidden>↗</span><h3>{loaded ? health ? "nothing in this view." : "waiting for a connection." : "checking your inbox…"}</h3><p>{loaded && health ? "conversations appear here when they sync. try another filter or search." : "your real conversations will appear when the private messaging host is available."}</p></div>}</div></section>
         <section className="conversation-panel">{current && draft ? <><div className="panel-heading"><div><button className="mobile-back desk-text-button" onClick={() => choose(null)}>← conversations</button><h2>{current.name}</h2><span>{channelNames[current.channel]} · {current.chat}</span></div><button className="desk-text-button" onClick={() => void readHistory(current)}>refresh history ↻</button></div>
           <div className="thread-caption">{thread?.messages?.length ? `${thread.messages.length} messages · both sides of the conversation` : ["queued", "pending", "running"].includes(thread?.status || "") ? "loading conversation history…" : "latest preview · full history has not loaded"}</div>
-          <div className="desk-thread" ref={history} role="log" aria-label={`conversation with ${current.name}`}>
-            {thread?.messages?.length ? <button className="desk-text-button older-messages" onClick={() => { const first = thread.messages?.[0]; const timestamp = Number(first?.timestamp) || Date.parse(String(first?.timestamp || first?.receivedAt)); if (timestamp) void readHistory(current, timestamp > 1e12 ? Math.floor(timestamp / 1000) : timestamp) }}>load earlier messages ↑</button> : null}
+          <div className="desk-thread" ref={history} role="log" aria-label={`conversation with ${current.name}`} onScroll={() => { const el = history.current; if (el) followHistory.current = el.scrollHeight - el.scrollTop - el.clientHeight < 60 }}>
+            {thread?.hasMore && current.channel === "whatsapp" ? <button className="desk-text-button older-messages" onClick={() => { const first = thread.messages?.[0]; const timestamp = messageTime(first?.timestamp || first?.receivedAt); if (timestamp) void readHistory(current, timestamp) }}>load earlier messages ↑</button> : null}
             {messages.map((message, index) => <div key={message.id || index} className={`message-bubble ${message.fromMe ? "from-me" : ""}`}><p>{message.text || "[attachment]"}</p><small>{message.fromMe ? "you" : message.sender || message.from || current.name} · {dateLabel(message.timestamp || message.receivedAt)}</small></div>)}
             {threadErrors[current.key] && <p className="desk-error">{threadErrors[current.key]}</p>}
           </div>
@@ -323,7 +330,7 @@ export default function DeskWorkspace() {
             <p className="desk-help">{availability.reason}</p>
             {job?.status === "unknown" && <div className="delivery-unknown"><p>{job.error}</p><button className="desk-button secondary" onClick={() => { if (!historyChecked.current.has(current.key)) { setNotice("refresh and inspect this conversation’s history first."); return } if (window.confirm("have you checked the conversation and confirmed that this exact reply was NOT delivered?")) storeJob(current.key, { ...job, status: "failed", error: "you confirmed the reply was not delivered. a new exact-message review is required." }) }}>i checked history: it did not send</button></div>}
             {job?.status === "sent" && <p className="desk-help">delivery confirmed. the original draft is kept.</p>}
-          </div></> : <div className="desk-empty select-conversation"><span aria-hidden>↗</span><h2>one person at a time.</h2><p>choose a conversation to read its history and make the draft yours.</p><p className="desk-help">nothing sends automatically.</p></div>}</section>
+          </div></> : <div className="desk-empty select-conversation"><span aria-hidden>↗</span><h2>select a conversation</h2><p>choose a conversation to read its history and edit the reply.</p><p className="desk-help">nothing sends automatically.</p></div>}</section>
       </div>
       <details className="connector-details"><summary>connections & background drafts <span>{background ? "worker enabled" : "worker not confirmed"}</span></summary><div className="connector-grid">{channels.map(channel => {
         const state = health?.connectors?.[channel], connector = typeof state === "object" ? state : null

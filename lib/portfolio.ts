@@ -7,7 +7,7 @@ export type Media =
   | { kind: "video"; src: string; poster?: string; caption: string }
   /* width and height are the file's real pixel dimensions: next/image needs
      them to reserve the box before the file loads. */
-  | { kind: "image"; src: string; width: number; height: number; caption: string }
+  | { kind: "image"; src: string; width: number; height: number; caption: string; fit?: "cover" | "contain" }
 
 export type Piece = {
   title: string

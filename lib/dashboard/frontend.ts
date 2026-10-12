@@ -28,8 +28,8 @@ export function defaultDraft(item: Conversation): Draft {
   const dutch = item.text.toLowerCase().match(/\b(?:ik|jij|gij|ge|het|een|niet|nie|hoe|wat|kunnen|kun|heb|met|maar|morgen|wanneer)\b/g) || []
   return { text: "", to: item.to, subject: item.subject, register: item.channel === "gmail" ? "mail" : dutch.length >= 2 ? "flemish-close" : "english-peer", intent: "", revision: 0, dirty: false }
 }
-export function mergeRemoteDraft(current: Draft, text: string | undefined, metadata?: DraftMetadata, focused = false): Draft {
-  if (current.dirty || focused) return current
+export function mergeRemoteDraft(current: Draft, text: string | undefined, metadata?: DraftMetadata, focused = false, atRequestStart = current): Draft {
+  if (current.dirty || focused || current !== atRequestStart) return current
   return { ...current, text: text === undefined ? current.text : text,
     register: metadata?.register || current.register, intent: metadata?.intent ?? current.intent }
 }
@@ -48,6 +48,7 @@ export function sendAvailability(item: Conversation, draft: Draft, health: Healt
   const value = health.connectors?.[item.channel]
   const connector = typeof value === "object" ? value : null
   if (!connector || connector.sendEnabled === false) return { ok: false, reason: "sending is unavailable for this connector." }
+  if (item.channel === "signal" && !connector.connected && !connector.linked) return { ok: false, reason: "signal is not connected." }
   if (item.channel === "whatsapp" && (connector.transport !== "headless" || !["headless-connected", "connected"].includes(connector.state || ""))) return { ok: false, reason: "the whatsapp background connector is offline." }
   if (["gmail", "x"].includes(item.channel) && (!connector.configured || !connector.tokenStored)) return { ok: false, reason: "this account is not connected for sending." }
   if (!draft.to.trim() || !draft.text.trim()) return { ok: false, reason: "add a recipient and a reply before reviewing." }
@@ -70,4 +71,15 @@ export function sendResult(data: { status?: string; error?: string }): Pick<Send
   if (data.status === "failed") return { status: "failed", error: data.error || "the connector could not send this reply." }
   if (data.status === "unknown") return { status: "unknown", error: "delivery could not be confirmed. check the conversation before retrying." }
   return { status: "unknown", error: "delivery has not been confirmed. check the conversation before retrying." }
+}
+export function messageTime(value: string | number | undefined): number {
+  if (value === undefined || value === "") return 0
+  const number = typeof value === "number" ? value : /^\d+$/.test(value) ? Number(value) : NaN
+  if (Number.isFinite(number)) return number < 1e12 ? number * 1000 : number
+  return Date.parse(String(value)) || 0
+}
+export function mergeMessages(previous: Message[], incoming: Message[]): Message[] {
+  return [...previous, ...incoming].filter((message, index, list) => list.findIndex(other =>
+    message.id && other.id ? message.id === other.id : message.text === other.text && message.timestamp === other.timestamp && message.receivedAt === other.receivedAt && Boolean(message.fromMe) === Boolean(other.fromMe)
+  ) === index).sort((a, b) => messageTime(a.timestamp || a.receivedAt) - messageTime(b.timestamp || b.receivedAt))
 }

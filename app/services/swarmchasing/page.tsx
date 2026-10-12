@@ -37,7 +37,7 @@ const work = [
 
 export default function SwarmchasingPage() {
   return (
-    <main className="flow-lg">
+    <div className="flow-lg">
       <header className="flow">
         <p className="font-sans text-meta text-muted">a technical investigation service</p>
         <h1 className="text-head">swarmchasing</h1>
@@ -112,6 +112,6 @@ export default function SwarmchasingPage() {
           </Link>
         </p>
       </section>
-    </main>
+    </div>
   )
 }
