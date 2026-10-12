@@ -1,10 +1,10 @@
-import { redirect } from "next/navigation"
+import { notFound } from "next/navigation"
 import { isDesk } from "@/lib/desk/auth"
 
 export const dynamic = "force-dynamic"
 
 export default async function RepliesPage() {
-  if (!(await isDesk())) redirect("/desk")
+  if (!(await isDesk())) notFound()
   const queueUrl = process.env.PRIVATE_REPLY_QUEUE_URL || "http://127.0.0.1:3900/app"
   const remote = Boolean(process.env.PRIVATE_REPLY_QUEUE_URL)
 

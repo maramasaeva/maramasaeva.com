@@ -32,7 +32,7 @@ the default unconfigured state must remain fail-closed. No dev auth bypass is
 provided. The separate local gateway `/app` can preview actual messaging while
 Google/domain setup is pending.
 
-`/desk` is the Google login entry; `/desk/app` is the mobile-responsive messaging workspace. The previous X public-post reply tool is preserved at `/desk/x`. All private routes share the owner-only Google session and sign-out endpoint. `/dashboard` redirects to `/desk`. The desk is noindex, but privacy comes from authentication, not obscurity.
+`/desk` redirects the signed-in owner to `/desk/app`, the mobile-responsive messaging workspace. Signed-out visits to `/desk` and `/desk/app` return not found, and the public navigation has no desk link. To sign in on a new device, bookmark `https://maramasaeva.com/api/desk/google/start`; Google still grants access only to the allowed owner account. The previous X public-post reply tool is preserved at `/desk/x`. All private routes share the owner-only Google session and sign-out endpoint. `/dashboard` redirects to `/desk`. The desk is noindex, but privacy comes from authentication, not obscurity.
 
 ## Architecture
 

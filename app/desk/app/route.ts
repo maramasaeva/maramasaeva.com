@@ -6,7 +6,7 @@ export const runtime = "nodejs"
 const HEADERS = { "Cache-Control": "no-store, private", "X-Robots-Tag": "noindex, nofollow", "Content-Type": "text/html; charset=utf-8" }
 
 export async function GET(req: Request) {
-  if (!(await isDesk())) return Response.redirect(new URL("/desk", req.url), 303)
+  if (!(await isDesk())) return new Response("Not found", { status: 404, headers: HEADERS })
   const config = gatewayConfig()
   const unavailable = () => new Response('<!doctype html><meta name="viewport" content="width=device-width,initial-scale=1"><title>Desk unavailable</title><main style="font:18px system-ui;max-width:550px;margin:10vh auto;padding:24px"><h1>Your messaging host is unavailable.</h1><p>No message was sent. The background host must be online, and its private gateway connected to this website.</p><p><a href="/desk/app">Try again</a> · <a href="/desk/x">X public replies</a> · <a href="/">Website</a></p></main>', { status: 503, headers: HEADERS })
   if (!config) return unavailable()
