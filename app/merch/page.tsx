@@ -1,16 +1,12 @@
 import type { Metadata } from "next"
 import Image from "next/image"
+import MerchOrder from "@/components/MerchOrder"
+import { countries } from "@/lib/merch"
 
 export const metadata: Metadata = {
   title: "merch",
   description: "shirts.",
 }
-
-/* One price for both. PayPal pays messiermara@gmail.com; she places the
-   print order after the payment arrives. */
-const PRICE = "24.00"
-const PAYPAL = "messiermara@gmail.com"
-const SIZES = ["s", "m", "l", "xl", "2xl"]
 
 const shirts: {
   title: string
@@ -40,9 +36,20 @@ const shirts: {
   },
 ]
 
-export default function Merch() {
+export default async function Merch({
+  searchParams,
+}: {
+  searchParams: Promise<{ sent?: string }>
+}) {
+  const { sent } = await searchParams
+  const countryList = countries()
   return (
     <div className="flow-lg max-w-[34rem]">
+      {sent === "1" && (
+        <p className="text-left [hyphens:none]">
+          payment sent. the shirt ships to the address you entered, once that payment arrives.
+        </p>
+      )}
       {shirts.map((shirt) => (
         <section key={shirt.title} className="flow">
           <div className="flex items-baseline justify-between gap-3">
@@ -62,43 +69,7 @@ export default function Merch() {
               sizes="(min-width: 640px) 34rem, 100vw"
             />
           ))}
-          <form
-            action="https://www.paypal.com/cgi-bin/webscr"
-            method="post"
-            className="flex flex-wrap items-baseline gap-x-4 gap-y-2"
-          >
-            <input type="hidden" name="cmd" value="_xclick" />
-            <input type="hidden" name="business" value={PAYPAL} />
-            <input type="hidden" name="item_name" value={shirt.title} />
-            <input type="hidden" name="amount" value={PRICE} />
-            <input type="hidden" name="currency_code" value="EUR" />
-            <input type="hidden" name="no_shipping" value="2" />
-            <input type="hidden" name="charset" value="utf-8" />
-            <input type="hidden" name="on0" value="size" />
-            <input type="hidden" name="return" value="https://maramasaeva.com/merch" />
-            <input
-              type="hidden"
-              name="cancel_return"
-              value="https://maramasaeva.com/merch"
-            />
-            <label className="font-sans text-meta text-muted">
-              size{" "}
-              <select
-                name="os0"
-                defaultValue="m"
-                className="border border-faint bg-transparent px-1.5 py-0.5 text-fg"
-              >
-                {SIZES.map((size) => (
-                  <option key={size} value={size}>
-                    {size}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <button type="submit" className="prose-link cursor-pointer">
-              buy
-            </button>
-          </form>
+          <MerchOrder shirt={shirt.title} countries={countryList} />
         </section>
       ))}
     </div>
